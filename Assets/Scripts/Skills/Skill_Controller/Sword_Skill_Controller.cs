@@ -31,6 +31,7 @@ public class Sword_Skill_Controller : MonoBehaviour
     [SerializeField]private float spintimer;
     private bool wasStopped;
     private bool isSprinning;
+    private bool spinWasTriggered;
 
     private float hitTimer;
     private float hitCooldown;
@@ -247,8 +248,9 @@ public class Sword_Skill_Controller : MonoBehaviour
             return;
         }
 
-        if (isSprinning)
+        if (isSprinning && !spinWasTriggered)
         {
+            spinWasTriggered = true;
             StopWhenSpinning();
             return;
         }
