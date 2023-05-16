@@ -108,6 +108,7 @@ public class Inventory : MonoBehaviour
         {
             UnequipItem(oldeEquipment);
             AddItem(oldeEquipment);
+
         }
 
         //装備して(装備品による強化)、インベントリ内から消す
@@ -119,7 +120,7 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-    private void UnequipItem(ItemData_Equipment itemToRemove)
+    public void UnequipItem(ItemData_Equipment itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {
@@ -206,15 +207,40 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-    private void Update()
+   public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requireMaterials)
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.L))
+        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+     
+        for (int i = 0; i < _requireMaterials.Count; i++)
         {
-            ItemData newItem = inventoryItems[inventoryItems.Count - 1].data;
-
-            RemoveItem(newItem);
+            //アイテムがあるかの確認を行う
+            if (stashDictionary.TryGetValue(_requireMaterials[i].data, out InventoryItem stashValue))
+            {
+                //アイテムの量が足りているか
+                if(stashValue.stackSize < _requireMaterials[i].stackSize)
+                {
+                    return false;
+                }
+                else
+                {
+                    materialsToRemove.Add(stashValue);
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
-        */
+
+        //アイテムの消費
+        for (int i = 0; i < materialsToRemove.Count; i++)
+        {
+            RemoveItem(materialsToRemove[i].data);
+        }
+
+        //クラフト成功
+        AddItem(_itemToCraft);
+
+        return true;
     }
 }
