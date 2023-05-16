@@ -6,14 +6,23 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    //public List<ItemData> inventory = new List<ItemData>();
-    public List<InventoryItem> inventoryItems;
+    public List<InventoryItem> equipment;
+    public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
+
+    public List<InventoryItem> inventory;
     public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+
+    public List<InventoryItem> stash;
+    public Dictionary<ItemData, InventoryItem> stashDictionary;
 
     [Header("Inventory UI")]
     [SerializeField] private Transform inventorySlotParent;
+    [SerializeField] private Transform stashSlotParent;
+    [SerializeField] private Transform equipmnetSlotParent;
 
-    private UI_ItemSlot[] itemSlot;
+    private UI_ItemSlot[] inventoryItemSlot;
+    private UI_ItemSlot[] stashItemSlot;
+    private UI_EquipmentSlot[] equipmentSlot;
 
     private void Awake()
     {
@@ -27,25 +36,130 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        equipment = new List<InventoryItem>();
+        equipmentDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
+
+        inventory = new List<InventoryItem>();
+        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
+
+        stash = new List<InventoryItem>();
+        stashDictionary = new Dictionary<ItemData, InventoryItem>();
+
+        inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
+        stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
+        equipmentSlot = equipmnetSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
+    }
+
     private void UpdateSlotUI()
     {
-        for (int i = 0; i < inventoryItems.Count; i++)
+        //装備のSlotUIを更新
+        for (int i = 0; i < equipmentSlot.Length; i++)
         {
-            itemSlot[i].UpdateSlot(inventoryItems[i]);
+            foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+            {
+                if (item.Key.equipmentType == equipmentSlot[i].slotType)
+                {
+                    equipmentSlot[i].UpdateSlot(item.Value);
+                }
+            }
+        }
+
+        for (int i = 0; i < inventoryItemSlot.Length; i++)
+        {
+            inventoryItemSlot[i].CleanUpSlot();
+        }
+
+        for (int i = 0; i < stashItemSlot.Length; i++)
+        {
+            stashItemSlot[i].CleanUpSlot();
+        }
+
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            inventoryItemSlot[i].UpdateSlot(inventory[i]);
+        }
+
+        for (int i = 0; i < stash.Count; i++)
+        {
+            stashItemSlot[i].UpdateSlot(stash[i]);
         }
     }
 
-    private void Start()
+    public void EquipItem(ItemData _item)
     {
-        inventoryItems = new List<InventoryItem>();
-        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
+        ItemData_Equipment newEquipment = _item as ItemData_Equipment;
+        InventoryItem newItem = new InventoryItem(newEquipment);
 
-        itemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
+        ItemData_Equipment oldeEquipment = null;
+
+        //Dictionary内で装備しているかを判定する
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+        {
+            if (item.Key.equipmentType == newEquipment.equipmentType)
+            {
+                oldeEquipment = item.Key;
+            }
+        }
+
+        //装備していた場合、装備品をとる
+        if (oldeEquipment != null)
+        {
+            UnequipItem(oldeEquipment);
+            AddItem(oldeEquipment);
+        }
+
+        //装備して、インベントリ内から消す
+        equipment.Add(newItem);
+        equipmentDictionary.Add(newEquipment, newItem);
+        RemoveItem(_item);
+
+        UpdateSlotUI();
+    }
+
+    private void UnequipItem(ItemData_Equipment itemToRemove)
+    {
+        if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
+        {
+            equipment.Remove(value);
+            equipmentDictionary.Remove(itemToRemove);
+        }
     }
 
     public void AddItem(ItemData _item)
     {
-        if(inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+        if (_item.itemType == ItemType.Equipment)
+        {
+            AddToInventory(_item);
+        }
+        else if (_item.itemType == ItemType.Material)
+        {
+            AddToStash(_item);
+        }
+
+        UpdateSlotUI();
+    }
+
+    private void AddToInventory(ItemData _item)
+    {
+        if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+        {
+            //既にアイテムを持っていたら、所持数（Stack）を増やす
+            value.AddStack();
+        }
+        else
+        {
+            //インベントリに武器を追加する
+            InventoryItem newItem = new InventoryItem(_item);
+            inventory.Add(newItem);
+            inventoryDictionary.Add(_item, newItem);
+        }
+    }
+
+    private void AddToStash(ItemData _item)
+    {
+        if (stashDictionary.TryGetValue(_item, out InventoryItem value))
         {
             //既にアイテムを持っていたら、所持数（Stack）を増やす
             value.AddStack();
@@ -54,25 +168,36 @@ public class Inventory : MonoBehaviour
         {
             //インベントリにアイテムを追加する
             InventoryItem newItem = new InventoryItem(_item);
-            inventoryItems.Add(newItem);
-            inventoryDictionary.Add(_item, newItem);
+            stash.Add(newItem);
+            stashDictionary.Add(_item, newItem);
         }
-
-        UpdateSlotUI();
     }
 
     public void RemoveItem(ItemData _item)
     {
-        if(inventoryDictionary.TryGetValue(_item,out InventoryItem value))
+        if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
         {
             if (value.stackSize <= 1)
             {
-                inventoryItems.Remove(value);
+                inventory.Remove(value);
                 inventoryDictionary.Remove(_item);
             }
             else
             {
                 value.RemoveStack();
+            }
+        }
+
+        if (stashDictionary.TryGetValue(_item, out InventoryItem stashValue))
+        {
+            if (stashValue.stackSize <= 1)
+            {
+                stash.Remove(stashValue);
+                stashDictionary.Remove(_item);
+            }
+            else
+            {
+                stashValue.RemoveStack();
             }
         }
 
