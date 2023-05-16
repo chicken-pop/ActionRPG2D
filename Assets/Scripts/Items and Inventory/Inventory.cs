@@ -110,9 +110,10 @@ public class Inventory : MonoBehaviour
             AddItem(oldeEquipment);
         }
 
-        //装備して、インベントリ内から消す
+        //装備して(装備品による強化)、インベントリ内から消す
         equipment.Add(newItem);
         equipmentDictionary.Add(newEquipment, newItem);
+        newEquipment.AddModifiers();
         RemoveItem(_item);
 
         UpdateSlotUI();
@@ -124,6 +125,7 @@ public class Inventory : MonoBehaviour
         {
             equipment.Remove(value);
             equipmentDictionary.Remove(itemToRemove);
+            itemToRemove.RemoveModifiers();
         }
     }
 
