@@ -98,7 +98,7 @@ public class CharacterStats : MonoBehaviour
 
         if (CanCrit())
         {
-            totalDamage = CalcurateCriticalDamaghe(totalDamage);
+            totalDamage = CalcurateCriticalDamage(totalDamage);
         }
 
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
@@ -115,6 +115,7 @@ public class CharacterStats : MonoBehaviour
         int _iceDamage = iceDamage.GetValue();
         int _lightingDamage = lightingDamage.GetValue();
 
+        //ダメージ計算
         int totalMagicDamage = _fireDamage + _iceDamage + _lightingDamage + intelegence.GetValue();
         totalMagicDamage = CheckTargetResistance(_targetStats, totalMagicDamage);
 
@@ -366,6 +367,12 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 物理ダメージの軽減
+    /// </summary>
+    /// <param name="_targetStats"></param>
+    /// <param name="totalDamage"></param>
+    /// <returns></returns>
     private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
         if (_targetStats.isChilled)
@@ -381,6 +388,12 @@ public class CharacterStats : MonoBehaviour
         return totalDamage;
     }
 
+    /// <summary>
+    /// 魔法ダメージの軽減
+    /// </summary>
+    /// <param name="_targetStats"></param>
+    /// <param name="totalMagicDamage"></param>
+    /// <returns></returns>
     private int CheckTargetResistance(CharacterStats _targetStats, int totalMagicDamage)
     {
         totalMagicDamage -= _targetStats.magicResistance.GetValue() + (_targetStats.intelegence.GetValue() * 3);
@@ -400,7 +413,7 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
-    private int CalcurateCriticalDamaghe(int _damage)
+    private int CalcurateCriticalDamage(int _damage)
     {
         float totalCriticalPower = (critPower.GetValue() + strength.GetValue()) * 0.01f;
 

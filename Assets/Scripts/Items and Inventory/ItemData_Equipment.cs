@@ -14,6 +14,8 @@ public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
 
+    public ItemEffect[] itemEffects;　//武器の効果
+
     [Header("Major stats")]
     public int strength; //クリティカル時のダメージ増加
     public int agility;　//回避率の増加
@@ -39,6 +41,13 @@ public class ItemData_Equipment : ItemData
     [Header("Craft requirements")]
     public List<InventoryItem> craftingMaterials;
 
+    public void Effect(Transform _enemyPosition)
+    {
+        foreach(var item in itemEffects)
+        {
+            item.ExecuteEffect(_enemyPosition);
+        }
+    }
 
     public void AddModifiers()
     {

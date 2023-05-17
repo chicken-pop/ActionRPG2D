@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +27,7 @@ public class Sword_Skill_Controller : MonoBehaviour
     [Header("Spin info")]
     private float maxTravelDistance;
     private float spinDuration;
-    [SerializeField]private float spintimer;
+    [SerializeField] private float spintimer;
     private bool wasStopped;
     private bool isSprinning;
     private bool spinWasTriggered;
@@ -59,7 +58,7 @@ public class Sword_Skill_Controller : MonoBehaviour
         rb.velocity = _dir;
         rb.gravityScale = _gravityScale;
 
-        if(pirceAmount <= 0)
+        if (pirceAmount <= 0)
         {
             anim.SetBool("Rotation", true);
         }
@@ -128,14 +127,14 @@ public class Sword_Skill_Controller : MonoBehaviour
         {
             if (Vector2.Distance(player.transform.position, transform.position) > maxTravelDistance && !wasStopped)
             {
-                StopWhenSpinning();               
+                StopWhenSpinning();
             }
 
             if (wasStopped)
             {
                 spintimer -= Time.deltaTime;
 
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + spinDirection, transform.position.y), 1.5f * Time.deltaTime); //bug
+                //transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + spinDirection, transform.position.y), 1.5f * Time.deltaTime); //bug
 
                 if (spintimer < 0)
                 {
@@ -178,7 +177,7 @@ public class Sword_Skill_Controller : MonoBehaviour
 
             if (Vector2.Distance(transform.position, enemyTarget[targetIndex].position) < 0.1f)
             {
-                SwordSkillDamage(enemyTarget[targetIndex].GetComponent<Enemy>());               
+                SwordSkillDamage(enemyTarget[targetIndex].GetComponent<Enemy>());
 
                 targetIndex++;
                 bounceAmount--;
@@ -204,7 +203,7 @@ public class Sword_Skill_Controller : MonoBehaviour
             return;
         }
 
-        if(collision.GetComponent<Enemy>() != null)
+        if (collision.GetComponent<Enemy>() != null)
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             SwordSkillDamage(enemy);
@@ -217,8 +216,16 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy)
     {
+        //ダメージを与える
         player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
         enemy.StartCoroutine("FreezeTimerFor", freezeTimeDuration);
+
+        //アイテム効果の実行
+        ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
+        if (equipedAmulet != null)
+        {
+            equipedAmulet.Effect(enemy.transform);
+        }
     }
 
     private void SetupTargetsBounce(Collider2D collision)
@@ -265,7 +272,7 @@ public class Sword_Skill_Controller : MonoBehaviour
         {
             return;
         }
-        
+
         anim.SetBool("Rotation", false);
         transform.parent = collision.transform;
     }
