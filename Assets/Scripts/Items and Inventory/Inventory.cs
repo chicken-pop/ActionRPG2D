@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
+    public List<ItemData> startingItems;
+
     public List<InventoryItem> equipment;
     public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
 
@@ -50,6 +52,16 @@ public class Inventory : MonoBehaviour
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equipmnetSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
+
+        AddStartingItem();
+    }
+
+    private void AddStartingItem()
+    {
+        for (int i = 0; i < startingItems.Count; i++)
+        {
+            AddItem(startingItems[i]);
+        }
     }
 
     private void UpdateSlotUI()
@@ -207,17 +219,17 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-   public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requireMaterials)
+    public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requireMaterials)
     {
         List<InventoryItem> materialsToRemove = new List<InventoryItem>();
-     
+
         for (int i = 0; i < _requireMaterials.Count; i++)
         {
             //アイテムがあるかの確認を行う
             if (stashDictionary.TryGetValue(_requireMaterials[i].data, out InventoryItem stashValue))
             {
                 //アイテムの量が足りているか
-                if(stashValue.stackSize < _requireMaterials[i].stackSize)
+                if (stashValue.stackSize < _requireMaterials[i].stackSize)
                 {
                     return false;
                 }
@@ -243,4 +255,8 @@ public class Inventory : MonoBehaviour
 
         return true;
     }
+
+    public List<InventoryItem> GetEquipmentList() => equipment;
+
+    public List<InventoryItem> GetStashList() => stash;
 }

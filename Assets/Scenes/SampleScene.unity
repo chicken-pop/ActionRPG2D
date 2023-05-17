@@ -1539,7 +1539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436042949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3493385, y: 1.3, z: -10}
+  m_LocalPosition: {x: 3.3491802, y: 1.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1764,7 +1764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3493385, y: 1.3, z: -10}
+  m_LocalPosition: {x: 3.3491802, y: 1.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2149,6 +2149,7 @@ GameObject:
   - component: {fileID: 669530007}
   - component: {fileID: 669530009}
   - component: {fileID: 669530010}
+  - component: {fileID: 669530011}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2330,6 +2331,23 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 3245053019327911435, guid: caaef098bfe30f744940d2f57a1dea06, type: 3}
   currentHealth: 0
+--- !u!114 &669530011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669530004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352dbd323b2ece24aa6f93d747a67a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleItemDrop: 0
+  possibleDrop: []
+  dropPrefab: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
+  chanceToLooseItems: 99
+  chanceToLooseMaterials: 99
 --- !u!1 &689832239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,7 +2746,7 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 3245053019327911435, guid: caaef098bfe30f744940d2f57a1dea06, type: 3}
   currentHealth: 0
-  level: 1
+  level: 14
   percentageModifier: 0.436
 --- !u!70 &766630709
 CapsuleCollider2D:
@@ -2766,7 +2784,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f3a17219d37fd24f80eadfa9a916106, type: 2}
   - {fileID: 11400000, guid: 7f8729e6e19847044baf9b30e4073fd9, type: 2}
   dropPrefab: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
-  item: {fileID: 11400000, guid: 492c5bbd0a81a9545a5926b36cfddb26, type: 2}
 --- !u!1 &784081689
 GameObject:
   m_ObjectHideFlags: 0
@@ -7535,6 +7552,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4209ee495f0b6524f92603abd310349d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingItems:
+  - {fileID: 11400000, guid: f18bdd06367189c4b87120e2f308c426, type: 2}
+  - {fileID: 11400000, guid: 5dea9e8d7c6a3a94b953d4f351822317, type: 2}
+  - {fileID: 11400000, guid: 492c5bbd0a81a9545a5926b36cfddb26, type: 2}
+  - {fileID: 11400000, guid: 2f3a17219d37fd24f80eadfa9a916106, type: 2}
+  - {fileID: 11400000, guid: 7f8729e6e19847044baf9b30e4073fd9, type: 2}
+  - {fileID: 11400000, guid: 7f8729e6e19847044baf9b30e4073fd9, type: 2}
+  - {fileID: 11400000, guid: 7f8729e6e19847044baf9b30e4073fd9, type: 2}
   equipment: []
   inventory: []
   stash: []

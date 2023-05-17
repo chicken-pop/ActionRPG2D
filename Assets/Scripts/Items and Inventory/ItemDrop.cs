@@ -9,9 +9,8 @@ public class ItemDrop : MonoBehaviour
     private List<ItemData> dropList = new List<ItemData>();
 
     [SerializeField] private GameObject dropPrefab;
-    [SerializeField] private ItemData item;
 
-    public void GenerateDrop()
+    public virtual void GenerateDrop()
     {
         if (possibleDrop.Length == 0)
         {
@@ -45,12 +44,14 @@ public class ItemDrop : MonoBehaviour
         }
     }
 
-    public void DropItem(ItemData _itemData)
+    protected void DropItem(ItemData _itemData)
     {
         GameObject newDrop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
 
+        //アイテムが飛び出す方向
         Vector2 randomVelocity = new Vector2(Random.Range(-5, 5), Random.Range(12, 15));
 
+        //アイテムのデータや画像の設定
         newDrop.GetComponent<ItemObject>().SetupItem(_itemData, randomVelocity);
     }
 }
