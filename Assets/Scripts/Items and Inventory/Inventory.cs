@@ -26,6 +26,12 @@ public class Inventory : MonoBehaviour
     private UI_ItemSlot[] stashItemSlot;
     private UI_EquipmentSlot[] equipmentSlot;
 
+    [Header("Item cooldown")]
+    private float lastTimeUseFlask;
+    private float lastTimeUseArmor;
+    private float flaskCooldown;
+    private float armorCooldown;
+
     private void Awake()
     {
         if (instance == null)
@@ -275,4 +281,49 @@ public class Inventory : MonoBehaviour
 
         return equipedItem;
     }
+
+    public void UseFlask()
+    {
+        //タイプの判別を行う
+        ItemData_Equipment currentFlask = GetEquipment(EquipmentType.Flask);
+
+        if (currentFlask == null)
+        {
+            return;
+        }
+
+        //アイテムが使えるか判断
+        bool canUseFlask = Time.time > lastTimeUseFlask + flaskCooldown;
+
+        if (canUseFlask)
+        {
+            flaskCooldown = currentFlask.itemCoolDown;
+            //アイテムの効果の実行
+            currentFlask.Effect(null);
+            lastTimeUseFlask = Time.time;
+        }
+        else
+        {
+            Debug.Log("Flask on cooldown");
+        }
+    }
+
+    public bool CanUseArmor()
+    {
+        //タイプの判別を行う
+        ItemData_Equipment currentArmor = GetEquipment(EquipmentType.Armor);
+
+        //アイテムが使えるか判断
+        if (Time.time > lastTimeUseArmor + armorCooldown)
+        {
+            armorCooldown = currentArmor.itemCoolDown;
+            lastTimeUseArmor = Time.time;
+            return true;
+        }
+
+        Debug.Log("Armor on cooldown");
+        return false;
+    }
+
+
 }

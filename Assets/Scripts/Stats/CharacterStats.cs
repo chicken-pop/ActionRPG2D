@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
@@ -5,20 +7,20 @@ public class CharacterStats : MonoBehaviour
     private EntityFX fx;
 
     [Header("Major stats")]
-    public Stat strength; //クリティカル時のダメージ増加
-    public Stat agility;　//回避率の増加
+    public Stat strength; //クリティカル時のダメージ増加（1ごとに1%上昇）
+    public Stat agility;　//回避率の増加（1ごとに1%上昇）、クリティカル時の倍率増加（1ごとに1%上昇）
     public Stat intelegence;　//魔法ダメージ増加と魔法ダメージの軽減
     public Stat vitality;　//HPの増加
 
     [Header("Offensive stats")]
     public Stat damage;
     public Stat critChance;
-    public Stat critPower;
+    public Stat critPower;　//クリティカル時の倍率
 
     [Header("Defensive stats")]
     public Stat maxHealth;
-    public Stat armor;
-    public Stat evasion;
+    public Stat armor; //物理ダメージの軽減（受けるダメージからarmorの値を引く）
+    public Stat evasion;　//回避率（Maxが100）
     public Stat magicResistance;
 
     [Header("Magic stats")]
@@ -43,7 +45,7 @@ public class CharacterStats : MonoBehaviour
 
     public int currentHealth;
 
-    public System.Action onHealthChanged;
+    public System.Action onHealthChanged;　//UpdateHealthUI()によってHPのUIを更新する
     public bool isDead { get; private set; }
 
     protected virtual void Start()
@@ -86,6 +88,20 @@ public class CharacterStats : MonoBehaviour
 
     }
 
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    {
+        StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
+    }
+
+    private IEnumerator StatModCoroutine(int _modifier, float _duration, Stat _statToModify)
+    {
+        _statToModify.AddModifier(_modifier);
+
+        yield return new WaitForSeconds(_duration);
+
+        _statToModify.RemoveModifier(_modifier);
+    }
+
     public virtual void DoDamage(CharacterStats _targetStats)
     {
 
@@ -104,6 +120,8 @@ public class CharacterStats : MonoBehaviour
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
 
         _targetStats.TakeDamage(totalDamage);
+
+        DoMagicDamage(_targetStats); //魔法ダメージを与えたくなかったら、消す
 
     }
 
@@ -333,6 +351,22 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public virtual void IncreaseHealthBy(int _amount)
+    {
+        currentHealth += _amount;
+
+        //回復後のHPが最大HPを超えてしまったとき
+        if(currentHealth > GetMaxHealthValue())
+        {
+            currentHealth = GetMaxHealthValue();
+        }
+
+        if (onHealthChanged != null)
+        {
+            onHealthChanged();
+        }
+    }
+
     protected virtual void DecreaseHealthBy(int _damage)
     {
         currentHealth -= _damage;
@@ -350,6 +384,11 @@ public class CharacterStats : MonoBehaviour
 
     #region Stat calculations
 
+    /// <summary>
+    /// 回避率の算出（100がMax回避率）
+    /// </summary>
+    /// <param name="_targetStats"></param>
+    /// <returns></returns>
     private bool TargetCanAvoidAttack(CharacterStats _targetStats)
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
@@ -401,6 +440,10 @@ public class CharacterStats : MonoBehaviour
         return totalMagicDamage;
     }
 
+    /// <summary>
+    /// クリティカルかどうか
+    /// </summary>
+    /// <returns></returns>
     private bool CanCrit()
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
@@ -413,6 +456,11 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// クリティカル時の倍率算出
+    /// </summary>
+    /// <param name="_damage"></param>
+    /// <returns></returns>
     private int CalcurateCriticalDamage(int _damage)
     {
         float totalCriticalPower = (critPower.GetValue() + strength.GetValue()) * 0.01f;

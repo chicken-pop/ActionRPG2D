@@ -218,9 +218,9 @@ public class Sword_Skill_Controller : MonoBehaviour
     {
         //ダメージを与える
         player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
-        enemy.StartCoroutine("FreezeTimerFor", freezeTimeDuration);
+        enemy.FreezeTimeFor(freezeTimeDuration);
 
-        //アイテム効果の実行
+        //アイテム効果の実行(装備品がお守りの場合)
         ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
         if (equipedAmulet != null)
         {
