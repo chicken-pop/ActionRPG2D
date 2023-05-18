@@ -161,12 +161,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c2b90f9d76d08a141b76820fc550f485, type: 2}
-  m_sharedMaterial: {fileID: 3939739503653998768, guid: c2b90f9d76d08a141b76820fc550f485, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 880b86d1d156d0e4aa93853fdabec3db, type: 2}
+  m_sharedMaterial: {fileID: -7877330958415142803, guid: 880b86d1d156d0e4aa93853fdabec3db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
