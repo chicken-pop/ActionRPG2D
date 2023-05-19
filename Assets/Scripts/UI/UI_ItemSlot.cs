@@ -3,16 +3,17 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler
+public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler ,IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
 
+    private UI ui;
     public InventoryItem item;
 
     private void Start()
     {
-       
+        ui = GetComponentInParent<UI>();
     }
 
     public void UpdateSlot(InventoryItem _newItem)
@@ -23,10 +24,12 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler
 
         if (item != null)
         {
+            //アイコンの更新
             itemImage.sprite = item.data.icon;
 
             if (item.stackSize > 1)
             {
+                //所持数
                 itemText.text = item.stackSize.ToString();
             }
             else
@@ -52,16 +55,38 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler
             return;
         }
 
+        //装備品の削除
         if (Input.GetKey(KeyCode.LeftControl))
         {
             Inventory.instance.RemoveItem(item.data);
             return;
         }
         
+        //装備
         if(item.data.itemType == ItemType.Equipment)
         {
             Inventory.instance.EquipItem(item.data);
         }
         
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(item == null)
+        {
+            return;
+        }
+
+        ui.itemTooltip.ShowToolTip(item.data as ItemData_Equipment);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if(item == null)
+        {
+            return;
+        }
+
+        ui.itemTooltip.HideTooplTips();
     }
 }

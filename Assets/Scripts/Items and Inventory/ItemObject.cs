@@ -28,6 +28,14 @@ public class ItemObject : MonoBehaviour
 
     public void PickupItem()
     {
+        //装備スロットが全て埋まっている状態で、装備を拾った場合return
+        if(!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
+        {
+            //アイテムを少し浮かせる
+            rb.velocity = new Vector2(0, 7);
+            return;
+        }
+
         Inventory.instance.AddItem(itemData);
         Destroy(gameObject);
     }

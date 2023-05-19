@@ -29,7 +29,7 @@ public class ItemData_Equipment : ItemData
     public int critPower;
 
     [Header("Defensive stats")]
-    public int Health;
+    public int heath;
     public int armor;
     public int evasion;
     public int magicResistance;
@@ -41,6 +41,8 @@ public class ItemData_Equipment : ItemData
 
     [Header("Craft requirements")]
     public List<InventoryItem> craftingMaterials;
+
+    private int descriptionLength;
 
     public void Effect(Transform _enemyPosition)
     {
@@ -63,7 +65,7 @@ public class ItemData_Equipment : ItemData
         playerStats.critChance.AddModifier(critChance);
         playerStats.critPower.AddModifier(critPower);
 
-        playerStats.maxHealth.AddModifier(Health);
+        playerStats.maxHealth.AddModifier(heath);
         playerStats.armor.AddModifier(armor);
         playerStats.evasion.AddModifier(evasion);
         playerStats.magicResistance.AddModifier(magicResistance);
@@ -87,7 +89,7 @@ public class ItemData_Equipment : ItemData
         playerStats.critChance.RemoveModifier(critChance);
         playerStats.critPower.RemoveModifier(critPower);
 
-        playerStats.maxHealth.RemoveModifier(Health);
+        playerStats.maxHealth.RemoveModifier(heath);
         playerStats.armor.RemoveModifier(armor);
         playerStats.evasion.RemoveModifier(evasion);
         playerStats.magicResistance.RemoveModifier(magicResistance);
@@ -95,5 +97,60 @@ public class ItemData_Equipment : ItemData
         playerStats.fireDamage.RemoveModifier(fireDamage);
         playerStats.iceDamage.RemoveModifier(iceDamage);
         playerStats.lightingDamage.RemoveModifier(lightingDamage);
+    }
+
+    public override string GetDescription()
+    {
+        sb.Length = 0;
+        descriptionLength = 0;
+
+        AddItemDescription(strength, "秘力");
+        AddItemDescription(agility, "俊敏性");
+        AddItemDescription(intelegence, "知性");
+        AddItemDescription(vitality, "活力");
+
+        AddItemDescription(damage, "攻撃力");
+        AddItemDescription(critChance, "会心率");
+        AddItemDescription(critPower, "会心");
+
+        AddItemDescription(heath, "体力");
+        AddItemDescription(armor, "守備力");
+        AddItemDescription(evasion, "回避");
+        AddItemDescription(magicResistance, "魔法耐性");
+
+        AddItemDescription(fireDamage, "炎属性");
+        AddItemDescription(iceDamage, "氷属性");
+        AddItemDescription(lightingDamage, "雷属性");
+
+        //武器の効果が少ない場合、行を補完する
+        if(descriptionLength < 5)
+        {
+            for (int i = 0; i < 5 - descriptionLength; i++)
+            {
+                sb.AppendLine();
+                sb.Append("");
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    private void AddItemDescription(int _value, string _name)
+    {
+        if(_value != 0)
+        {
+            if(sb.Length > 0)
+            {
+                sb.AppendLine();
+            }
+
+            if(_value > 0)
+            {
+                //ステータス名とパラメーターの文字列を合わせて表示
+                sb.Append("+" + _value + " " + _name);
+            }
+
+            descriptionLength++;
+        }
     }
 }

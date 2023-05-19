@@ -25,10 +25,10 @@ public class CharacterStats : MonoBehaviour
     private EntityFX fx;
 
     [Header("Major stats")]
-    public Stat strength; //クリティカル時のダメージ増加（1ごとに1%上昇）
-    public Stat agility;　//回避率の増加（1ごとに1%上昇）、クリティカル時の倍率増加（1ごとに1%上昇）
-    public Stat intelegence;　//魔法ダメージ増加と魔法ダメージの軽減
-    public Stat vitality;　//HPの増加
+    public Stat strength; //物理ダメージ増加（1ごとに1増加）、クリティカル時のダメージ増加（1ごとに1%上昇）
+    public Stat agility;　//回避率の増加（1ごとに1%上昇）、クリティカル時の確率増加（1ごとに1%上昇）
+    public Stat intelegence;　//魔法ダメージ増加、魔法ダメージの軽減(1ごとに3軽減)
+    public Stat vitality;　//体力の増加
 
     [Header("Offensive stats")]
     public Stat damage;
