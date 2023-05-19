@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor flask
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u592A\u967D\u306E\u96EB"
+  itemName: "\u592A\u967D\u306E\u6D99"
   icon: {fileID: 404454020, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   DropChance: 0
   equipmentType: 3

@@ -69,7 +69,10 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < startingItems.Count; i++)
         {
-            AddItem(startingItems[i]);
+            if (startingItems[i] != null)
+            {
+                AddItem(startingItems[i]);
+            }
         }
     }
 
@@ -236,7 +239,7 @@ public class Inventory : MonoBehaviour
 
     public bool CanAddItem()
     {
-        if(inventory.Count >= inventoryItemSlot.Length)
+        if (inventory.Count >= inventoryItemSlot.Length)
         {
             return false;
         }

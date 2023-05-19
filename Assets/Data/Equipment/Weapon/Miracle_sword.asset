@@ -17,6 +17,7 @@ MonoBehaviour:
   icon: {fileID: -671158514, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   DropChance: 0
   equipmentType: 0
+  itemCoolDown: 0
   itemEffects:
   - {fileID: 11400000, guid: f09246a017608954e9468945c11544e9, type: 2}
   strength: 0
@@ -26,11 +27,13 @@ MonoBehaviour:
   damage: 15
   critChance: 15
   critPower: 0
-  maxHealth: 0
+  heath: 0
   armor: 0
   evasion: 0
   magicResistance: 0
   fireDamage: 0
   iceDamage: 0
   lightingDamage: 0
-  craftingMaterials: []
+  craftingMaterials:
+  - data: {fileID: 11400000, guid: f18bdd06367189c4b87120e2f308c426, type: 2}
+    stackSize: 1
