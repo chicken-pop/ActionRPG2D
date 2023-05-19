@@ -7323,6 +7323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ebcb9dc8706184aa177ee326d6d5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterUI: {fileID: 1943294855}
+  skillTreeUI: {fileID: 1719615241}
+  craftUI: {fileID: 1707515378}
+  optionsUI: {fileID: 1677578748}
   itemTooltip: {fileID: 664499662}
   statToolTip: {fileID: 177794666}
 --- !u!1 &836970322
