@@ -36,13 +36,16 @@ public class PlayerCounterAttackState : PlayerState
             {
                 if (hit.GetComponent<Enemy>().CanBeStunned())
                 {
-                    stateTimer = 10; // any value bigger than 1
+                    stateTimer = 10; //‚P‚æ‚è‘å‚«‚¢”š
                     player.anim.SetBool("SuccessfulCounterAttack", true);
 
+                    player.skill.parry.UseSkill();
+
+                    //ƒNƒ[ƒ“‚ğ¶¬‚µ‚ÄUŒ‚
                     if (canCreateClone)
                     {
                         canCreateClone = false;
-                        player.skill.clone.CreateCloneOnCounterAttack(hit.transform);
+                        player.skill.parry.MakeMirageOnparry(hit.transform);
                     }
                   
                 }

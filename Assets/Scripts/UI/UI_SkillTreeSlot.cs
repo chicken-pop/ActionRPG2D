@@ -9,6 +9,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private UI ui;
     private Image skillImage;
 
+    [SerializeField] private int consumptionPoint;
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDescription;
@@ -24,18 +25,27 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         gameObject.name = "SkillTreeSlot_UI-" + skillName;
     }
 
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
+    }
+
     private void Start()
     {
         skillImage = GetComponent<Image>();
         ui = GetComponentInParent<UI>();
 
         skillImage.color = lockedSkillColor;
-
-        GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
     }
 
     public void UnlockSkillSlot()
     {
+        //スキルを解放するための十分なスキルポイントをもっているかどうか
+        if(PlayerManager.instance.HaveEnoughSkillPoint(consumptionPoint) == false)
+        {
+            return;
+        }
+
         //スキルを取得するための元のスキルが解放されていなかったらreturn
         for (int i = 0; i < sholdBeUnlocked.Length; i++)
         {
@@ -69,8 +79,6 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         float yOffset = 0;
 
         Vector2 pos = gameObject.transform.position;
-
-        Debug.Log(pos);
 
         if (pos.x > 960)
         {

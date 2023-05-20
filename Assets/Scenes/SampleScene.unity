@@ -185,8 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 10
   skillName: "\u30DF\u30E9\u30FC\u30B8\u30E5\u30C0\u30C3\u30B7\u30E5"
-  skillDescription: 
+  skillDescription: "\u81EA\u8EAB\u306E\u5206\u8EAB\u3092\u3060\u3057\u3001\u6575\u306E\u653B\u6483\u3092\u6B3A\u304F"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -3143,6 +3144,7 @@ GameObject:
   - component: {fileID: 280729470}
   - component: {fileID: 280729471}
   - component: {fileID: 280729472}
+  - component: {fileID: 280729473}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -3189,7 +3191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6ab0033caf2194896f96f92190c1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 5
+  dashUnlocked: 0
+  dashUnlockedButton: {fileID: 1787600208}
+  cloneOnDashUnlocked: 0
+  cloneOnDashUnlockedButton: {fileID: 9227317}
+  cloneOnArrivalUnlocked: 0
+  cloneOnArrivalUnlockedButton: {fileID: 474103631}
 --- !u!114 &280729469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3205,11 +3213,9 @@ MonoBehaviour:
   cooldown: 0
   clonePrefab: {fileID: 6360797388225534893, guid: 373143a4855e80d43a69d54f370cba8b, type: 3}
   cloneDuration: 1.5
-  canAttack: 1
-  createCloneOnDashStart: 0
-  createCloneOndashOver: 0
-  canCreateCloneOnCounterAttack: 1
-  canDuplicateClone: 1
+  canAttack: 0
+  canCreateCloneOnCounterAttack: 0
+  canDuplicateClone: 0
   chanceToDupicate: 60
   crystalInseadOfClone: 0
 --- !u!114 &280729470
@@ -3280,10 +3286,10 @@ MonoBehaviour:
   crystalDuration: 3
   crystalPrefab: {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
   cloneInsteadOfCrystal: 0
-  canExplode: 1
-  canMoveToEnemy: 1
+  canExplode: 0
+  canMoveToEnemy: 0
   moveSpeed: 5
-  canUseMultiStacks: 1
+  canUseMultiStacks: 0
   amountOfStacks: 3
   multiStackCooldown: 2
   useTimeWindow: 2.5
@@ -3291,6 +3297,26 @@ MonoBehaviour:
   - {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
   - {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
   - {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
+--- !u!114 &280729473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280729465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4aacfadf0663d4aa067c972a404640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  parryUnlockButton: {fileID: 1918304531}
+  parryUnlocked: 0
+  restoreUnlockButton: {fileID: 1852867417}
+  restoreUnlocked: 0
+  restoreHealthAmount: 0.05
+  parryWithMirageUnlockButton: {fileID: 415273542}
+  parryWithMirageUnlocked: 0
 --- !u!1 &286930027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,10 +3938,10 @@ RectTransform:
   m_Father: {fileID: 1595536689}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -50}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339573133
 MonoBehaviour:
@@ -4198,6 +4224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u56DE\u907F"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -4777,8 +4804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 15
   skillName: "\u30D1\u30EA\u30A3++"
-  skillDescription: "\u30D1\u30EA\u30A3++\n"
+  skillDescription: "\u30D1\u30EA\u30A3\u6210\u529F\u6642\u3001\u5206\u8EAB\u3092\u3060\u3057\u3066\u653B\u6483\u3059\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -5148,6 +5176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF+"
   skillDescription: "\u5263\u304C\u6575\u306B\u5F53\u305F\u3063\u305F\u3068\u304D\u3001\u6575\u306E\u52D5\u304D\u3092\u4E00\u5B9A\u6642\u9593\u5C01\u3058\u307E\u3059"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -5926,8 +5955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 20
   skillName: "\u30DF\u30E9\u30FC\u30B8\u30E5\u30C0\u30C3\u30B7\u30E5+"
-  skillDescription: 
+  skillDescription: "\u81EA\u8EAB\u306E\u5206\u8EAB\u30922\u4F53\u3060\u305B\u308B\u3088\u3046\u306B\u306A\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -6620,6 +6650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3++"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -6842,6 +6873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30F3\u30A2\u30BF\u30C3\u30AF"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -8989,6 +9021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3+"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -9130,6 +9163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30F3\u30A2\u30BF\u30C3\u30AF\uFF0B"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -9241,7 +9275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &766630703
 Transform:
   m_ObjectHideFlags: 0
@@ -9658,6 +9692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30AF\u30EA\u30B9\u30BF\u30EB"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -10016,10 +10051,10 @@ RectTransform:
   m_Father: {fileID: 1595536689}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1350, y: -50}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836970324
 MonoBehaviour:
@@ -14191,6 +14226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30C1\u30A7\u30F3\u30BD\u30FC\u30BD\u30FC\u30C9"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -14788,6 +14824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30D0\u30A6\u30F3\u30BA\u30BD\u30FC\u30C9"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -15049,10 +15086,10 @@ RectTransform:
   m_Father: {fileID: 1595536689}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1050, y: -50}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057805567
 MonoBehaviour:
@@ -16397,6 +16434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30AF\u30EA\u30B9\u30BF\u30EB\u30DF\u30E9\u30FC\u30B8\u30E5"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -16539,6 +16577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30D6\u30E9\u30C3\u30AF\u30DB\u30FC\u30EB"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -16680,6 +16719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30DE\u30B8\u30C3\u30AF\u30E0\u30FC\u30D6"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -17186,6 +17226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30F3"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -17629,6 +17670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -18197,6 +18239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30D6\u30EC\u30C3\u30C8\u30BD\u30FC\u30C9"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -19298,7 +19341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1429039951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19639,7 +19682,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20595,6 +20638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF++"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -21651,7 +21695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1719615242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21765,6 +21809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u56DE\u907F+"
   skillDescription: 
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -22972,8 +23017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 5
   skillName: "\u30C0\u30C3\u30B7\u30E5"
-  skillDescription: 
+  skillDescription: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306E\u79FB\u52D5\u30B9\u30D4\u30FC\u30C9\u304C\u4E0A\u304C\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []
@@ -23623,10 +23669,10 @@ RectTransform:
   m_Father: {fileID: 1595536689}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 750, y: -50}
-  m_SizeDelta: {x: 300, y: 80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808822110
 MonoBehaviour:
@@ -23756,7 +23802,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24092,6 +24138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF"
   skillDescription: "\u5263\u3092\u6575\u306B\u5411\u304B\u3063\u3066\u6295\u3052\u3001\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u307E\u3059"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
@@ -24230,6 +24277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 669530005}
+  SkillPoint: 100
 --- !u!4 &1844935032
 Transform:
   m_ObjectHideFlags: 0
@@ -24297,8 +24345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 10
   skillName: "\u30D1\u30EA\u30A3+"
-  skillDescription: 
+  skillDescription: "\u30D1\u30EA\u30A3\u6210\u529F\u6642\u3001\u4F53\u529B\u304C\u5C11\u3057\u56DE\u5FA9\u3059\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -25125,8 +25174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb537491e2f554280b87c0a188f285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumptionPoint: 5
   skillName: "\u30D1\u30EA\u30A3"
-  skillDescription: 
+  skillDescription: "\u6575\u306E\u653B\u6483\u3092\u8DF3\u306D\u8FD4\u3059\n\uFF08\u30D1\u30EA\u30A3\u30BF\u30A4\u30DF\u30F3\u30B0\u304C\u3042\u3063\u305F\u6642\uFF09"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []

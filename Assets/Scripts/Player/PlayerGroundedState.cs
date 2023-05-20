@@ -26,21 +26,25 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
+        //ブラックホールスキル
         if (Input.GetKeyDown(KeyCode.R))
         {
             stateMachine.ChangeState(player.blackHole);
         }
 
+        //ソードスキル
         if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword())
         {
             stateMachine.ChangeState(player.aimSword);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        //パリィスキル
+        if (Input.GetKeyDown(KeyCode.Q) && player.skill.parry.parryUnlocked)
         {
             stateMachine.ChangeState(player.counterAttack);
         }
 
+        //通常攻撃
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             stateMachine.ChangeState(player.primaryAttack);
@@ -51,6 +55,7 @@ public class PlayerGroundedState : PlayerState
             stateMachine.ChangeState(player.airState);
         }
 
+        //ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.jumpState);
