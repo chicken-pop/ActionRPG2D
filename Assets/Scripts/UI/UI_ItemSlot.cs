@@ -79,6 +79,14 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler ,IPointerEnterHan
             return;
         }
 
+        float xOffset = -250;
+        float yOffset = 300;
+
+        Vector2 pos = gameObject.transform.position;
+
+        //ポジションによって表示場所を変える
+        ui.itemTooltip.transform.position = new Vector2(pos.x + xOffset, pos.y + yOffset);
+
         ui.itemTooltip.ShowToolTip(item.data as ItemData_Equipment);
     }
 

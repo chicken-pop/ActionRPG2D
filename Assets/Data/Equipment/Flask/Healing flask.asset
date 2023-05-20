@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCoolDown: 10
   itemEffects:
   - {fileID: 11400000, guid: 3fb86523e957bbd4dad10c6b1b4386bd, type: 2}
+  itemEffectDescription: "\u4F53\u529B\u309230\uFF05\u56DE\u5FA9\u3059\u308B"
   strength: 0
   agility: 0
   intelegence: 0
@@ -27,7 +28,7 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  maxHealth: 0
+  heath: 0
   armor: 0
   evasion: 0
   magicResistance: 0

@@ -71,6 +71,14 @@ public class UI_StatSlot : MonoBehaviour , IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        float xOffset = 200;
+        float yOffset = 160;
+
+        Vector2 pos = gameObject.transform.position;
+
+        //ポジションによって表示場所を変える
+        ui.statToolTip.transform.position = new Vector2(pos.x + xOffset, pos.y + yOffset);
+
         ui.statToolTip.ShowStatToolTip(statDescription);
     }
 

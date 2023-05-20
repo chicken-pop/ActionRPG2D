@@ -66,23 +66,32 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ui.skillToolTip.ShowToolTip(skillDescription, skillName);
 
         float xOffset = 0;
-        float yOffset = 65;
+        float yOffset = 0;
 
-        Vector2 mousePosition = Input.mousePosition;
+        Vector2 pos = gameObject.transform.position;
 
-        Debug.Log(mousePosition);
+        Debug.Log(pos);
 
-        if (mousePosition.x > 400)
+        if (pos.x > 960)
         {
-            xOffset = -175;
+            xOffset = -400;
         }
         else
         {
-            xOffset = 175;
+            xOffset = 400;
         }
 
-        //マウスのポジションによって表示場所を変える
-        ui.skillToolTip.transform.position = new Vector2(mousePosition.x + xOffset, mousePosition.y + yOffset);
+        if (pos.y > 700)
+        {
+            yOffset = -160;
+        }
+        else
+        {
+            yOffset = 160;
+        }
+
+        //ポジションによって表示場所を変える
+        ui.skillToolTip.transform.position = new Vector2(pos.x + xOffset, pos.y + yOffset);
     }
 
     public void OnPointerExit(PointerEventData eventData)

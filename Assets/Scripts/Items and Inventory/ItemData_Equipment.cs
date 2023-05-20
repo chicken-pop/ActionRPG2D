@@ -14,8 +14,11 @@ public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
 
+    [Header("Unique effect")]
     public float itemCoolDown;
     public ItemEffect[] itemEffects;　//武器の効果
+    [TextArea]
+    public string itemEffectDescription;
 
     [Header("Major stats")]
     public int strength; //クリティカル時のダメージ増加
@@ -122,14 +125,23 @@ public class ItemData_Equipment : ItemData
         AddItemDescription(iceDamage, "氷属性");
         AddItemDescription(lightingDamage, "雷属性");
 
-        //武器の効果が少ない場合、行を補完する
-        if(descriptionLength < 5)
+        /*
+        //装備品の効果が少ない場合、行を補完する
+        if (descriptionLength < 5)
         {
             for (int i = 0; i < 5 - descriptionLength; i++)
             {
                 sb.AppendLine();
                 sb.Append("");
             }
+        }
+        */
+
+        //装備品の特殊効果
+        if(itemEffectDescription.Length > 0)
+        {
+            sb.AppendLine();
+            sb.Append(itemEffectDescription);
         }
 
         return sb.ToString();
