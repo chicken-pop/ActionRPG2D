@@ -41,4 +41,36 @@ public class PlayerStats : CharacterStats
             currentArmor.Effect(player.transform);
         }
     }
+
+    public override void OnEvasion()
+    {
+        player.skill.dodge.CreateMirageOnDodge();
+    }
+
+    public void CloneDoDamage(CharacterStats _targetStats, float _multipliar)
+    {
+        if (TargetCanAvoidAttack(_targetStats))
+        {
+            return;
+        }
+
+        int totalDamage = damage.GetValue() + strength.GetValue();
+
+        //クローンの攻撃の場合、ダメージが下がる
+        if(_multipliar > 0)
+        {
+            totalDamage = Mathf.RoundToInt(totalDamage * _multipliar);
+        }
+
+        if (CanCrit())
+        {
+            totalDamage = CalcurateCriticalDamage(totalDamage);
+        }
+
+        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
+
+        _targetStats.TakeDamage(totalDamage);
+
+        DoMagicDamage(_targetStats); //魔法ダメージを与えたくなかったら、消す
+    }
 }

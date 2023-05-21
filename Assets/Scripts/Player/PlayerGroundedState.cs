@@ -27,13 +27,13 @@ public class PlayerGroundedState : PlayerState
         base.Update();
 
         //ブラックホールスキル
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && player.skill.blackhole.blackholeUnlocked)
         {
             stateMachine.ChangeState(player.blackHole);
         }
 
         //ソードスキル
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword())
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword()　&& player.skill.sword.swordUnlocked)
         {
             stateMachine.ChangeState(player.aimSword);
         }

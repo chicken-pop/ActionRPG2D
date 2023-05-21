@@ -65,6 +65,7 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onHealthChanged;　//UpdateHealthUI()によってHPのUIを更新する
     public bool isDead { get; private set; }
+    private bool isVulnerable;
 
     protected virtual void Start()
     {
@@ -79,7 +80,6 @@ public class CharacterStats : MonoBehaviour
         ignitedTimer -= Time.deltaTime;
         chilledTimer -= Time.deltaTime;
         shockedTimer -= Time.deltaTime;
-
 
         igniteDamageTimer -= Time.deltaTime;
 
@@ -102,14 +102,20 @@ public class CharacterStats : MonoBehaviour
         {
             ApplyIgniteDamage();
         }
-     
-
     }
 
-    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    public void MakeVulnerableFor(float _duration) => StartCoroutine(VulnerableForCoroutine(_duration));
+
+    private IEnumerator VulnerableForCoroutine(float _duration)
     {
-        StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
+        isVulnerable = true;
+
+        yield return new WaitForSeconds(_duration);
+
+        isVulnerable = false;
     }
+
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify) => StartCoroutine(StatModCoroutine(_modifier, _duration, _statToModify));
 
     private IEnumerator StatModCoroutine(int _modifier, float _duration, Stat _statToModify)
     {
@@ -122,7 +128,6 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
-
         if (TargetCanAvoidAttack(_targetStats))
         {
             return;
@@ -387,6 +392,12 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void DecreaseHealthBy(int _damage)
     {
+        //ソードスキルの効果で弱体化が入ったとき
+        if (isVulnerable)
+        {
+            _damage = Mathf.RoundToInt(_damage * 1.1f);
+        }
+
         currentHealth -= _damage;
 
         if (onHealthChanged != null)
@@ -402,12 +413,17 @@ public class CharacterStats : MonoBehaviour
 
     #region Stat calculations
 
+    public virtual void OnEvasion()
+    {
+
+    }
+
     /// <summary>
     /// 回避率の算出（100がMax回避率）
     /// </summary>
     /// <param name="_targetStats"></param>
     /// <returns></returns>
-    private bool TargetCanAvoidAttack(CharacterStats _targetStats)
+    protected bool TargetCanAvoidAttack(CharacterStats _targetStats)
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
 
@@ -418,6 +434,8 @@ public class CharacterStats : MonoBehaviour
 
         if (Random.Range(0, 100) < totalEvasion)
         {
+            //回避成功時
+            _targetStats.OnEvasion();
             return true;
         }
 
@@ -430,7 +448,7 @@ public class CharacterStats : MonoBehaviour
     /// <param name="_targetStats"></param>
     /// <param name="totalDamage"></param>
     /// <returns></returns>
-    private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
         if (_targetStats.isChilled)
         {
@@ -462,7 +480,7 @@ public class CharacterStats : MonoBehaviour
     /// クリティカルかどうか
     /// </summary>
     /// <returns></returns>
-    private bool CanCrit()
+    protected bool CanCrit()
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
 
@@ -479,7 +497,7 @@ public class CharacterStats : MonoBehaviour
     /// </summary>
     /// <param name="_damage"></param>
     /// <returns></returns>
-    private int CalcurateCriticalDamage(int _damage)
+    protected int CalcurateCriticalDamage(int _damage)
     {
         float totalCriticalPower = (critPower.GetValue() + strength.GetValue()) * 0.01f;
 

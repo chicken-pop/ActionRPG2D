@@ -111,9 +111,14 @@ public class Inventory : MonoBehaviour
         }
 
         //キャラクターのステータスUIの更新
+        UpdateStatsUI();
+    }
+
+    public void UpdateStatsUI()
+    {
         for (int i = 0; i < statSlot.Length; i++)
         {
-            statSlot[i].UpdateStatValue();
+            statSlot[i].UpdateStatValueUI();
         }
     }
 

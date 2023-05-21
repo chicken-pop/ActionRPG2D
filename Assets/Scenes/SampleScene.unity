@@ -3145,6 +3145,7 @@ GameObject:
   - component: {fileID: 280729471}
   - component: {fileID: 280729472}
   - component: {fileID: 280729473}
+  - component: {fileID: 280729474}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -3192,11 +3193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 5
-  dashUnlocked: 0
   dashUnlockedButton: {fileID: 1787600208}
-  cloneOnDashUnlocked: 0
   cloneOnDashUnlockedButton: {fileID: 9227317}
-  cloneOnArrivalUnlocked: 0
   cloneOnArrivalUnlockedButton: {fileID: 474103631}
 --- !u!114 &280729469
 MonoBehaviour:
@@ -3212,11 +3210,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   clonePrefab: {fileID: 6360797388225534893, guid: 373143a4855e80d43a69d54f370cba8b, type: 3}
+  attackMultiplier: 0
   cloneDuration: 1.5
+  cloneAttackUnlockButton: {fileID: 1210365169}
+  cloneAttackMultiplier: 0.3
   canAttack: 0
-  canCreateCloneOnCounterAttack: 0
+  aggresiveCloneUnlockButton: {fileID: 569460451}
+  aggresiveCloneAttackMultiplier: 0.8
+  multipleUnlockButton: {fileID: 758389377}
+  multicloneAttackMultiplier: 0.3
   canDuplicateClone: 0
-  chanceToDupicate: 60
+  chanceToDupicate: 50
+  crystalInsteadUnlockButton: {fileID: 1142149524}
   crystalInseadOfClone: 0
 --- !u!114 &280729470
 MonoBehaviour:
@@ -3232,24 +3237,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   swordtype: 0
+  bounceUnlockButton: {fileID: 1030876542}
   bounceAmount: 4
   bounceGravity: 4
   bounceSpeed: 20
+  pierceUnlockButton: {fileID: 1316029929}
   pierceAmount: 2
   pierceGravity: 1
+  spinUnlockButton: {fileID: 987199202}
   hitCooldown: 0.35
   maxTravelDistance: 7
   spinDuration: 2
   spinGravity: 1
+  swordUnlockButton: {fileID: 1842004061}
   swordPrefab: {fileID: 4072723715726702583, guid: bc1ae15a5a774f042a978cc91127ed82, type: 3}
   launchForce: {x: 35, y: 25}
   swordGravity: 4.5
-  freezeTimeDuration: 1.5
+  freezeTimeDuration: 2
   returnSpeed: 20
   numberOfDots: 20
   spaceBetweenDots: 0.07
   dotPrefab: {fileID: 4782786882047210334, guid: 320ca6681e5509940b571900ecc6e42f, type: 3}
   dotsParent: {fileID: 871421083}
+  timeStopUnlockButton: {fileID: 427481814}
+  timeStopUnlocked: 0
+  volnurableUnlockButton: {fileID: 1600309910}
+  volnurableUnlocked: 0
 --- !u!114 &280729471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3263,6 +3276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
+  blackholeUnlockButton: {fileID: 1162783197}
   amountOfAttacks: 10
   cloneAttackCooldown: 0.35
   blackholeDuration: 4
@@ -3285,10 +3299,15 @@ MonoBehaviour:
   cooldown: 0
   crystalDuration: 3
   crystalPrefab: {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
+  unlockCystalButton: {fileID: 797497549}
+  unlockCloneInsteadButton: {fileID: 1171227533}
   cloneInsteadOfCrystal: 0
+  unlockExplosiveButton: {fileID: 1269236062}
   canExplode: 0
+  unlockMovingCrystalButton: {fileID: 757906848}
   canMoveToEnemy: 0
   moveSpeed: 5
+  unlockMultiStackButton: {fileID: 538527369}
   canUseMultiStacks: 0
   amountOfStacks: 3
   multiStackCooldown: 2
@@ -3311,12 +3330,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   parryUnlockButton: {fileID: 1918304531}
-  parryUnlocked: 0
   restoreUnlockButton: {fileID: 1852867417}
-  restoreUnlocked: 0
   restoreHealthAmount: 0.05
   parryWithMirageUnlockButton: {fileID: 415273542}
-  parryWithMirageUnlocked: 0
+--- !u!114 &280729474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280729465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bbcb522736c2642acc6a370d7758c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  unlockDodgeButton: {fileID: 350097590}
+  evasionAmount: 10
+  dodgeUnlocked: 0
+  unlockMirageDodgeButton: {fileID: 1728073963}
+  mirageDodgeUnlocked: 0
 --- !u!1 &286930027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,7 +4260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u56DE\u907F"
-  skillDescription: 
+  skillDescription: "\u56DE\u907F\u3092\u5C11\u3057\u3060\u3051\u4E0A\u6607\u3055\u305B\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []
@@ -5178,7 +5212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF+"
-  skillDescription: "\u5263\u304C\u6575\u306B\u5F53\u305F\u3063\u305F\u3068\u304D\u3001\u6575\u306E\u52D5\u304D\u3092\u4E00\u5B9A\u6642\u9593\u5C01\u3058\u307E\u3059"
+  skillDescription: "\u5263\u304C\u6575\u306B\u5F53\u305F\u3063\u305F\u3068\u304D\u3001\u6575\u306E\u52D5\u304D\u3092\u4E00\u5B9A\u6642\u9593\u5C01\u3058\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -6652,7 +6686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3++"
-  skillDescription: 
+  skillDescription: "\u30AF\u30EA\u30B9\u30BF\u30EB\u306E\u30B9\u30C8\u30C3\u30AF\u30923\u3064\u306B\u3059\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -8175,7 +8209,7 @@ MonoBehaviour:
     baseValue: 15
     modifiers: 
   maxHealth:
-    baseValue: 80
+    baseValue: 1000
     modifiers: 
   armor:
     baseValue: 15
@@ -8187,13 +8221,13 @@ MonoBehaviour:
     baseValue: 5
     modifiers: 
   fireDamage:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   lightingDamage:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   isIgnited: 0
   isChilled: 0
@@ -9023,7 +9057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3+"
-  skillDescription: 
+  skillDescription: "\u7206\u767A\u3059\u308B\u30AF\u30EA\u30B9\u30BF\u30EB\u3092\u6575\u306B\u653E\u3064\u3053\u3068\u304C\u3067\u304D\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -9654,7 +9688,7 @@ GameObject:
   - component: {fileID: 797497550}
   - component: {fileID: 797497549}
   m_Layer: 5
-  m_Name: "SkillTreeSlot_UI-\u30AF\u30EA\u30B9\u30BF\u30EB"
+  m_Name: "SkillTreeSlot_UI-\u30AF\u30EA\u30B9\u30BF\u30EB\u30DE\u30B8\u30C3\u30AF"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9693,8 +9727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumptionPoint: 0
-  skillName: "\u30AF\u30EA\u30B9\u30BF\u30EB"
-  skillDescription: 
+  skillName: "\u30AF\u30EA\u30B9\u30BF\u30EB\u30DE\u30B8\u30C3\u30AF"
+  skillDescription: "\u30AF\u30EA\u30B9\u30BF\u30EB\u3092\u53EC\u559A\u3057\u3001\u77AC\u6642\u306B\u623B\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []
@@ -14228,7 +14262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30C1\u30A7\u30F3\u30BD\u30FC\u30BD\u30FC\u30C9"
-  skillDescription: 
+  skillDescription: "\u5263\u3092\u56DE\u8EE2\u3055\u305B\u306A\u304C\u3089\u6575\u306B\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\n(1\u3064\u3060\u3051\u89E3\u653E\u53EF\u80FD)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -14826,7 +14860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30D0\u30A6\u30F3\u30BA\u30BD\u30FC\u30C9"
-  skillDescription: 
+  skillDescription: "\u5263\u304C\u6575\u540C\u58EB\u306E\u9593\u3092\u884C\u304D\u6765\u3057\u3001\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\n(1\u3064\u3060\u3051\u89E3\u653E\u53EF\u80FD)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -16681,7 +16715,7 @@ GameObject:
   - component: {fileID: 1171227534}
   - component: {fileID: 1171227533}
   m_Layer: 5
-  m_Name: "SkillTreeSlot_UI-\u30DE\u30B8\u30C3\u30AF\u30E0\u30FC\u30D6"
+  m_Name: "SkillTreeSlot_UI-\u30AF\u30EA\u30B9\u30BF\u30EB\u30DE\u30B8\u30C3\u30AF+"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16720,8 +16754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumptionPoint: 0
-  skillName: "\u30DE\u30B8\u30C3\u30AF\u30E0\u30FC\u30D6"
-  skillDescription: 
+  skillName: "\u30AF\u30EA\u30B9\u30BF\u30EB\u30DE\u30B8\u30C3\u30AF+"
+  skillDescription: "\u81EA\u8EAB\u306E\u5206\u8EAB\u3092\u3060\u3057\u3001\u623B\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -17672,7 +17706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30B8\u30E7\u30F3"
-  skillDescription: 
+  skillDescription: "\u30AF\u30EA\u30B9\u30BF\u30EB\u304C\u7206\u767A\u3059\u308B\u3088\u3046\u306B\u306A\u308B\n(\u305F\u3060\u3057\u3001\u30AF\u30EA\u30B9\u30BF\u30EB\u306B\u623B\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -18241,7 +18275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30D6\u30EC\u30C3\u30C8\u30BD\u30FC\u30C9"
-  skillDescription: 
+  skillDescription: "\u4E00\u76F4\u7DDA\u306B\u6575\u3092\u8CAB\u304D\u3002\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\n(1\u3064\u3060\u3051\u89E3\u653E\u53EF\u80FD)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -19341,7 +19375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1429039951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19682,7 +19716,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20640,7 +20674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF++"
-  skillDescription: 
+  skillDescription: "\u5263\u304C\u6575\u306B\u5F53\u305F\u3063\u305F\u3068\u304D\u3001\u30C0\u30E1\u30FC\u30B8\u304C\u5165\u308A\u3084\u3059\u304F\u306A\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
@@ -24140,7 +24174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 0
   skillName: "\u30BD\u30FC\u30C9\u30A2\u30BF\u30C3\u30AF"
-  skillDescription: "\u5263\u3092\u6575\u306B\u5411\u304B\u3063\u3066\u6295\u3052\u3001\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u307E\u3059"
+  skillDescription: "\u5263\u3092\u6575\u306B\u5411\u304B\u3063\u3066\u6295\u3052\u3001\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []
@@ -25656,13 +25690,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f8729e6e19847044baf9b30e4073fd9, type: 2}
   - {fileID: 11400000, guid: ded2a915be7a63048babdb2edd91506b, type: 2}
   - {fileID: 11400000, guid: df7d429e24db0a64cae0e9222576578f, type: 2}
+  - {fileID: 11400000, guid: 1af05c191914f6d49b5e6df80d979c0a, type: 2}
   - {fileID: 11400000, guid: 1a053ffecd6cd854abca408bebb7c7c0, type: 2}
-  - {fileID: 11400000, guid: 1a053ffecd6cd854abca408bebb7c7c0, type: 2}
-  - {fileID: 11400000, guid: 1a053ffecd6cd854abca408bebb7c7c0, type: 2}
-  - {fileID: 11400000, guid: f3009ad5100f0a04faf316ec2883410a, type: 2}
-  - {fileID: 11400000, guid: c0694967fda6dd64f8bfbeb7e2d5c62e, type: 2}
-  - {fileID: 11400000, guid: b3f20b8f466181c4d8aa9377cc98ea20, type: 2}
-  - {fileID: 11400000, guid: df7d429e24db0a64cae0e9222576578f, type: 2}
   equipment: []
   inventory: []
   stash: []
@@ -27990,6 +28019,10 @@ PrefabInstance:
     - target: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
       propertyPath: m_Name
       value: Item Object -No data
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}

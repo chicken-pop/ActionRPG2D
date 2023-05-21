@@ -216,9 +216,21 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy)
     {
+        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+
         //ダメージを与える
-        player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
-        enemy.FreezeTimeFor(freezeTimeDuration);
+        player.stats.DoDamage(enemyStats);
+
+        //スキル（ソードアタック+）が解放されてたら
+        if (player.skill.sword.timeStopUnlocked)
+        {
+            enemy.FreezeTimeFor(freezeTimeDuration);
+        }
+        //スキル（ソードアタック++）が解放されてたら
+        if (player.skill.sword.volnurableUnlocked)
+        {
+            enemyStats.MakeVulnerableFor(freezeTimeDuration);
+        }
 
         //アイテム効果の実行(装備品がお守りの場合)
         ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
