@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Dodge_Skill : Skill
 {
-    [Header("")]
+    [Header("回避アップ")]
     [SerializeField] private UI_SkillTreeSlot unlockDodgeButton;
     [SerializeField] private int evasionAmount;
     public bool dodgeUnlocked;
 
-    [Header("")]
+    [Header("瞬間移動アタック")]
     [SerializeField] private UI_SkillTreeSlot unlockMirageDodgeButton;
     public bool mirageDodgeUnlocked;
 

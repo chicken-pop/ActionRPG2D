@@ -17,8 +17,6 @@ public class ItemData_Equipment : ItemData
     [Header("Unique effect")]
     public float itemCoolDown;
     public ItemEffect[] itemEffects;　//武器の効果
-    [TextArea]
-    public string itemEffectDescription;
 
     [Header("Major stats")]
     public int strength; //クリティカル時のダメージ増加
@@ -49,7 +47,7 @@ public class ItemData_Equipment : ItemData
 
     public void Effect(Transform _enemyPosition)
     {
-        foreach(var item in itemEffects)
+        foreach (var item in itemEffects)
         {
             item.ExecuteEffect(_enemyPosition);
         }
@@ -125,23 +123,36 @@ public class ItemData_Equipment : ItemData
         AddItemDescription(iceDamage, "氷属性");
         AddItemDescription(lightingDamage, "雷属性");
 
-        /*
-        //装備品の効果が少ない場合、行を補完する
-        if (descriptionLength < 5)
+
+        if (descriptionLength > 0)
         {
-            for (int i = 0; i < 5 - descriptionLength; i++)
+            /*
+            //装備品の効果が少ない場合、行を補完する
+            if (descriptionLength < 5)
             {
-                sb.AppendLine();
-                sb.Append("");
+                for (int i = 0; i < 4 - descriptionLength; i++)
+                {
+                    sb.AppendLine();
+                    sb.Append("");
+                }
             }
+            */
+            sb.AppendLine();
+            sb.Append("");
         }
-        */
 
         //装備品の特殊効果
-        if(itemEffectDescription.Length > 0)
+        for (int i = 0; i < itemEffects.Length; i++)
         {
-            sb.AppendLine();
-            sb.Append(itemEffectDescription);
+            if (itemEffects[i].effectDescription.Length > 0)
+            {
+                if (descriptionLength > 0)
+                {
+                    sb.AppendLine();
+                }
+                sb.AppendLine(itemEffects[i].effectDescription);
+                descriptionLength++;
+            }
         }
 
         return sb.ToString();
@@ -149,14 +160,14 @@ public class ItemData_Equipment : ItemData
 
     private void AddItemDescription(int _value, string _name)
     {
-        if(_value != 0)
+        if (_value != 0)
         {
-            if(sb.Length > 0)
+            if (sb.Length > 0)
             {
                 sb.AppendLine();
             }
 
-            if(_value > 0)
+            if (_value > 0)
             {
                 //ステータス名とパラメーターの文字列を合わせて表示
                 sb.Append("+" + _value + " " + _name);

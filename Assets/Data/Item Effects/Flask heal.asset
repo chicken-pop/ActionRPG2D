@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e213c62e271bc9478c4528149bc2ee4, type: 3}
   m_Name: Flask heal
   m_EditorClassIdentifier: 
+  effectDescription: "\u4F53\u529B\u306E30%\u3092\u56DE\u5FA9\u3059\u308B"
   healPercent: 0.3
