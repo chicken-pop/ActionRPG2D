@@ -8,7 +8,7 @@ public class UI_CraftList : MonoBehaviour , IPointerDownHandler
     [SerializeField] private Transform craftSlotParent;
     [SerializeField] private GameObject craftSlotPrefab;
 
-    [SerializeField] private List<ItemData_Equipment> craftEquipment; //クラフトできる装備リスト
+    public List<ItemData_Equipment> craftEquipment; //クラフトできる装備リスト
 
     private void Start()
     {

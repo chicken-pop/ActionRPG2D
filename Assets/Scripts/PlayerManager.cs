@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour , ISaveManager
 {
     public static PlayerManager instance;
     public Player player;
@@ -31,5 +31,15 @@ public class PlayerManager : MonoBehaviour
 
         SkillPoint = SkillPoint - _point;
         return true;
+    }
+
+    public void LoadData(GameData _data)
+    {
+        this.SkillPoint = _data.SkillPoint;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.SkillPoint = this.SkillPoint;
     }
 }

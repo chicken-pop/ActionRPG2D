@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UI_CraftSlot : UI_ItemSlot
@@ -5,6 +6,10 @@ public class UI_CraftSlot : UI_ItemSlot
     protected override void Start()
     {
         base.Start();
+
+        //初期のクラフト装備表示が剣ではなく鎧になる、一時的に修正（craftEquipmentをpublicに変更）
+        ui.craftWindow.SetupCraftWindow
+            (GameObject.Find("SetupCraftList-Weapon").GetComponent<UI_CraftList>().craftEquipment[0]);
     }
 
     public void SetUpCraftSlot(ItemData_Equipment _data)
