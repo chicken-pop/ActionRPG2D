@@ -4306,6 +4306,7 @@ MonoBehaviour:
   cooldown: 3
   crystalDuration: 3
   crystalPrefab: {fileID: 4843244425738467791, guid: f8ada6297fdec1a4aa9e17f8358a17d5, type: 3}
+  currentCrystal: {fileID: 0}
   unlockCystalButton: {fileID: 797497549}
   unlockCloneInsteadButton: {fileID: 1171227533}
   cloneInsteadOfCrystal: 0
@@ -30335,6 +30336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.chicken
+  encryptData: 1
 --- !u!1 &1998118862
 GameObject:
   m_ObjectHideFlags: 0

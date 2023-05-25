@@ -11,11 +11,15 @@ public class FileDataHandler
     // ファイルの名前
     private string dataFileName = "";
 
+    private bool encryptData = false;
+    private string codeWord = "chicken";
+
     // コンストラクタ生成時に上2つの変数をセットする
-    public FileDataHandler(string _dataDirPath, string _dataFileName)
+    public FileDataHandler(string _dataDirPath, string _dataFileName, bool _encryptData)
     {
         this.dataDirPath = _dataDirPath;
         this.dataFileName = _dataFileName;
+        this.encryptData = _encryptData;
     }
 
     public void Save(GameData _data)
@@ -30,6 +34,11 @@ public class FileDataHandler
 
             //　_dataをJson形式に変換した文字列がdataToStoreに入る
             string dataToStore = JsonUtility.ToJson(_data, true);
+
+            if (encryptData)
+            {
+                dataToStore = EncryDecypt(dataToStore);
+            }
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
@@ -70,6 +79,11 @@ public class FileDataHandler
                     }
                 }
 
+                if (encryptData)
+                {
+                    dataToLoad = EncryDecypt(dataToLoad);
+                }
+
                 // GameData型にJsonファイルを変換する
                 loadData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
@@ -91,5 +105,17 @@ public class FileDataHandler
         {
             File.Delete(fullPath);
         }
+    }
+
+    private string EncryDecypt(string _data)
+    {
+        string modifiedData = "";
+
+        for (int i = 0; i < _data.Length; i++)
+        {
+            modifiedData += (char)(_data[i] ^ codeWord[i % codeWord.Length]); 
+        }
+
+        return modifiedData;
     }
 }

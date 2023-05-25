@@ -20,7 +20,7 @@ public class Crystal_Skill : Skill
 
     [Header("エクスプロージョン")]
     [SerializeField] private UI_SkillTreeSlot unlockExplosiveButton;
-    [SerializeField] public bool canExplode;
+    public bool canExplode;
 
     [Header("エクスプロージョン+")]
     [SerializeField] private UI_SkillTreeSlot unlockMovingCrystalButton;
