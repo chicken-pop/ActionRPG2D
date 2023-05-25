@@ -23,6 +23,12 @@ public class Dodge_Skill : Skill
 
     }
 
+    protected override void CheckUnlock()
+    {
+        UnlockDodge();
+        UnlockMirageDodge();
+    }
+
     private void UnlockDodge()
     {
         if (unlockDodgeButton.unlocked)

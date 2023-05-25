@@ -28,6 +28,14 @@ public class Parry_Skill : Skill
 
     }
 
+    protected override void CheckUnlock()
+    {
+        UnlockParry();
+        UnlockParryRestore();
+        UnlockParryWithMirage();
+
+    }
+
     public override void UseSkill()
     {
         base.UseSkill();
