@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Image blackholeImage;
     [SerializeField] private Image flaskImage;
 
+    [SerializeField] private TextMeshProUGUI currentSkillPoint;
     private SkillManager skills;
 
     private void Start()
@@ -27,6 +29,8 @@ public class UI_InGame : MonoBehaviour
 
     private void Update()
     {
+        currentSkillPoint.text = PlayerManager.instance.GetSkillPoint().ToString("#,#");
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && skills.dash.dashUnlocked)
         {
             SetCooldownOf(dashImage);

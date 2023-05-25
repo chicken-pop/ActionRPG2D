@@ -33,6 +33,9 @@ public class PlayerManager : MonoBehaviour , ISaveManager
         return true;
     }
 
+    public int GetSkillPoint() => SkillPoint;
+
+
     public void LoadData(GameData _data)
     {
         this.SkillPoint = _data.SkillPoint;
