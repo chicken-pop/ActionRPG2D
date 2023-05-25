@@ -82,4 +82,14 @@ public class FileDataHandler
         // エラーがでなければJsonから読み込んだデータがGameDataクラスの値として帰る
         return loadData;
     }
+
+    public void Delete()
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+        }
+    }
 }

@@ -7,7 +7,7 @@ public class Crystal_Skill : Skill
 {
     [SerializeField] private float crystalDuration;
     [SerializeField] private GameObject crystalPrefab;
-    private GameObject currentCrystal;
+    public GameObject currentCrystal;
 
     [Header("クリスタルマジック")]
     [SerializeField] private UI_SkillTreeSlot unlockCystalButton;
@@ -20,7 +20,7 @@ public class Crystal_Skill : Skill
 
     [Header("エクスプロージョン")]
     [SerializeField] private UI_SkillTreeSlot unlockExplosiveButton;
-    [SerializeField] private bool canExplode;
+    [SerializeField] public bool canExplode;
 
     [Header("エクスプロージョン+")]
     [SerializeField] private UI_SkillTreeSlot unlockMovingCrystalButton;
@@ -122,6 +122,8 @@ public class Crystal_Skill : Skill
                 return;
             }
 
+            /*
+            //クリスタルマジック
             Vector2 playerPos = player.transform.position;
             player.transform.position = currentCrystal.transform.position;
             currentCrystal.transform.position = playerPos;
@@ -135,6 +137,7 @@ public class Crystal_Skill : Skill
             {
                 currentCrystal.GetComponent<Crystal_Skill_Controller>()?.FinishCrystal();
             }
+            */
         
         }
     }
@@ -145,6 +148,24 @@ public class Crystal_Skill : Skill
         Crystal_Skill_Controller currentCrystalScript = currentCrystal.GetComponent<Crystal_Skill_Controller>();
 
         currentCrystalScript.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed, FindClosestEnemy(currentCrystal.transform), player);
+    }
+
+    public void MoveCrystalPosition()
+    {
+        //クリスタルマジック
+        Vector2 playerPos = player.transform.position;
+        player.transform.position = currentCrystal.transform.position;
+        currentCrystal.transform.position = playerPos;
+
+        if (cloneInsteadOfCrystal)
+        {
+            SkillManager.instance.clone.CreateClone(currentCrystal.transform, Vector3.zero);
+            Destroy(currentCrystal);
+        }
+        else
+        {
+            currentCrystal.GetComponent<Crystal_Skill_Controller>()?.FinishCrystal();
+        }
     }
 
     public void CurrentCrystalChooseRandomTarget() => currentCrystal.GetComponent<Crystal_Skill_Controller>().ChooseRandomEnemy();

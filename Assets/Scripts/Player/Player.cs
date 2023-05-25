@@ -86,6 +86,12 @@ public class Player : Entity
 
         CheckForDashInput();
 
+        //クリスタルマジックの効果
+        if (Input.GetKeyDown(KeyCode.F) && skill.crystal.currentCrystal != null && skill.crystal.canExplode == false)
+        {
+            skill.crystal.MoveCrystalPosition();
+        }
+
         //魔法(クリスタル)スキルの呼び込み
         if (Input.GetKeyDown(KeyCode.F)　&& skill.crystal.crystalUnlocked)
         {
