@@ -24,9 +24,11 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
 
     [Header("Knockback info")]
-    [SerializeField] protected Vector2 knokbackDirection;
+    [SerializeField] protected Vector2 knokbackPower;
     [SerializeField] protected float KnockbackDuration;
     protected bool isKnocked;
+
+    public int knockbackDir { get; private set; }
 
     public int facingDir { get; private set; } = 1;
     protected bool facingRight = true;
@@ -65,17 +67,37 @@ public class Entity : MonoBehaviour
 
     public virtual void DamageImpact() => StartCoroutine("HitKnockback");
 
+    public virtual void SetupKnockbackDir(Transform _damageDirection)
+    {
+        if(_damageDirection.position.x > transform.position.x)
+        {
+            knockbackDir = -1;
+        }
+        else if(_damageDirection.position.x < transform.position.x)
+        {
+            knockbackDir = 1;
+        }
+    }
+
+    public void SetupKnockbackPower(Vector2 _knockbackpower) => knokbackPower = _knockbackpower;
+
     protected virtual IEnumerator HitKnockback()
     {
         isKnocked = true;
 
-        rb.velocity = new Vector2(knokbackDirection.x * -facingDir, knokbackDirection.y);
+        rb.velocity = new Vector2(knokbackPower.x * knockbackDir, knokbackPower.y);
 
         yield return new WaitForSeconds(KnockbackDuration);
         isKnocked = false;
+
+        SetupZeroKnockbackPower();
+        rb.velocity = knokbackPower;
     }
 
+    protected virtual void SetupZeroKnockbackPower()
+    {
 
+    }
 
     #region Velocity
     public void SetZeroVelocity()

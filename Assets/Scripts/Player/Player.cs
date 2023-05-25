@@ -81,6 +81,12 @@ public class Player : Entity
 
     protected override void Update()
     {
+        //UI画面が開いてるとき（時間がとまっている時）、入力を受け付けない
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
+
         base.Update();
         stateMachine.currentState.Update();
 
@@ -181,5 +187,10 @@ public class Player : Entity
         base.Die();
 
         stateMachine.ChangeState(deadState);
+    }
+
+    protected override void SetupZeroKnockbackPower()
+    {
+        knokbackPower = new Vector2(0, 0);
     }
 }

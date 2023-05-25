@@ -5069,7 +5069,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &280729467
 MonoBehaviour:
@@ -7648,11 +7648,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 15
   skillName: "\u30D1\u30EA\u30A3++"
-  skillDescription: "\u30D1\u30EA\u30A3\u6210\u529F\u6642\u3001\u5206\u8EAB\u3092\u3060\u3057\u3066\u653B\u6483\u3059\u308B"
+  skillDescription: "\u30D1\u30EA\u30A3\u6210\u529F\u6642\u3001\u5206\u8EAB\u3092\u3060\u3057\u3066\u653B\u6483\u3059\u308B\n(\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30F3\u30A2\u30BF\u30C3\u30AF\u89E3\u653E\u5F8C)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked:
   - {fileID: 1852867417}
+  - {fileID: 758389377}
   sholdBeLocked: []
 --- !u!114 &415273543
 MonoBehaviour:
@@ -8057,7 +8058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424562539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: -0.27, z: 0}
+  m_LocalPosition: {x: 0.94, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10863,7 +10864,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &579590986
 GameObject:
@@ -11658,7 +11659,7 @@ Transform:
   - {fileID: 970682590}
   - {fileID: 911487814}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651026352
 GameObject:
@@ -11974,8 +11975,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knokbackDirection: {x: 0, y: 0}
-  KnockbackDuration: 0
+  knokbackPower: {x: 0, y: 0}
+  KnockbackDuration: 0.5
   attackMovement:
   - {x: 3, y: 1.5}
   - {x: 1, y: 1.5}
@@ -12005,7 +12006,7 @@ Transform:
   - {fileID: 1568701709}
   - {fileID: 871421083}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &669530007
 Rigidbody2D:
@@ -12101,7 +12102,7 @@ MonoBehaviour:
     baseValue: 15
     modifiers: 
   maxHealth:
-    baseValue: 1000
+    baseValue: 100
     modifiers: 
   armor:
     baseValue: 15
@@ -13407,7 +13408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &766630703
 Transform:
   m_ObjectHideFlags: 0
@@ -13427,7 +13428,7 @@ Transform:
   - {fileID: 200222340}
   - {fileID: 163514441}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &766630704
 MonoBehaviour:
@@ -13442,7 +13443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCheck: {fileID: 424562540}
-  attackCheckRadius: 0.8
+  attackCheckRadius: 1
   groundCheck: {fileID: 1883633355}
   groundCheckDistance: 1
   wallCheck: {fileID: 784081690}
@@ -13450,7 +13451,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knokbackDirection: {x: 7, y: 12}
+  knokbackPower: {x: 7, y: 12}
   KnockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
@@ -13461,8 +13462,10 @@ MonoBehaviour:
   moveSpeed: 2
   idelTime: 2
   battleTime: 7
-  attackDistance: 1.5
-  attackCoolDown: 0.4
+  attackDistance: 2
+  attackCooldown: 0.45
+  minAttackCooldown: 0.3
+  maxAttackCooldown: 0.6
   lastTimeAttacked: 0
 --- !u!50 &766630706
 Rigidbody2D:
@@ -13533,7 +13536,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 10
+    baseValue: 40
     modifiers: 
   critChance:
     baseValue: 99
@@ -13568,7 +13571,7 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 3245053019327911435, guid: caaef098bfe30f744940d2f57a1dea06, type: 3}
   currentHealth: 0
-  level: 5
+  level: 1
   percentageModifier: 0.436
 --- !u!70 &766630709
 CapsuleCollider2D:
@@ -14365,7 +14368,7 @@ RectTransform:
   - {fileID: 1677578749}
   - {fileID: 981524676}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16850,7 +16853,6 @@ MonoBehaviour:
   craftSlotPrefab: {fileID: 4190191036481351123, guid: 6dd480b66c0fc6b40a2bedbddfabfb3b, type: 3}
   craftEquipment:
   - {fileID: 11400000, guid: 1a053ffecd6cd854abca408bebb7c7c0, type: 2}
-  - {fileID: 11400000, guid: 1a053ffecd6cd854abca408bebb7c7c0, type: 2}
 --- !u!114 &858541320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18626,7 +18628,7 @@ Transform:
   - {fileID: 849016719}
   - {fileID: 2049961518}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &960216647 stripped
 RectTransform:
@@ -25276,6 +25278,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305470963}
   m_CullTransparentMesh: 1
+--- !u!1 &1315792070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1315792072}
+  - component: {fileID: 1315792071}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1315792071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315792070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f20ee04181486408bd21f7680adf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1315792072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315792070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316029928
 GameObject:
   m_ObjectHideFlags: 0
@@ -26936,7 +26982,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knokbackDirection: {x: 7, y: 12}
+  knokbackPower: {x: 0, y: 0}
   KnockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
@@ -26948,7 +26994,9 @@ MonoBehaviour:
   idelTime: 2
   battleTime: 7
   attackDistance: 1.5
-  attackCoolDown: 0.4
+  attackCooldown: 0
+  minAttackCooldown: 0
+  maxAttackCooldown: 0
   lastTimeAttacked: 0
 --- !u!4 &1429039957
 Transform:
@@ -26969,7 +27017,7 @@ Transform:
   - {fileID: 628528864}
   - {fileID: 1591281962}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432854756
 GameObject:
@@ -28009,7 +28057,7 @@ Transform:
   - {fileID: 1691696699}
   - {fileID: 1325564771}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1544012880
 GameObject:
@@ -32550,7 +32598,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33244,7 +33292,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848043139
 GameObject:
@@ -34634,7 +34682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionPoint: 5
   skillName: "\u30D1\u30EA\u30A3"
-  skillDescription: "\u6575\u306E\u653B\u6483\u3092\u8DF3\u306D\u8FD4\u3059\n\uFF08\u30D1\u30EA\u30A3\u30BF\u30A4\u30DF\u30F3\u30B0\u304C\u3042\u3063\u305F\u6642\uFF09"
+  skillDescription: "\u6575\u306E\u653B\u6483\u3092\u8DF3\u306D\u8FD4\u3059\n(\u30D1\u30EA\u30A3\u30BF\u30A4\u30DF\u30F3\u30B0\u304C\u3042\u3063\u305F\u6642)"
   lockedSkillColor: {r: 0.26415092, g: 0.22520189, b: 0.1956212, a: 1}
   unlocked: 0
   sholdBeUnlocked: []
@@ -35356,7 +35404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1973737448
 PrefabInstance:
@@ -38075,7 +38123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8868752055949954401, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8868752055949954401, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38834,7 +38882,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8531805042836526376, guid: efd41ee3cdabb1342a1827241998905a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8531805042836526376, guid: efd41ee3cdabb1342a1827241998905a, type: 3}
       propertyPath: m_LocalPosition.x

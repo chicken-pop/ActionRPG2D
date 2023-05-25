@@ -81,6 +81,8 @@ public class Crystal_Skill_Controller : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
+                hit.GetComponent<Entity>().SetupKnockbackDir(transform);
+
                 //ダメージを与える
                 player.stats.DoMagicDamage(hit.GetComponent<CharacterStats>());
                 //アイテム効果の実行(装備品がお守りの場合)
