@@ -13,6 +13,8 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
+        AudioManager.instance.PlaySE(2, null);
+
         Collider2D[] collisions = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
 
         foreach (var hit in collisions)
@@ -29,7 +31,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
                 //‰½‚à‘•”õ‚µ‚Ä‚¢‚È‚¢ê‡null‚ª‚©‚¦‚Á‚Ä‚­‚é
                 ItemData_Equipment weaponData = Inventory.instance.GetEquipment(EquipmentType.Weapon);
 
-             
+
                 if (weaponData != null)
                 {
                     //•Ší‚É•t‘®‚µ‚Ä‚¢‚éŒø‰Ê‚ğÀs

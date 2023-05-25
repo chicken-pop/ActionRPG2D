@@ -13,7 +13,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
 
-        
+
     }
 
     public override void Exit()
@@ -29,11 +29,16 @@ public class PlayerGroundedState : PlayerState
         //ブラックホールスキル
         if (Input.GetKeyDown(KeyCode.R) && player.skill.blackhole.blackholeUnlocked)
         {
+            if (player.skill.blackhole.cooldownTimer > 0)
+            {
+                return;
+            }
+
             stateMachine.ChangeState(player.blackHole);
         }
 
         //ソードスキル
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword()　&& player.skill.sword.swordUnlocked)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skill.sword.swordUnlocked)
         {
             stateMachine.ChangeState(player.aimSword);
         }

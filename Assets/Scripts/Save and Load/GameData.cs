@@ -11,12 +11,16 @@ public class GameData
     public SerializableDictionary<string, int> inventory;
     public List<string> equipmentID;
 
+    public SerializableDictionary<string, float> volumeSettings;
+
     public GameData()
     {
         this.SkillPoint = 0;
         skillTree = new SerializableDictionary<string, bool>();
         inventory = new SerializableDictionary<string, int>();
         equipmentID = new List<string>();
+
+        volumeSettings = new SerializableDictionary<string, float>();
     }
 
 }

@@ -18,6 +18,8 @@ public class SkeletonIdelState : SkeletonGroundedState
     public override void Exit()
     {
         base.Exit();
+
+        AudioManager.instance.PlaySE(24, enemy.transform);
     }
 
     public override void Update()
