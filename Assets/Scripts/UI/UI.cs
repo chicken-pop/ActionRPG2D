@@ -79,6 +79,7 @@ public class UI : MonoBehaviour , ISaveManager
             {
                 //UI‰æ–ÊŽž‚ÌŽžŠÔ‚ðŽ~‚ß‚é
                 GameManager.instance.PauseGame(true);
+                AudioManager.instance.StopSE(14);
             }
         }
     }

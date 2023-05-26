@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
 
-        Invoke("AllowSE", 1f);
+        Invoke("AllowSE", 0.5f);
     }
 
     private void Update()
