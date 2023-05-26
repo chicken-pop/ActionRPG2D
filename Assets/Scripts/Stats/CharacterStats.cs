@@ -190,21 +190,21 @@ public class CharacterStats : MonoBehaviour
             if (Random.value < 0.5f && _fireDamage > 0)
             {
                 canApplyIgnite = true;
-                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
+                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock, _fireDamage, _iceDamage, _lightingDamage);
                 return;
             }
 
             if (Random.value < 0.5f && _iceDamage > 0)
             {
                 canApplyChill = true;
-                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
+                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock, _fireDamage, _iceDamage, _lightingDamage);
                 return;
             }
 
             if (Random.value < 0.5f && _lightingDamage > 0)
             {
                 canApplyShock = true;
-                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
+                _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock, _fireDamage, _iceDamage, _lightingDamage);
                 return;
             }
         }
@@ -219,16 +219,17 @@ public class CharacterStats : MonoBehaviour
             _targetStats.SetupShockStrikeDamage(Mathf.RoundToInt(_lightingDamage * 0.1f));
         }
 
-        _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
+        _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock, _fireDamage, _iceDamage, _lightingDamage);
     }
 
-    public void ApplyAilments(bool _ignite, bool _chill, bool _shock)
+    public void ApplyAilments(bool _ignite, bool _chill, bool _shock, int _fireDamage, int _iceDamage, int _lightingDamage)
     {
         bool canApplyIgnite = !isIgnited && !isChilled && !isShocked;
         bool canApplyChill = !isIgnited && !isChilled && !isShocked;
         bool canApplyShock = !isIgnited && !isChilled;
 
-        if (_ignite && canApplyIgnite)
+        //ëÆê´ÇÃã≠Ç≥Ç…ÇÊÇ¡ÇƒÅAå¯â ÇÃämó¶Ç™ïœÇÌÇÈ
+        if (_ignite && canApplyIgnite && Random.Range(0, 100) < _fireDamage)
         {
             isIgnited = _ignite;
             ignitedTimer = ailmentsDuration;
@@ -236,7 +237,7 @@ public class CharacterStats : MonoBehaviour
             fx.IgniteFxFor(ailmentsDuration);
         }
 
-        if (_chill && canApplyChill)
+        if (_chill && canApplyChill && Random.Range(0, 100) < _iceDamage)
         {
             isChilled = _chill;
             chilledTimer = ailmentsDuration;
@@ -246,7 +247,7 @@ public class CharacterStats : MonoBehaviour
             fx.ChillFxFor(ailmentsDuration);
         }
 
-        if (_shock && canApplyShock)
+        if (_shock && canApplyShock && Random.Range(0, 100) < _lightingDamage)
         {
             if (!isShocked)
             {
