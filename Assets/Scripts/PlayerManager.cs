@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour , ISaveManager
     public static PlayerManager instance;
     public Player player;
 
-    public int SkillPoint;
+    public int SkillPoint = 0;
 
     private void Awake()
     {

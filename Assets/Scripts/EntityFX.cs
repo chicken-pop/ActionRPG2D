@@ -16,6 +16,15 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private Color[] chillColor;
     [SerializeField] private Color[] shockColor;
 
+    [Header("Ailment particals")]
+    [SerializeField] private ParticleSystem igniteFx;
+    [SerializeField] private ParticleSystem chilleFx;
+    [SerializeField] private ParticleSystem shockFx;
+
+    [Header("Hit FX")]
+    [SerializeField] private GameObject hitFx;
+    [SerializeField] private GameObject criticalHitFx;
+
     private void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -45,7 +54,7 @@ public class EntityFX : MonoBehaviour
 
         sr.color = currentColor;
         sr.material = originalMat;
-       
+
     }
 
     private void RedColorBlink()
@@ -64,22 +73,29 @@ public class EntityFX : MonoBehaviour
     {
         CancelInvoke();
         sr.color = Color.white;
+
+        igniteFx.Stop();
+        chilleFx.Stop();
+        shockFx.Stop();
     }
 
     public void IgniteFxFor(float _seconds)
     {
+        igniteFx.Play();
         InvokeRepeating("IgniteColorFx", 0, 0.15f);
         Invoke("CancelColorChange", _seconds);
     }
 
     public void ChillFxFor(float _seconds)
     {
+        chilleFx.Play();
         InvokeRepeating("ChillColorFx", 0, 0.15f);
         Invoke("CancelColorChange", _seconds);
     }
 
     public void ShockFxFor(float _seconds)
     {
+        shockFx.Play();
         InvokeRepeating("ShockColorFx", 0, 0.15f);
         Invoke("CancelColorChange", _seconds);
     }
@@ -96,7 +112,6 @@ public class EntityFX : MonoBehaviour
         }
     }
 
-    
     private void ChillColorFx()
     {
         if (sr.color != chillColor[0])
@@ -119,5 +134,38 @@ public class EntityFX : MonoBehaviour
         {
             sr.color = shockColor[1];
         }
+    }
+
+    public void CreateHitFx(Transform _target, bool _critical)
+    {
+        float zRotation = Random.Range(-90, 90);
+        float xPosition = Random.Range(-0.5f, 0.5f);
+        float yPosition = Random.Range(-0.5f, 0.5f);
+
+        Vector3 hitFxRotation = new Vector3(0, 0, zRotation);
+
+        GameObject hitPrefab = hitFx;
+
+        //クリティカルの場合
+        if (_critical)
+        {
+            hitPrefab = criticalHitFx;
+
+            float yRotation = 0;
+            zRotation = Random.Range(0, 45);
+
+            if(GetComponent<Entity>().facingDir == -1)
+            {
+                yRotation = 180;
+            }
+
+            hitFxRotation = new Vector3(0, yRotation, zRotation);
+        }
+
+        GameObject newHitFx = Instantiate(hitPrefab, _target.position + new Vector3(xPosition, yPosition), Quaternion.identity);
+
+        newHitFx.transform.Rotate(hitFxRotation);
+
+        Destroy(newHitFx, 0.6f);
     }
 }
