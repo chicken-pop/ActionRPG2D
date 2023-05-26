@@ -65,6 +65,8 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onHealthChanged;@//UpdateHealthUI()‚É‚æ‚Á‚ÄHP‚ÌUI‚ğXV‚·‚é
     public bool isDead { get; private set; }
+
+    public bool isInvincible { get; private set; }
     private bool isVulnerable;
 
     protected virtual void Start()
@@ -365,6 +367,11 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void TakeDamage(int _damage)
     {
+        if (isInvincible)
+        {
+            return;
+        }
+
         DecreaseHealthBy(_damage);
 
         GetComponent<Entity>().DamageImpact();
@@ -514,6 +521,16 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
+
+    public void KillEntity()
+    {
+        if (!isDead)
+        {
+            Die();
+        }
+    }
+
+    public void MakeInvincible(bool _invincible) => isInvincible = _invincible;
 
     public Stat GetStatType(StatType _statType)
     {
