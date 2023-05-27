@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum StatType
@@ -139,7 +140,10 @@ public class CharacterStats : MonoBehaviour
 
         _targetStats.GetComponent<Entity>().SetupKnockbackDir(transform);
 
-        int totalDamage = damage.GetValue() + strength.GetValue();
+        //ダメージばらつきのための倍率
+        float randomMagnification = Random.Range(0.9f, 1.1f);
+
+        int totalDamage = Mathf.RoundToInt((damage.GetValue() + strength.GetValue()) * randomMagnification); 
 
         if (CanCrit())
         {
@@ -165,8 +169,11 @@ public class CharacterStats : MonoBehaviour
         int _iceDamage = iceDamage.GetValue();
         int _lightingDamage = lightingDamage.GetValue();
 
+        //ダメージばらつきのための倍率
+        float randomMagnification = Random.Range(0.8f, 1.2f);
+
         //ダメージ計算
-        int totalMagicDamage = _fireDamage + _iceDamage + _lightingDamage + intelegence.GetValue();
+        int totalMagicDamage = Mathf.RoundToInt((_fireDamage + _iceDamage + _lightingDamage + intelegence.GetValue()) * randomMagnification); 
         totalMagicDamage = CheckTargetResistance(_targetStats, totalMagicDamage);
 
         _targetStats.TakeDamage(totalMagicDamage);
@@ -354,7 +361,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (igniteDamageTimer < 0)
         {
-            DecreaseHealthBy(igniteDamage);
+            DecreaseHealthBy(igniteDamage, true);
 
             if (currentHealth <= 0 && !isDead)
             {
@@ -378,7 +385,7 @@ public class CharacterStats : MonoBehaviour
             return;
         }
 
-        DecreaseHealthBy(_damage);
+        DecreaseHealthBy(_damage, false);
 
         GetComponent<Entity>().DamageImpact();
         fx.StartCoroutine("FlashFX");
@@ -405,15 +412,28 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    protected virtual void DecreaseHealthBy(int _damage)
+    protected virtual void DecreaseHealthBy(int _damage, bool isIgnite)
     {
         //ソードスキルの効果で弱体化が入ったとき
         if (isVulnerable)
         {
-            _damage = Mathf.RoundToInt(_damage * 1.1f);
+            _damage = Mathf.RoundToInt(_damage * 1.2f);
         }
 
         currentHealth -= _damage;
+
+        //ダメージ表記
+        if (isIgnite == true)
+        {
+            fx.popUpTextPrefab.GetComponent<TextMeshPro>().color = Color.red;
+            fx.CreatePopUpText(_damage.ToString());
+        }
+        else if(_damage > 0)
+        {
+            fx.popUpTextPrefab.GetComponent<TextMeshPro>().color = Color.white;
+            fx.CreatePopUpText(_damage.ToString());
+
+        }
 
         if (onHealthChanged != null)
         {

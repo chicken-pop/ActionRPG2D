@@ -36,6 +36,7 @@ public class Skill : MonoBehaviour
             return true;
         }
 
+        player.fx.CreatePopUpText("スキル使用不可");
         return false;
     }
 

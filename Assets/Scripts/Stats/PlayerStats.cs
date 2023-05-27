@@ -28,13 +28,15 @@ public class PlayerStats : CharacterStats
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
-    protected override void DecreaseHealthBy(int _damage)
+    protected override void DecreaseHealthBy(int _damage, bool isIgnite)
     {
-        base.DecreaseHealthBy(_damage);
+        base.DecreaseHealthBy(_damage, false);
 
+        //ダメージが大きい場合ノックバック
         if(_damage > GetMaxHealthValue()* 0.3f)
         {
             player.SetupKnockbackPower(new Vector2(6, 8));
+            player.fx.ScreenShake(player.fx.shackHighDamageImpact);
         }
 
         //何も装備していない場合nullがかえってくる

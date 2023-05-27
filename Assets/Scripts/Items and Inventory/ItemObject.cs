@@ -33,6 +33,7 @@ public class ItemObject : MonoBehaviour
         {
             //ƒAƒCƒeƒ€‚ğ­‚µ•‚‚©‚¹‚é
             rb.velocity = new Vector2(0, 7);
+            PlayerManager.instance.player.fx.CreatePopUpText("‚¿•¨‚ª‚¢‚Á‚Ï‚¢‚Å‚·");
             return;
         }
 

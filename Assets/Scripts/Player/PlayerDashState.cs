@@ -27,7 +27,7 @@ public class PlayerDashState : PlayerState
         player.skill.dash.CloneOnArrival();
         player.SetVelocity(0, rb.velocity.y);
 
-        player.stats.MakeInvincible(true);
+        player.stats.MakeInvincible(false);
     }
 
     public override void Update()

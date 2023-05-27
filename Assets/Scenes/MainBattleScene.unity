@@ -4968,7 +4968,7 @@ MonoBehaviour:
   multipleUnlockButton: {fileID: 758389377}
   multicloneAttackMultiplier: 0.3
   canDuplicateClone: 0
-  chanceToDupicate: 50
+  chanceToDupicate: 25
   crystalInsteadUnlockButton: {fileID: 1142149524}
   crystalInseadOfClone: 0
 --- !u!114 &280729470
@@ -8183,6 +8183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436042951}
   - component: {fileID: 436042950}
+  - component: {fileID: 436042952}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -8244,6 +8245,29 @@ Transform:
   m_Father: {fileID: 171191747}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &436042952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436042949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &443625517
 GameObject:
   m_ObjectHideFlags: 0
@@ -11643,9 +11667,10 @@ GameObject:
   - component: {fileID: 669530005}
   - component: {fileID: 669530008}
   - component: {fileID: 669530007}
-  - component: {fileID: 669530009}
   - component: {fileID: 669530010}
   - component: {fileID: 669530011}
+  - component: {fileID: 669530012}
+  - component: {fileID: 669530013}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -11747,37 +11772,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.07325941, y: -0.2523378}
   m_Size: {x: 0.874437, y: 1.9930723}
   m_Direction: 0
---- !u!114 &669530009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669530004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92eb1445c6b22f479eebd684cc9be1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterImagePrefab: {fileID: 6824080775517411452, guid: 5ab0f3d065c84284aa8f9a56a490a5d3, type: 3}
-  colorlooseRate: 2.5
-  afterImageCooldown: 0.04
-  flashDuration: 0.15
-  hitMat: {fileID: 2100000, guid: a5cafad52c810ae49b5772263070e40e, type: 2}
-  ignitedColor:
-  - {r: 0.9843137, g: 0.32156864, b: 0.32156864, a: 1}
-  - {r: 0.99215686, g: 0.59607846, b: 0.59607846, a: 1}
-  chillColor:
-  - {r: 0.2688679, g: 0.6866006, b: 1, a: 1}
-  - {r: 0.27058825, g: 0.6862745, b: 1, a: 1}
-  shockColor:
-  - {r: 1, g: 0.88235295, b: 0.30980393, a: 1}
-  - {r: 1, g: 0.95686275, b: 0.7411765, a: 1}
-  igniteFx: {fileID: 1092940343}
-  chilleFx: {fileID: 1187619867}
-  shockFx: {fileID: 784561322}
-  hitFx: {fileID: 5043723574836333911, guid: d307e3d8dd470cd4ebbd0edf7b93d707, type: 3}
-  criticalHitFx: {fileID: 6915451829343988548, guid: fa8a0e8950794134f8b72655f36f0a44, type: 3}
 --- !u!114 &669530010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11800,19 +11794,19 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   vitality:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   damage:
     baseValue: 30
     modifiers: 
   critChance:
-    baseValue: 99
+    baseValue: 2
     modifiers: 
   critPower:
     baseValue: 15
     modifiers: 
   maxHealth:
-    baseValue: 646
+    baseValue: 200
     modifiers: 
   armor:
     baseValue: 15
@@ -11824,7 +11818,7 @@ MonoBehaviour:
     baseValue: 5
     modifiers: 
   fireDamage:
-    baseValue: 60
+    baseValue: 20
     modifiers: 
   iceDamage:
     baseValue: 0
@@ -11855,6 +11849,94 @@ MonoBehaviour:
   dropPrefab: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
   chanceToLooseItems: 99
   chanceToLooseMaterials: 99
+--- !u!114 &669530012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669530004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &669530013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669530004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51109abaac513b247b3927bf4b2e6a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpTextPrefab: {fileID: 4589922932059855045, guid: 679325883d227e2448b48a6d326d2b78, type: 3}
+  flashDuration: 0.2
+  hitMat: {fileID: 2100000, guid: a5cafad52c810ae49b5772263070e40e, type: 2}
+  ignitedColor:
+  - {r: 0.9843137, g: 0.32156864, b: 0.32156864, a: 1}
+  - {r: 0.99215686, g: 0.59607846, b: 0.59607846, a: 1}
+  chillColor:
+  - {r: 0.27058825, g: 0.6862745, b: 1, a: 1}
+  - {r: 0.27058825, g: 0.6862745, b: 1, a: 1}
+  shockColor:
+  - {r: 1, g: 0.88235295, b: 0.30980393, a: 1}
+  - {r: 1, g: 0.95686275, b: 0.7411765, a: 1}
+  igniteFx: {fileID: 1092940343}
+  chilleFx: {fileID: 1187619867}
+  shockFx: {fileID: 784561322}
+  hitFx: {fileID: 5043723574836333911, guid: d307e3d8dd470cd4ebbd0edf7b93d707, type: 3}
+  criticalHitFx: {fileID: 6915451829343988548, guid: fa8a0e8950794134f8b72655f36f0a44, type: 3}
+  afterImagePrefab: {fileID: 6824080775517411452, guid: 5ab0f3d065c84284aa8f9a56a490a5d3, type: 3}
+  colorlooseRate: 1.5
+  afterImageCooldown: 0.03
+  shakeMultiplier: 0.2
+  shakeSwordImpact: {x: 0.5, y: 0, z: 0}
+  shackHighDamageImpact: {x: 1, y: 1, z: 0}
 --- !u!1 &673092234
 GameObject:
   m_ObjectHideFlags: 0
@@ -26298,9 +26380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92eb1445c6b22f479eebd684cc9be1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afterImagePrefab: {fileID: 0}
-  colorlooseRate: 0
-  afterImageCooldown: 0
+  popUpTextPrefab: {fileID: 0}
   flashDuration: 0.15
   hitMat: {fileID: 2100000, guid: a5cafad52c810ae49b5772263070e40e, type: 2}
   ignitedColor:
@@ -37812,6 +37892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 4010221594204547412, guid: 3c060e89080039d43991876827275f48, type: 3}
+      propertyPath: afterImagePrefab
+      value: 
+      objectReference: {fileID: 6824080775517411452, guid: 5ab0f3d065c84284aa8f9a56a490a5d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c060e89080039d43991876827275f48, type: 3}
 --- !u!1001 &4146966972926495750

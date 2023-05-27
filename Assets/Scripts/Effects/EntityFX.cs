@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using TMPro;
 
 public class EntityFX : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    protected Player player;
+    protected SpriteRenderer sr;
 
-    [Header("After image fx")]
-    [SerializeField] private GameObject afterImagePrefab;
-    [SerializeField] private float colorlooseRate;
-    [SerializeField] private float afterImageCooldown;
-    private float afetrImageCooldownTimer;
+    [Header("Pop up text")]
+    [SerializeField] public GameObject popUpTextPrefab;
+
 
     [Header("Flash FX")]
     [SerializeField] private float flashDuration;
@@ -31,27 +32,24 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private GameObject hitFx;
     [SerializeField] private GameObject criticalHitFx;
 
-    private void Start()
+    protected virtual void Start()
     {
+        player = PlayerManager.instance.player;
         sr = GetComponentInChildren<SpriteRenderer>();
 
         originalMat = sr.material;
     }
 
-    private void Update()
+    public void CreatePopUpText(string _text)
     {
-        afetrImageCooldownTimer -= Time.deltaTime;
-    }
+        float randomX = Random.Range(-1, 1);
+        float randomY = Random.Range(1.5f, 3f);
 
-    public void CreateAfterImage()
-    {
-        if (afetrImageCooldownTimer < 0)
-        {
-            afetrImageCooldownTimer = afterImageCooldown;
+        Vector3 positionOffset = new Vector3(randomX, randomY, 0);
 
-            GameObject newAfterImage = Instantiate(afterImagePrefab, transform.position, transform.rotation);
-            newAfterImage.GetComponent<AfterImageFX>().SetupAfterImage(colorlooseRate, sr.sprite);
-        }
+        GameObject newText = Instantiate(popUpTextPrefab, transform.position + positionOffset, Quaternion.identity);
+
+        newText.GetComponent<TextMeshPro>().text = _text;
     }
 
     public void MakeTransparent(bool _transparent)

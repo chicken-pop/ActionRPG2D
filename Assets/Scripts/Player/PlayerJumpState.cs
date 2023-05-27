@@ -24,6 +24,14 @@ public class PlayerJumpState : PlayerState
     {
         base.Update();
 
+        /*
+        //’ÊíUŒ‚
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            stateMachine.ChangeState(player.primaryAttack);
+        }
+        */
+
         if (rb.velocity.y < 0)
         {
             stateMachine.ChangeState(player.airState);

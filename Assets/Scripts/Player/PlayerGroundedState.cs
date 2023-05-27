@@ -31,6 +31,7 @@ public class PlayerGroundedState : PlayerState
         {
             if (player.skill.blackhole.cooldownTimer > 0)
             {
+                player.fx.CreatePopUpText("スキル使用不可");
                 return;
             }
 
