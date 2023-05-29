@@ -24,7 +24,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
 
     [Header("Knockback info")]
-    [SerializeField] protected Vector2 knokbackPower;
+    [SerializeField] protected Vector2 knockbackPower;
+    [SerializeField] protected Vector2 knockbackOffset;
     [SerializeField] protected float KnockbackDuration;
     protected bool isKnocked;
 
@@ -51,7 +52,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+
     }
 
     public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
@@ -68,29 +69,34 @@ public class Entity : MonoBehaviour
 
     public virtual void SetupKnockbackDir(Transform _damageDirection)
     {
-        if(_damageDirection.position.x > transform.position.x)
+        if (_damageDirection.position.x > transform.position.x)
         {
             knockbackDir = -1;
         }
-        else if(_damageDirection.position.x < transform.position.x)
+        else if (_damageDirection.position.x < transform.position.x)
         {
             knockbackDir = 1;
         }
     }
 
-    public void SetupKnockbackPower(Vector2 _knockbackpower) => knokbackPower = _knockbackpower;
+    public void SetupKnockbackPower(Vector2 _knockbackpower) => knockbackPower = _knockbackpower;
 
     protected virtual IEnumerator HitKnockback()
     {
         isKnocked = true;
 
-        rb.velocity = new Vector2(knokbackPower.x * knockbackDir, knokbackPower.y);
+        float xOffset = Random.Range(knockbackOffset.x, knockbackOffset.y);
+
+        if (knockbackPower.x > 0 || knockbackPower.y > 0)
+        {
+            rb.velocity = new Vector2((knockbackPower.x + xOffset)  * knockbackDir, knockbackPower.y);
+        }
 
         yield return new WaitForSeconds(KnockbackDuration);
         isKnocked = false;
 
         SetupZeroKnockbackPower();
-        rb.velocity = knokbackPower;
+        rb.velocity = knockbackPower;
     }
 
     protected virtual void SetupZeroKnockbackPower()
@@ -107,7 +113,7 @@ public class Entity : MonoBehaviour
         }
 
         rb.velocity = new Vector2(0, 0);
-    } 
+    }
 
 
     public void SetVelocity(float _xVelocity, float _yVelocity)
@@ -161,7 +167,7 @@ public class Entity : MonoBehaviour
     {
         facingDir = _direction;
 
-        if(facingDir == -1)
+        if (facingDir == -1)
         {
             facingRight = false;
         }

@@ -194,6 +194,6 @@ public class Player : Entity
 
     protected override void SetupZeroKnockbackPower()
     {
-        knokbackPower = new Vector2(0, 0);
+        knockbackPower = new Vector2(0, 0);
     }
 }

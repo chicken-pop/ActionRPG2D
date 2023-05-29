@@ -18,6 +18,7 @@ public class Parry_Skill : Skill
     [Header("パリィ++")]
     [SerializeField] private UI_SkillTreeSlot parryWithMirageUnlockButton;
     public bool parryWithMirageUnlocked { get; private set; }
+    [SerializeField] private float cloneToChance;
 
     protected override void Start()
     {
@@ -75,7 +76,7 @@ public class Parry_Skill : Skill
     //パリィ++
     public void MakeMirageOnparry(Transform _respawnTransform)
     {
-        if (parryWithMirageUnlocked)
+        if (parryWithMirageUnlocked && Random.Range(0, 100) < cloneToChance)
         {
             SkillManager.instance.clone.CreateCloneWithDelay(_respawnTransform);
         }

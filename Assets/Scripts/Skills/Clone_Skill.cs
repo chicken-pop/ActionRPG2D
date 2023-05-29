@@ -6,28 +6,29 @@ using UnityEngine.UI;
 public class Clone_Skill : Skill
 {
 
-    [Header("Clone info")]
+    [Header("clone")]
     [SerializeField] private GameObject clonePrefab;
     [SerializeField] private float attackMultiplier;
     [SerializeField] private float cloneDuration;
     [Space]
 
-    [Header("")]
+    [Header("イリュージョンアタック")]
     [SerializeField] private UI_SkillTreeSlot cloneAttackUnlockButton;
     [SerializeField] private float cloneAttackMultiplier;
     [SerializeField] private bool canAttack;
 
-    [Header("")]
+    [Header("イリュージョンアタック+")]
     [SerializeField] private UI_SkillTreeSlot aggresiveCloneUnlockButton;
     [SerializeField] private float aggresiveCloneAttackMultiplier;
     public bool canApplyOnhitEffect { get; private set; }
 
-    [Header("Clone can duplicate")]
+    [Header("イリュージョンアタック++")]
     [SerializeField] private UI_SkillTreeSlot multipleUnlockButton;
     [SerializeField] private float multicloneAttackMultiplier;
     [SerializeField] private bool canDuplicateClone;
     [SerializeField] private float chanceToDupicate;
-    [Header("Crystal instead of clone")]
+
+    [Header("クリスタルミラージュ")]
     [SerializeField] private UI_SkillTreeSlot crystalInsteadUnlockButton;
     public bool crystalInseadOfClone;
 

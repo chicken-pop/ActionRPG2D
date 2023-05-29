@@ -15160,7 +15160,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knokbackPower: {x: 5, y: 10}
+  knockbackPower: {x: 7, y: 12}
+  knockbackOffset: {x: 0.5, y: 2}
   KnockbackDuration: 0.07
   whatIsPlayer:
     serializedVersion: 2
@@ -15171,6 +15172,7 @@ MonoBehaviour:
   moveSpeed: 2
   idelTime: 2
   battleTime: 7
+  agroDistance: 2
   attackDistance: 2
   attackCooldown: 0.45
   minAttackCooldown: 0.3
@@ -15210,12 +15212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpTextPrefab: {fileID: 4589922932059855045, guid: 679325883d227e2448b48a6d326d2b78, type: 3}
-  shakeMultiplier: 0
-  shakeSwordImpact: {x: 0, y: 0, z: 0}
-  shackHighDamageImpact: {x: 0, y: 0, z: 0}
-  afterImagePrefab: {fileID: 0}
-  colorlooseRate: 0
-  afterImageCooldown: 0
   flashDuration: 0.15
   hitMat: {fileID: 2100000, guid: a5cafad52c810ae49b5772263070e40e, type: 2}
   ignitedColor:
@@ -15266,7 +15262,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 520
+    baseValue: 1219
     modifiers: 
   armor:
     baseValue: 0

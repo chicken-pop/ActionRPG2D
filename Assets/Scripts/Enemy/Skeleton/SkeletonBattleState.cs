@@ -61,6 +61,11 @@ public class SkeletonBattleState : EnemyState
             moveDir = -1;
         }
 
+        if (enemy.IsPlayerDetected() && enemy.IsPlayerDetected().distance < enemy.attackDistance - 0.2f)
+        {
+            return;
+        }
+
         enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y);
     }
 
