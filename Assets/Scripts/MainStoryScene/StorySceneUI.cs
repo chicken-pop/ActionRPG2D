@@ -38,4 +38,5 @@ public class StorySceneUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         img.sprite = usualImage;
     }
+
 }

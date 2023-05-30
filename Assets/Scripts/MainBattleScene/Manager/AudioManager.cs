@@ -1,93 +1,99 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
-    public static AudioManager instance;
-
     [SerializeField] private float seMinimumDistance;
-    [SerializeField] AudioSource[] se;
-    [SerializeField] AudioSource[] bgm;
 
-    public bool playBgm;
-    private int bgmIndex;
+    [SerializeField] AudioSource audioSourceBGM = default;
+    [SerializeField] AudioClip[] bgmClips;
+
+    [SerializeField] private AudioSource audioSourceSE = default;
+    [SerializeField] private AudioClip[] seClips;
+
+    [SerializeField] private AudioMixerGroup bgmMixer;
+    [SerializeField] private AudioMixerGroup seMixer;
+
+    public enum BGM
+    {
+        Battle,
+        Culuture
+    }
+
+    public enum SE
+    {
+        sword,
+        dash,
+        button
+    }
 
     private bool canPlaySE;
 
-    private void Awake()
+    private void Start()
     {
-        if (instance != null)
-        {
-            Destroy(instance.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
+        audioSourceBGM.outputAudioMixerGroup = bgmMixer;
+        audioSourceSE.outputAudioMixerGroup = seMixer;
 
         Invoke("AllowSE", 0.5f);
+
+        //‰¼
+        if (SceneManager.GetActiveScene().name == "MainBattleScene")
+        {
+            PlayBGM(BGM.Battle);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "MainStoryScene")
+        {
+            PlayBGM(BGM.Culuture);
+        }
+
+
     }
+
+
 
     private void Update()
     {
-        if (!playBgm)
+        if (SceneManager.GetActiveScene().name == "MainBattleScene")
         {
-            StopALlBGM();
-        }
-        else
-        {
-            if (!bgm[bgmIndex].isPlaying)
-            {
-                PlayBGM(bgmIndex);
-            }
+            PlayBGM(BGM.Battle);
+
         }
     }
 
-    public void PlaySE(int _seIndex, Transform _source)
+    public void PlayBGM(BGM bgm)
     {
-
-        /*
-        if (se[_seIndex].isPlaying)
+        if (audioSourceBGM.clip != bgmClips[(int)bgm])
         {
-            return;
+            audioSourceBGM.clip = bgmClips[(int)bgm];
+            audioSourceBGM.Play();
         }
-        */
+    }
+
+    public void StopBGM()
+    {
+        audioSourceBGM.Stop();
+    }
+
+    public void PlaySE(SE se, Transform _source)
+    {
 
         if (canPlaySE == false)
         {
             return;
         }
 
-        if (_source!=null && Vector2.Distance(PlayerManager.instance.player.transform.position, _source.position) > seMinimumDistance)
+        if (_source != null && Vector2.Distance(PlayerManager.instance.player.transform.position, _source.position) > seMinimumDistance)
         {
             return;
         }
 
-        if (_seIndex < se.Length)
-        {
-            //se[_seIndex].pitch = Random.Range(0.85f, 1.1f);
-            se[_seIndex].Play();
-        }
+        audioSourceSE.PlayOneShot(seClips[(int)se]);
     }
 
-    public void StopSE(int _index) => se[_index].Stop();
-
-    public void PlayBGM(int _bgmIndex)
-    {
-        bgmIndex = _bgmIndex;
-
-        StopALlBGM();
-        bgm[bgmIndex].Play();
-    }
-
-    public void StopALlBGM()
-    {
-        for (int i = 0; i < bgm.Length; i++)
-        {
-            bgm[i].Stop();
-        }
-    }
+    public void StopSE(SE se) => audioSourceSE.Stop();
 
     private void AllowSE() => canPlaySE = true;
 }

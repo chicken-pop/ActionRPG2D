@@ -12,6 +12,11 @@ public class UI_VolumeSlider : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private float multiplier;
 
+    private void Awake()
+    {
+        slider.onValueChanged.AddListener((value) => { SliderValue(value); });
+    }
+
     public void SliderValue(float _value) => audioMixer.SetFloat(parameter, Mathf.Log10(_value) * multiplier);
 
     public void LoadSlider(float _value)

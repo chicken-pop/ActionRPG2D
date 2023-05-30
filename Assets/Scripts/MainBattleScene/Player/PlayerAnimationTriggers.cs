@@ -13,7 +13,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
-        AudioManager.instance.PlaySE(2, null);
+        AudioManager.Instance.PlaySE(AudioManager.SE.sword, null);
 
         Collider2D[] collisions = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
 

@@ -12,14 +12,14 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.Enter();
 
-        AudioManager.instance.PlaySE(14, null);
+        AudioManager.Instance.PlaySE(AudioManager.SE.dash, null);
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        AudioManager.instance.StopSE(14);
+        AudioManager.Instance.StopSE(AudioManager.SE.dash);
     }
 
     public override void Update()

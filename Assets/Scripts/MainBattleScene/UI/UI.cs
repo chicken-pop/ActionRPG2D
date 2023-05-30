@@ -21,6 +21,8 @@ public class UI : MonoBehaviour , ISaveManager
     {
         //スキルツリーにイベントを先に渡すため
         SwitchTo(skillTreeUI);
+        //UI_VolueSliderのAwakeを呼ぶため
+        SwitchTo(optionsUI);
     }
 
     private void Start()
@@ -65,7 +67,7 @@ public class UI : MonoBehaviour , ISaveManager
         //表示する
         if (_menu != null)
         {
-            AudioManager.instance.PlaySE(7, null);
+            AudioManager.Instance.PlaySE(AudioManager.SE.button, null);
             _menu.SetActive(true);
         }
 
@@ -79,7 +81,6 @@ public class UI : MonoBehaviour , ISaveManager
             {
                 //UI画面時の時間を止める
                 GameManager.instance.PauseGame(true);
-                AudioManager.instance.StopSE(14);
             }
         }
     }
