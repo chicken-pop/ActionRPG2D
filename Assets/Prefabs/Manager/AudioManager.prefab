@@ -51,6 +51,7 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 24452ade428f4c0448a6b4abacbe78c4, type: 3}
   - {fileID: 8300000, guid: 0e63c8fb4e9381645ad1815455b4ff3b, type: 3}
+  - {fileID: 8300000, guid: 949ce27f95ecdf746971e4a3ded81c2c, type: 3}
   audioSourceSE: {fileID: 2146726424}
   seClips:
   - {fileID: 8300000, guid: 2e96f80570da1214bbedf344e4dff00d, type: 3}

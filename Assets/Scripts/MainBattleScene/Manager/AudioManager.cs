@@ -18,7 +18,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     public enum BGM
     {
         Battle,
-        Culuture
+        Culuture,
+        Assistant,
+        Memories
     }
 
     public enum SE
@@ -43,13 +45,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             PlayBGM(BGM.Battle);
 
         }
-
-        if (SceneManager.GetActiveScene().name == "MainStoryScene")
-        {
-            PlayBGM(BGM.Culuture);
-        }
-
-
     }
 
 

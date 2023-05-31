@@ -40,6 +40,11 @@ public class StoryManager : MonoBehaviour
 
         StartCoroutine(TypeSentence(_storyIndex, _textIndex));
 
+        if (_textIndex == 0)
+        {
+            AudioManager.Instance.PlayBGM(storydatas[_storyIndex].bgm);
+        }
+
     }
 
     private void StoryProgression(int _storyIndex)
@@ -50,7 +55,13 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            //SetStoryElement() new story
+            textIndex = 0;
+
+            if (_storyIndex == 0)
+            {
+                storyIndex = 1;
+                SetStoryElement(storyIndex, textIndex);
+            }
         }
     }
 

@@ -12,7 +12,8 @@ public class UI_Menu : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        button.GetComponent<Button>().onClick.AddListener(SetMenu);
+        button.onClick.AddListener(SetMenu);
+        menu.SetActive(false);
     }
 
     private void SetMenu()
