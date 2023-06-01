@@ -11,6 +11,7 @@ public class StoryManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI date;
 
     [SerializeField] private StoryData[] storydatas;
 
@@ -23,6 +24,7 @@ public class StoryManager : MonoBehaviour
     {
         storyText.text = "";
         nameText.text = "";
+        date.text = "";
 
         SetStoryElement(storyIndex, textIndex);
 
@@ -37,6 +39,8 @@ public class StoryManager : MonoBehaviour
 
         image.sprite = storyElement.Sprite;
         nameText.text = storyElement.CharacterName;
+        date.text = storydatas[_storyIndex].date;
+
 
         StartCoroutine(TypeSentence(_storyIndex, _textIndex));
 
@@ -44,6 +48,7 @@ public class StoryManager : MonoBehaviour
         {
             AudioManager.Instance.PlayBGM(storydatas[_storyIndex].bgm);
         }
+
 
     }
 

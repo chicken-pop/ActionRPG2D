@@ -8,6 +8,7 @@ public class StoryData : ScriptableObject
     public List<Story> stories = new List<Story>();
 
     public AudioManager.BGM bgm;
+    public string date;
 }
 
 [System.Serializable]
