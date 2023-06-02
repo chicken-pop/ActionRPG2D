@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerDeadState : PlayerState
@@ -16,6 +17,10 @@ public class PlayerDeadState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        GameObject.Find("Canvas").GetComponent<UI>().SwitchOnEndScreen();
+
+
     }
 
     public override void Exit()
@@ -29,4 +34,5 @@ public class PlayerDeadState : PlayerState
 
         player.SetZeroVelocity();
     }
+
 }

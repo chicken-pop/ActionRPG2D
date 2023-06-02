@@ -23,7 +23,7 @@ public class EventTrigger : MonoBehaviour
             {
                 eventData.SetupEvent(0);
                 AudioManager.Instance.StopSE(AudioManager.SE.dash); //seè¡Ç∑
-                GameManager.instance.PauseGame(true);
+                BattleSceneGameManager.instance.PauseGame(true);
             }
 
             canEvent = false;

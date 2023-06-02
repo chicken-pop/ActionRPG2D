@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UI : MonoBehaviour , ISaveManager
+public class UI : MonoBehaviour, ISaveManager
 {
+    [SerializeField] private UI_FadeScreen fadeScreen;
+    [SerializeField] private GameObject restartButton; 
+    [Space]
+
     [SerializeField] private GameObject characterUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
+    [SerializeField] private GameObject eventUI;
 
     public UI_Item_Tooltip itemTooltip;
     public UI_StatToolTip statToolTip;
@@ -23,7 +30,7 @@ public class UI : MonoBehaviour , ISaveManager
         SwitchTo(optionsUI);
         //スキルツリーにイベントを先に渡すため
         SwitchTo(skillTreeUI);
- 
+
     }
 
     private void Start()
@@ -60,10 +67,16 @@ public class UI : MonoBehaviour , ISaveManager
 
     public void SwitchTo(GameObject _menu)
     {
+
         //Canvas内を全て非表示にして
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null;
+
+            if (fadeScreen == false)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
 
         //表示する
@@ -73,16 +86,16 @@ public class UI : MonoBehaviour , ISaveManager
             _menu.SetActive(true);
         }
 
-        if(GameManager.instance != null)
+        if (BattleSceneGameManager.instance != null)
         {
-            if(_menu == inGameUI)
+            if (_menu == inGameUI)
             {
-                GameManager.instance.PauseGame(false);
+                BattleSceneGameManager.instance.PauseGame(false);
             }
             else
             {
                 //UI画面時の時間を止める
-                GameManager.instance.PauseGame(true);
+                BattleSceneGameManager.instance.PauseGame(true);
             }
         }
     }
@@ -90,7 +103,7 @@ public class UI : MonoBehaviour , ISaveManager
     public void SwitchWithKeyTo(GameObject _menu)
     {
         //すでに表示されていたら非表示にする
-        if(_menu != null && _menu.activeSelf)
+        if (_menu != null && _menu.activeSelf)
         {
             _menu.SetActive(false);
             CheckForInGameUI();
@@ -119,7 +132,7 @@ public class UI : MonoBehaviour , ISaveManager
         {
             foreach (UI_VolumeSlider item in volumeSettings)
             {
-                if(item.parameter == pair.Key)
+                if (item.parameter == pair.Key)
                 {
                     item.LoadSlider(pair.Value);
                 }
@@ -137,4 +150,24 @@ public class UI : MonoBehaviour , ISaveManager
             _data.volumeSettings.Add(item.parameter, item.slider.value);
         }
     }
+
+    public void SwitchOnEndScreen()
+    {
+        fadeScreen.FadeOut();
+        StartCoroutine(EndScreenCoroutine());
+    }
+
+    IEnumerator EndScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        eventUI.SetActive(true);
+        eventUI.GetComponentInChildren<TextMeshProUGUI>().text = "もっとデバックしなきゃ…";
+
+        yield return new WaitForSeconds(1);
+        restartButton.SetActive(true);
+        //restartButton.GetComponent<Button>().onClick.AddListener(() =>BattleSceneGameManager.instance.RestartScene());
+        
+    }
+
+    public void RestartGameButton() => BattleSceneGameManager.instance.RestartScene();
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class BattleSceneGameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static BattleSceneGameManager instance;
 
     private void Awake()
     {
@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void RestartScene()
+    {
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
     }
 
     public void PauseGame(bool _pause)

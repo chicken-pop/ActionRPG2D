@@ -37,7 +37,7 @@ public class Event : MonoBehaviour
         else
         {
             eventUI.SetActive(false);
-            GameManager.instance.PauseGame(false);
+            BattleSceneGameManager.instance.PauseGame(false);
         }
 
     }
