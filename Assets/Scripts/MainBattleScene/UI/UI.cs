@@ -19,14 +19,16 @@ public class UI : MonoBehaviour , ISaveManager
 
     private void Awake()
     {
-        //スキルツリーにイベントを先に渡すため
-        SwitchTo(skillTreeUI);
         //UI_VolueSliderのAwakeを呼ぶため
         SwitchTo(optionsUI);
+        //スキルツリーにイベントを先に渡すため
+        SwitchTo(skillTreeUI);
+ 
     }
 
     private void Start()
     {
+
         SwitchTo(inGameUI);
 
         itemTooltip.gameObject.SetActive(false);

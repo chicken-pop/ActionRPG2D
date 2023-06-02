@@ -39,6 +39,7 @@ public class SaveManager : MonoBehaviour
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         saveManagers = FindAllSaveManagers();
 
+        //Invoke("LoadGame", 0.01f);
         LoadGame();
     }
 

@@ -56,7 +56,7 @@ public class SlimeBattleState : EnemyState
         {
             moveDir = 1;
         }
-        else if (player.transform.position.x < enemy.transform.position.x)
+        else if (player.position.x < enemy.transform.position.x)
         {
             moveDir = -1;
         }

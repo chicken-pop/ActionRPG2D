@@ -2806,7 +2806,8 @@ MonoBehaviour:
   nameText: {fileID: 522975526}
   date: {fileID: 222360103}
   storydatas:
-  - {fileID: 11400000, guid: 89dfba9ec0fcae44aaaf27e3a27871e4, type: 2}
+  - {fileID: 11400000, guid: 30115ccbdaf114b4b896f572b726138f, type: 2}
+  - {fileID: 11400000, guid: b095955066bfb8d40849a98e4477c91c, type: 2}
 --- !u!4 &826984934
 Transform:
   m_ObjectHideFlags: 0
