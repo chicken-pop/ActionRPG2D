@@ -9,6 +9,8 @@ public class StoryData : ScriptableObject
 
     public AudioManager.BGM bgm;
     public string date;
+
+    public bool fadeOut;
 }
 
 [System.Serializable]

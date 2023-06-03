@@ -15,6 +15,8 @@ public class StoryManager : MonoBehaviour
 
     [SerializeField] private StoryData[] storydatas;
 
+    [SerializeField] private UI_FadeScreen fadeOut;
+
     private int storyIndex;
     private int textIndex;
 
@@ -60,6 +62,13 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
+            if (storydatas[_storyIndex].fadeOut == true)
+            {
+                fadeOut.FadeOut();
+                StartCoroutine(BattleSceneChange()); //フラグ管理して、メソッド化
+            }
+
+            /*演出確認のため、一旦消す
             textIndex = 0;
 
             if (_storyIndex == 0)
@@ -67,6 +76,7 @@ public class StoryManager : MonoBehaviour
                 storyIndex = 1;
                 SetStoryElement(storyIndex, textIndex);
             }
+            */
         }
     }
 
@@ -90,5 +100,11 @@ public class StoryManager : MonoBehaviour
         }
 
         isTextEnd = true;
+    }
+
+    private IEnumerator BattleSceneChange()
+    {
+        yield return new WaitForSeconds(1);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
     }
 }

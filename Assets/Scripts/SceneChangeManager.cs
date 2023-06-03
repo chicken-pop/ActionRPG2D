@@ -12,4 +12,5 @@ public class SceneChangeManager : SingletonMonoBehaviour<SceneChangeManager>
     {
         SceneManager.LoadScene(_sceneName);
     }
+
 }
