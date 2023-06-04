@@ -30,6 +30,14 @@ public class SkeletonBattleState : EnemyState
     {
         base.Update();
 
+        //Player‚ğŒŸ’m‚µ‚½ÛA—‚¿‚È‚¢‚æ‚¤‚ÉBattleState‚ğ‚Ê‚¯‚é
+        if (enemy.IsPlayerDetected() && !enemy.IsGroundDetected())
+        {
+            enemy.Flip();
+            stateMachine.ChangeState(enemy.idelState);
+            return;
+        }
+
         if (enemy.IsPlayerDetected())
         {
             stateTimer = enemy.battleTime;
