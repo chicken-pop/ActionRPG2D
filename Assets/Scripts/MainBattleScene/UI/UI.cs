@@ -162,7 +162,7 @@ public class UI : MonoBehaviour, ISaveManager
     {
         yield return new WaitForSeconds(1);
         eventUI.SetActive(true);
-        eventUI.GetComponentInChildren<TextMeshProUGUI>().text = "もっとデバックしなきゃ…";
+        eventUI.GetComponentInChildren<TextMeshProUGUI>().text = "バグ多すぎ…";
 
         yield return new WaitForSeconds(1);
         restartButton.SetActive(true);

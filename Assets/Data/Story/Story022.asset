@@ -158,9 +158,6 @@ MonoBehaviour:
     StoryText: "\u304A\u30FC\u3044\u3044\u304B\u3082\u3001\u305D\u3063\u3061\u306E\u65B9\u304C\u3084\u308B\u6C17\u51FA\u308B\u3002"
     CharacterName: "\u6C5F\u53E3"
   - Sprite: {fileID: 21300000, guid: 1d765fc6a651d82499e44444b00a8b5a, type: 3}
-    StoryText: "\u306A\u3089\u3055\u3001\u30A4\u30F3\u30C7\u30A3\u30FC\u30B2\u30FC\u30E0(\u500B\u4EBA\u958B\u767A)\u306E\u30A4\u30D9\u30F3\u30C8\u3068\u304B\u306F\u3069\u3046\u304B\u306A??"
-    CharacterName: "\u4F50\u5009"
-  - Sprite: {fileID: 21300000, guid: 1d765fc6a651d82499e44444b00a8b5a, type: 3}
     StoryText: "\u5F7C\u5973\u306F\u643A\u5E2F\u3092\u53D6\u308A\u51FA\u3057\u8ABF\u3079\u3060\u3059\u3002"
     CharacterName: 
   - Sprite: {fileID: 21300000, guid: 1d765fc6a651d82499e44444b00a8b5a, type: 3}
@@ -209,7 +206,7 @@ MonoBehaviour:
     StoryText: "\u3042\u3001\u3042\u3068\u3001\u305F\u307E\u306B\u5DEE\u3057\u5165\u308C\u3067\u304A\u83D3\u5B50\u4F5C\u3063\u3066\u3042\u3052\u308B\u304B\u3089\u2026"
     CharacterName: "\u4F50\u5009"
   - Sprite: {fileID: 21300000, guid: cdbbb12abf7af6a4ba24c11f95ea725e, type: 3}
-    StoryText: "\u306A\u3001\u306A\u306B\u3001\u624B\u4F5C\u308A\u304A\u83D3\u5B50\u304C\u3082\u3089\u3048\u308B\u3060!?"
+    StoryText: "\u306A\u3001\u306A\u306B\u3001\u624B\u4F5C\u308A\u304A\u83D3\u5B50\u304C\u3082\u3089\u3048\u308B\u3060\u3068!?"
     CharacterName: 
   - Sprite: {fileID: 21300000, guid: 57f3e95c1ee194b43b1238f56b683ad4, type: 3}
     StoryText: "\u4ECA\u3061\u3087\u3063\u3068\u3088\u308D\u3053\u3093\u3060\u3067\u3057\u3087(\u7B11)"
@@ -240,3 +237,4 @@ MonoBehaviour:
     CharacterName: 
   bgm: 2
   date: "8\u67082\u65E5"
+  fadeOut: 0

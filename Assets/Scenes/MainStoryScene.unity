@@ -2917,7 +2917,7 @@ MonoBehaviour:
   nameText: {fileID: 522975526}
   date: {fileID: 222360103}
   storydatas:
-  - {fileID: 11400000, guid: 813ba0eefceddf743a9f5370154ac1c7, type: 2}
+  - {fileID: 11400000, guid: 70e1a07741f50564fa1b8b59e2121eee, type: 2}
   - {fileID: 11400000, guid: b095955066bfb8d40849a98e4477c91c, type: 2}
   fadeOut: {fileID: 8940016462782089665}
 --- !u!4 &826984934

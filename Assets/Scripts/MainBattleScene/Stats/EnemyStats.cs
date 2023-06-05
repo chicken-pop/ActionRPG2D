@@ -66,6 +66,7 @@ public class EnemyStats : CharacterStats
         enemy.Die();
         myDropSystem.GenerateDrop();
 
-        Destroy(gameObject, 5f);
+        Destroy(GetComponentInChildren<UI_HealthBar>().gameObject, 0.5f);
+        Destroy(gameObject, 8f);
     }
 }

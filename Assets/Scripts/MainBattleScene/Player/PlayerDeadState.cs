@@ -18,7 +18,7 @@ public class PlayerDeadState : PlayerState
     {
         base.Enter();
 
-        GameObject.Find("Canvas").GetComponent<UI>().SwitchOnEndScreen();
+        GameObject.Find("BattleSceneCanvas").GetComponent<UI>().SwitchOnEndScreen();
 
 
     }

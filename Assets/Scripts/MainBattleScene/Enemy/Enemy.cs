@@ -23,8 +23,8 @@ public class Enemy : Entity
     private float defultMoveSpeed;
 
     [Header("Attack info")]
-    public float agroDistance = 2;
-    public float attackDistance = 2;
+    public float agroDistance = 2; //BattleState‚É“ü‚é‹——£
+    public float attackDistance = 2; //AttackState‚É“ü‚é‹——£iUŒ‚‚·‚é‚©‚Ç‚¤‚©j
     public float attackCooldown;
     public float minAttackCooldown = 1;
     public float maxAttackCooldown = 2;
@@ -140,4 +140,5 @@ public class Enemy : Entity
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + attackDistance * facingDir, transform.position.y));
     }
+
 }

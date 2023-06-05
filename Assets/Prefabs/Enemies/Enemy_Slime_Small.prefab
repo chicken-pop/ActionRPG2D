@@ -442,9 +442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57be574b32f52f41aa890f4d022888f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleItemDrop: 50
+  possibleItemDrop: 80
   possibleDrop:
   - {fileID: 11400000, guid: 5dea9e8d7c6a3a94b953d4f351822317, type: 2}
+  - {fileID: 11400000, guid: f18bdd06367189c4b87120e2f308c426, type: 2}
   dropPrefab: {fileID: 8868752055949954429, guid: 5bfb70fd1201f38489cec9a5c328a334, type: 3}
 --- !u!114 &7287717770733827729
 MonoBehaviour:
@@ -467,7 +468,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knockbackPower: {x: 10, y: 12}
+  knockbackPower: {x: 5, y: 8}
   knockbackOffset: {x: 0.5, y: 2}
   KnockbackDuration: 0.07
   whatIsPlayer:
