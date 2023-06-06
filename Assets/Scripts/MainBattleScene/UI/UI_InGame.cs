@@ -14,8 +14,12 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Image blackholeImage;
     [SerializeField] private Image flaskImage;
 
-    [SerializeField] private TextMeshProUGUI currentSkillPoint;
     private SkillManager skills;
+
+    [Header("Skillpoint info")]
+    [SerializeField] private TextMeshProUGUI currentSkillPoint;
+    [SerializeField] private float skillPointAmount;
+    [SerializeField] private float increaseRate = 100;
 
     private void Start()
     {
@@ -25,11 +29,15 @@ public class UI_InGame : MonoBehaviour
         }
 
         skills = SkillManager.instance;
+
+        skillPointAmount = PlayerManager.instance.GetSkillPoint();
     }
 
     private void Update()
     {
-        currentSkillPoint.text = PlayerManager.instance.GetSkillPoint().ToString("#,#");
+        UpdateSkillPointUI();
+
+        currentSkillPoint.text = ((int)skillPointAmount).ToString();
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && skills.dash.dashUnlocked)
         {
@@ -68,6 +76,18 @@ public class UI_InGame : MonoBehaviour
         CheckCooldownOf(swordImage, skills.sword.cooldown);
         CheckCooldownOf(blackholeImage, skills.blackhole.cooldown);
         CheckCooldownOf(flaskImage, Inventory.instance.flaskCooldown);
+    }
+
+    private void UpdateSkillPointUI()
+    {
+        if (skillPointAmount < PlayerManager.instance.GetSkillPoint())
+        {
+            skillPointAmount += Time.deltaTime * increaseRate;
+        }
+        else
+        {
+            skillPointAmount = PlayerManager.instance.GetSkillPoint();
+        }
     }
 
     private void UpdateHealthUI()

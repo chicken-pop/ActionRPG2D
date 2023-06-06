@@ -6,6 +6,7 @@ public class EnemyStats : CharacterStats
 {
     private Enemy enemy;
     private ItemDrop myDropSystem;
+    public Stat skillpointDropAmount;
 
     [Header("Level details")]
     [SerializeField] private int level = 1;
@@ -15,6 +16,7 @@ public class EnemyStats : CharacterStats
 
     protected override void Start()
     {
+        skillpointDropAmount.SetDefaultValue(100);
         ApplyLevelModifiers();
 
         base.Start();
@@ -42,6 +44,8 @@ public class EnemyStats : CharacterStats
         Modify(fireDamage);
         Modify(iceDamage);
         Modify(lightingDamage);
+
+        Modify(skillpointDropAmount);
     }
 
     private void Modify(Stat _stat)
@@ -65,6 +69,7 @@ public class EnemyStats : CharacterStats
 
         enemy.Die();
         myDropSystem.GenerateDrop();
+        PlayerManager.instance.SkillPoint += skillpointDropAmount.GetValue();
 
         Destroy(GetComponentInChildren<UI_HealthBar>().gameObject, 0.5f);
         Destroy(gameObject, 8f);

@@ -24230,7 +24230,7 @@ MonoBehaviour:
     baseValue: 15
     modifiers: 
   maxHealth:
-    baseValue: 388
+    baseValue: 100
     modifiers: 
   armor:
     baseValue: 15
@@ -58555,6 +58555,8 @@ MonoBehaviour:
   blackholeImage: {fileID: 1905118931}
   flaskImage: {fileID: 1235280084}
   currentSkillPoint: {fileID: 1751300813}
+  skillPointAmount: 0
+  increaseRate: 100
 --- !u!114 &981524678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92746,17 +92748,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6395525440468216229, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
+      propertyPath: damage.baseValue
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395525440468216229, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
+      propertyPath: maxHealth.baseValue
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6395525440468216230, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6395525440468216230, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.23
+      value: 5.55
       objectReference: {fileID: 0}
     - target: {fileID: 6395525440468216230, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2
+      value: -2.34
       objectReference: {fileID: 0}
     - target: {fileID: 6395525440468216230, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92793,6 +92803,10 @@ PrefabInstance:
     - target: {fileID: 6395525440468216233, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_Name
       value: Enemy_Yeti
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395525440468216233, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6395525441130219950, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_AnchorMax.x
@@ -93350,13 +93364,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 835505299}
     m_Modifications:
+    - target: {fileID: 8940016462076402501, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8940016462076402502, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
       propertyPath: m_Name
       value: DarkScreen
       objectReference: {fileID: 0}
     - target: {fileID: 8940016462076402502, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8940016462076402503, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
       propertyPath: m_Pivot.x
