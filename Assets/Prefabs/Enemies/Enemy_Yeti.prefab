@@ -10029,7 +10029,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 50
+    baseValue: 107
     modifiers: 
   critChance:
     baseValue: 0
@@ -10038,7 +10038,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 2142
+    baseValue: 200
     modifiers: 
   armor:
     baseValue: 0
@@ -10064,6 +10064,9 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 3245053019327911435, guid: caaef098bfe30f744940d2f57a1dea06, type: 3}
   currentHealth: 0
+  skillpointDropAmount:
+    baseValue: 0
+    modifiers: 
   level: 1
   percentageModifier: 0.2
 --- !u!114 &6395525440468216234
@@ -15239,6 +15242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ac304aeccef08409291bb68e586834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackPower: {x: 10, y: 10}
 --- !u!1 &6395525441130219951
 GameObject:
   m_ObjectHideFlags: 0

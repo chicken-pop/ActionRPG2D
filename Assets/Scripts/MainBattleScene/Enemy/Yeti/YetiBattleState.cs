@@ -31,6 +31,8 @@ public class YetiBattleState : EnemyState
     {
         base.Update();
 
+        enemy.anim.SetBool("Move", true);
+
         //Player‚ğŒŸ’m‚µ‚½ÛA—‚¿‚È‚¢‚æ‚¤‚ÉBattleState‚ğ‚Ê‚¯‚é
         if (enemy.IsPlayerDetected() && !enemy.IsGroundDetected())
         {
@@ -46,6 +48,7 @@ public class YetiBattleState : EnemyState
             if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
             {
                 //Player‚Æ‚Ì‹——£‚ª‹ß‚¢‚Æ‚«AIdle‚É
+                enemy.anim.SetBool("Move", false);
                 enemy.anim.SetBool("Idle", true);
 
                 if (CanAttack())
