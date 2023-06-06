@@ -25,7 +25,7 @@ public class Enemy_Rat : Enemy
         battleState = new RatBattleState(this, stateMachine, "Move", this);
         attackState = new RatAttackState(this, stateMachine, "Attack", this);
         stunnedState = new RatStunnedState(this, stateMachine, "Stunned", this);
-        deadState = new RatDeadState(this, stateMachine, "Idel", this);
+        deadState = new RatDeadState(this, stateMachine, "Dead", this);
     }
 
     protected override void Start()
@@ -57,6 +57,7 @@ public class Enemy_Rat : Enemy
         base.Die();
 
         stateMachine.ChangeState(deadState);
+        Destroy(counterImage, 0.5f);
 
     }
 }

@@ -634,6 +634,9 @@ MonoBehaviour:
   ailmentsDuration: 4
   shockStrikePrefab: {fileID: 3245053019327911435, guid: caaef098bfe30f744940d2f57a1dea06, type: 3}
   currentHealth: 0
+  skillpointDropAmount:
+    baseValue: 0
+    modifiers: 
   level: 1
   percentageModifier: 0.2
 --- !u!114 &2516704465994075582
@@ -723,8 +726,8 @@ MonoBehaviour:
   slimeType: 1
   slimesToCreate: 4
   slimePrefab: {fileID: 7287717770733827734, guid: 8221ccc3f7566ea408778bb4ab808208, type: 3}
-  minCreationVelocity: {x: 8, y: 10}
-  maxCreationVelocity: {x: 12, y: 14}
+  minCreationVelocity: {x: 10, y: 10}
+  maxCreationVelocity: {x: 25, y: 14}
 --- !u!1 &2516704466358410628
 GameObject:
   m_ObjectHideFlags: 0

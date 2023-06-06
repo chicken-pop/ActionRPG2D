@@ -24,7 +24,7 @@ public class Enemy_Skeleton : Enemy
         battleState = new SkeletonBattleState(this, stateMachine, "Move", this);
         attackState = new SkeletonAttackState(this, stateMachine, "Attack", this);
         stunnedState = new SkeletonStunnedState(this, stateMachine, "Stunned", this);
-        deadState = new SkeletonDeadState(this, stateMachine, "Idel", this);
+        deadState = new SkeletonDeadState(this, stateMachine, "Dead", this);
     }
 
     protected override void Start()
@@ -56,6 +56,7 @@ public class Enemy_Skeleton : Enemy
         base.Die();
 
         stateMachine.ChangeState(deadState);
+        Destroy(counterImage, 0.5f);
 
     }
 }

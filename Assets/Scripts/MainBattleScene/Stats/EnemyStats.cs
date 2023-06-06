@@ -16,7 +16,7 @@ public class EnemyStats : CharacterStats
 
     protected override void Start()
     {
-        skillpointDropAmount.SetDefaultValue(100);
+        //skillpointDropAmount.SetDefaultValue(100);
         ApplyLevelModifiers();
 
         base.Start();
@@ -70,6 +70,8 @@ public class EnemyStats : CharacterStats
         enemy.Die();
         myDropSystem.GenerateDrop();
         PlayerManager.instance.SkillPoint += skillpointDropAmount.GetValue();
+
+        isInvincible = true;
 
         Destroy(GetComponentInChildren<UI_HealthBar>().gameObject, 0.5f);
         Destroy(gameObject, 8f);

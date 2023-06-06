@@ -67,7 +67,7 @@ public class CharacterStats : MonoBehaviour
     public System.Action onHealthChanged;@//UpdateHealthUI()‚É‚æ‚Á‚ÄHP‚ÌUI‚ğXV‚·‚é
     public bool isDead { get; private set; }
 
-    public bool isInvincible { get; private set; }
+    protected bool isInvincible;
     private bool isVulnerable;
 
     protected virtual void Start()

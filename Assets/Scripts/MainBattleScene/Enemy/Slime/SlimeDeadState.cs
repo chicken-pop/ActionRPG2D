@@ -15,20 +15,26 @@ public class SlimeDeadState : EnemyState
     {
         base.Enter();
 
+        /*
         enemy.anim.SetBool(enemy.lastAnimBoolName, true);
         enemy.anim.speed = 0;
         enemy.cd.enabled = false;
 
         stateTimer = 0.1f;
+        */
     }
 
     public override void Update()
     {
         base.Update();
 
+        /*
         if (stateTimer > 0)
         {
             rb.velocity = new Vector2(0, 10);
         }
+        */
+
+        enemy.SetZeroVelocity();
     }
 }

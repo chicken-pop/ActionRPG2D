@@ -37,7 +37,7 @@ public class Enemy_Archer : Enemy
         battleState = new ArcherBattleState(this, stateMachine, "Idel", this);
         attackState = new ArcherAttackState(this, stateMachine, "Attack", this);
         stunnedState = new ArcherStunnedState(this, stateMachine, "Stunned", this);
-        deadState = new ArcherDeadState(this, stateMachine, "Idel", this);
+        deadState = new ArcherDeadState(this, stateMachine, "Dead", this);
         jumpState = new ArcherJumpState(this, stateMachine, "Jump", this);
     }
 
@@ -70,6 +70,7 @@ public class Enemy_Archer : Enemy
         base.Die();
 
         stateMachine.ChangeState(deadState);
+        Destroy(counterImage, 0.5f);
     }
 
     public override void AnimationSpecialAttackTrigger()

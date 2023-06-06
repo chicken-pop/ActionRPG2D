@@ -39,7 +39,7 @@ public class Enemy_Slime : Enemy
         battleState = new SlimeBattleState(this, stateMachine, "Move", this);
         attackState = new SlimeAttackState(this, stateMachine, "Attack", this);
         stunnedState = new SlimeStunnedState(this, stateMachine, "Stunned", this);
-        deadState = new SlimeDeadState(this, stateMachine, "Idel", this);
+        deadState = new SlimeDeadState(this, stateMachine, "Dead", this);
 
     }
 
@@ -71,12 +71,12 @@ public class Enemy_Slime : Enemy
         base.Die();
 
         stateMachine.ChangeState(deadState);
+        Destroy(counterImage, 0.5f);
 
-        if(slimeType == SlimeType.small)
+        if (slimeType == SlimeType.small)
         {
             return;
         }
-
 
         CreateSlimes(slimesToCreate, slimePrefab);
     }
