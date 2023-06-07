@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(ItemDrop))]
 public class Enemy : Entity
 {
-    [SerializeField]protected LayerMask whatIsPlayer;
+    [SerializeField] protected LayerMask whatIsPlayer;
 
     [Header("Stunned info")]
     public float stunDuration = 1;
@@ -103,7 +103,10 @@ public class Enemy : Entity
     public virtual void OpenCounterAttackWindow()
     {
         canBeStunned = true;
-        counterImage.SetActive(true);
+        if (counterImage.gameObject != null)
+        {
+            counterImage.SetActive(true);
+        }
     }
 
     public virtual void CloseCounterAttackWindow()

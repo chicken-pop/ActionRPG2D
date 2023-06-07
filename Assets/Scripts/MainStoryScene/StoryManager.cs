@@ -13,12 +13,15 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI date;
 
-    [SerializeField] private StoryData[] storydatas;
+    public StoryData[] storydatas;
+    public OptionData optionData;
+
+    [SerializeField] private GameObject[] optionButton;
 
     [SerializeField] private UI_FadeScreen fadeOut;
 
-    private int storyIndex;
-    private int textIndex;
+    public int storyIndex;
+    public int textIndex;
 
     private bool isTextEnd;
 
@@ -35,8 +38,9 @@ public class StoryManager : MonoBehaviour
 
 
 
-    private void SetStoryElement(int _storyIndex, int _textIndex)
+    public void SetStoryElement(int _storyIndex, int _textIndex)
     {
+        storyText.text = "";
         var storyElement = storydatas[_storyIndex].stories[_textIndex];
 
         image.sprite = storyElement.Sprite;
@@ -62,10 +66,20 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
+            storyText.text = storydatas[_storyIndex].stories[textIndex - 1].StoryText;
+            textIndex = 0;
+
+            //シーンチェンジ
             if (storydatas[_storyIndex].fadeOut == true)
             {
                 fadeOut.FadeOut();
                 StartCoroutine(BattleSceneChange()); //フラグ管理して、メソッド化
+            }
+
+            //選択肢
+            if(storydatas[_storyIndex].questionIndex >= 0)
+            {
+                SetOption(storydatas[_storyIndex].questionIndex);
             }
 
             /*演出確認のため、一旦消す
@@ -106,5 +120,14 @@ public class StoryManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
+    }
+
+    private void SetOption(int _optionNumber)
+    {
+        for (int i = 0; i < optionButton.Length; i++)
+        {
+            optionButton[i].SetActive(true);
+            optionButton[i].GetComponentInChildren<TextMeshProUGUI>().text = optionData.options[_optionNumber].OptionText[i];
+        }
     }
 }

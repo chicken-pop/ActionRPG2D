@@ -9,6 +9,7 @@ public class StoryData : ScriptableObject
 
     public AudioManager.BGM bgm;
     public string date;
+    public int questionIndex = -1;
 
     public bool fadeOut;
 }

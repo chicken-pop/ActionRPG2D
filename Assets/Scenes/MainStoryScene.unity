@@ -1647,7 +1647,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 527477957}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2476,7 +2476,6 @@ RectTransform:
   - {fileID: 1029404108}
   - {fileID: 95073591}
   - {fileID: 1509013135}
-  - {fileID: 1468662204}
   - {fileID: 8940016462782089669}
   - {fileID: 349112576}
   m_Father: {fileID: 0}
@@ -2917,9 +2916,18 @@ MonoBehaviour:
   nameText: {fileID: 522975526}
   date: {fileID: 222360103}
   storydatas:
+  - {fileID: 11400000, guid: 0ebe3db02fe970043bb0365e64dbb7a7, type: 2}
   - {fileID: 11400000, guid: 70e1a07741f50564fa1b8b59e2121eee, type: 2}
+  - {fileID: 11400000, guid: 30115ccbdaf114b4b896f572b726138f, type: 2}
   - {fileID: 11400000, guid: b095955066bfb8d40849a98e4477c91c, type: 2}
+  optionData: {fileID: 11400000, guid: af0f208f5934956418cd682ae41e098d, type: 2}
+  optionButton:
+  - {fileID: 1075857593}
+  - {fileID: 1636543266}
+  - {fileID: 1812281877}
   fadeOut: {fileID: 8940016462782089665}
+  storyIndex: 0
+  textIndex: 0
 --- !u!4 &826984934
 Transform:
   m_ObjectHideFlags: 0
@@ -3257,13 +3265,14 @@ GameObject:
   - component: {fileID: 1075857597}
   - component: {fileID: 1075857596}
   - component: {fileID: 1075857595}
+  - component: {fileID: 1075857599}
   m_Layer: 5
   m_Name: Button0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1075857594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3381,6 +3390,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075857593}
   m_CullTransparentMesh: 1
+--- !u!114 &1075857599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075857593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c329ab20d40dc3f418966b273feb4bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyManager: {fileID: 826984933}
+  buttonIndex: 0
+  optionButton: {fileID: 1075857596}
+  buttons:
+  - {fileID: 1075857593}
+  - {fileID: 1636543266}
+  - {fileID: 1812281877}
 --- !u!1 &1092235306
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,6 +3888,7 @@ RectTransform:
   - {fileID: 104088328}
   - {fileID: 516986775}
   - {fileID: 522975525}
+  - {fileID: 1468662204}
   m_Father: {fileID: 527477957}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3992,12 +4021,12 @@ GameObject:
   - component: {fileID: 1468662204}
   - component: {fileID: 1468662205}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: OptionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1468662204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4005,7 +4034,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468662203}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4013,8 +4042,8 @@ RectTransform:
   - {fileID: 1075857594}
   - {fileID: 1636543267}
   - {fileID: 1812281878}
-  m_Father: {fileID: 527477957}
-  m_RootOrder: 6
+  m_Father: {fileID: 1281784882}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4490,13 +4519,14 @@ GameObject:
   - component: {fileID: 1636543270}
   - component: {fileID: 1636543269}
   - component: {fileID: 1636543268}
+  - component: {fileID: 1636543272}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1636543267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4614,6 +4644,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636543266}
   m_CullTransparentMesh: 1
+--- !u!114 &1636543272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636543266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c329ab20d40dc3f418966b273feb4bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyManager: {fileID: 826984933}
+  buttonIndex: 1
+  optionButton: {fileID: 1636543269}
+  buttons:
+  - {fileID: 1075857593}
+  - {fileID: 1636543266}
+  - {fileID: 1812281877}
 --- !u!1 &1688142039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,13 +5177,14 @@ GameObject:
   - component: {fileID: 1812281881}
   - component: {fileID: 1812281880}
   - component: {fileID: 1812281879}
+  - component: {fileID: 1812281883}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812281878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5252,6 +5302,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812281877}
   m_CullTransparentMesh: 1
+--- !u!114 &1812281883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812281877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c329ab20d40dc3f418966b273feb4bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyManager: {fileID: 826984933}
+  buttonIndex: 2
+  optionButton: {fileID: 1812281880}
+  buttons:
+  - {fileID: 1075857593}
+  - {fileID: 1636543266}
+  - {fileID: 1812281877}
 --- !u!1 &1822124081
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,7 +5706,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 527477957}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

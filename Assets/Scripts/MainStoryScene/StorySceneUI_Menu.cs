@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Menu : MonoBehaviour, ISaveManager
+public class StorySceneUI_Menu : MonoBehaviour, ISaveManager
 {
     public Button button;
 

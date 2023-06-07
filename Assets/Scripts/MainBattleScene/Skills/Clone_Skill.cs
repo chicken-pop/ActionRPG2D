@@ -105,7 +105,7 @@ public class Clone_Skill : Skill
 
     public void CreateCloneWithDelay(Transform _enemyTransform)
     {
-            StartCoroutine(CloneDelayCoroutine(_enemyTransform, new Vector3(1.5f * player.facingDir, 0)));   
+            StartCoroutine(CloneDelayCoroutine(_enemyTransform, new Vector3(1.2f * player.facingDir, 0)));   
     }
 
     private IEnumerator CloneDelayCoroutine(Transform _transform,Vector3 _offset)

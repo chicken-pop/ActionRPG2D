@@ -92812,11 +92812,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6395525441130219950, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6395525441130219950, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd45c5010d2535f44836ec84d709ca02, type: 3}
