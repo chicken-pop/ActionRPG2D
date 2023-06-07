@@ -14,6 +14,7 @@ public class YetiDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        enemy.anim.SetBool("Idle", false);
 
         /*
         enemy.anim.SetBool(enemy.lastAnimBoolName, true);
