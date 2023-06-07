@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   options:
   - OptionText:
-    - "\u308A\u3093\u3054"
-    - "\u3044\u3061\u3054"
-    - "\u3081\u308D\u3093"
-    goodOptionIndex: 0
-    normalOptionIndex: 1
+    - "\u30CF\u30F3\u30D0\u30FC\u30AC\u30FC"
+    - "\u30AA\u30E0\u30E9\u30A4\u30B9"
+    - "\u30D4\u30B6"
+    goodOptionIndex: 1
+    normalOptionIndex: 0
     badOptionIndex: 2

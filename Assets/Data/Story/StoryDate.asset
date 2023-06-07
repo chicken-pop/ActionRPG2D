@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354223dac00b1de459ba772dfac96410, type: 3}
+  m_Name: StoryDate
+  m_EditorClassIdentifier: 
+  stories:
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u3081\u3063\u3061\u3083\u697D\u3057\u304B\u3063\u305F\u306D!!\u3084\u3063\u3071\u30B8\u30A7\u30C3\u30C8\u30B3\u30FC\u30B9\u30BF\u30FC\u6700\u9AD8!!"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u305D\u308C\u306F\u2026\u3088\u304B\u3063\u305F\u306D\u2026"
+    CharacterName: "\u6C5F\u53E3"
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u4FFA\u306F\u6700\u5F8C\u306E\u529B\u3092\u632F\u308A\u7D5E\u308A\u4F50\u5009\u306B\u53CD\u5FDC\u3059\u308B\u2026"
+    CharacterName: 
+  - Sprite: {fileID: 21300000, guid: d29135b0846292545926b3d4e197690a, type: 3}
+    StoryText: "\u3063\u3066\u3001\u5927\u4E08\u592B!?"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: d29135b0846292545926b3d4e197690a, type: 3}
+    StoryText: "\u306A\u3001\u306A\u3093\u3068\u304B\u751F\u304D\u3066\u308B\u2026"
+    CharacterName: "\u6C5F\u53E3"
+  - Sprite: {fileID: 21300000, guid: d29135b0846292545926b3d4e197690a, type: 3}
+    StoryText: "\u6C5F\u53E3\u541B\u3063\u3066\u7D76\u53EB\u7CFB\u82E6\u624B\u3060\u3063\u305F\u3063\u3051???"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: d29135b0846292545926b3d4e197690a, type: 3}
+    StoryText: "\u3044\u3084\u3001\u5973\u306E\u5B50\u306B\u8A98\u308F\u308C\u305F\u3089\u5F37\u304C\u3063\u3066\u4E57\u308B\u7CFB\u7537\u5B50\u3067\u3059\u3002"
+    CharacterName: "\u6C5F\u53E3"
+  - Sprite: {fileID: 21300000, guid: a95026b83241dd44db1d840c3dafcaa5, type: 3}
+    StoryText: "\u306A\u306B\u305D\u308C(\u7B11)"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u3051\u3069\u3001\u4ECA\u65E5\u306F\u6C5F\u53E3\u541B\u304C\u697D\u3057\u3080\u65E5\u3060\u304B\u3089!!\u82E6\u624B\u306A\u3053\u3068\u3042\u3063\u305F\u3089\u8A00\u3063\u3066\u306D!!"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u304A\u3063\u3051\u3044\u3001\u308F\u304B\u3063\u305F\u308F\u3002"
+    CharacterName: "\u6C5F\u53E3"
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u3055\u3059\u304C\u306B2\u56DE\u76EE\u306E\u30B8\u30A7\u30C3\u30C8\u30B3\u30FC\u30B9\u30BF\u30FC\u306F\u68C4\u6A29\u3057\u3088\u3046\u3002"
+    CharacterName: 
+  - Sprite: {fileID: 21300000, guid: be219f5f3fbb70e4ab2b8fdc31ddbaad, type: 3}
+    StoryText: "\u3088\u3063\u3057\u3001\u305D\u308C\u3058\u3083\u3042\u6B21\u884C\u3053!\u3063\u3066\u601D\u3063\u305F\u3051\u3069\u3001\u3082\u3046\u304A\u663C\u3060\u306D\u3002\u3054\u306F\u3093\u4F55\u306B\u3057\u3088\u3063\u304B??"
+    CharacterName: "\u4F50\u5009"
+  bgm: 2
+  date: "8\u670825\u65E5"
+  questionIndex: 0
+  fadeOut: 0

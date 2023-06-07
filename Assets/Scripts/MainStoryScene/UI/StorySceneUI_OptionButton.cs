@@ -8,6 +8,9 @@ public class StorySceneUI_OptionButton : MonoBehaviour
     [SerializeField] private StoryManager storyManager;
     [SerializeField] private int buttonIndex;
 
+    [SerializeField] private GameObject goodImpression;
+    [SerializeField] private GameObject badImpression;
+
     private int storyIndex;
 
     private int goodOptionIndex;
@@ -54,19 +57,32 @@ public class StorySceneUI_OptionButton : MonoBehaviour
             //Ž¿–â‚ÌIndex‚Æ‚»‚Ì‰ñ“š‚É‘Î‚·‚éStoryData‚ð‚¢‚ê‚é
             case 0:
                 if (buttonIndex == goodOptionIndex)
-                    SetStory(1);
+                    SetStory(_nextStoryIndex: 1, _impression: 0);
                 else if (buttonIndex == normalOptionIndex)
-                    SetStory(2);
+                    SetStory(_nextStoryIndex: 2, _impression: 2);
                 else if (buttonIndex == normalOptionIndex)
-                    SetStory(3);
+                    SetStory(_nextStoryIndex: 3, _impression: 1);
                 break;
 
         }
     }
 
-    private void SetStory(int _nextStoryIndex)
+    private void SetStory(int _nextStoryIndex,int _impression)
     {
         storyManager.storyIndex = _nextStoryIndex;
         storyManager.SetStoryElement(storyManager.storyIndex, storyManager.textIndex);
+
+        if(_impression == 0)
+        {
+            goodImpression.SetActive(true);
+        }
+        else if(_impression == 1)
+        {
+            badImpression.SetActive(false);
+        }
+        else
+        {
+            return;
+        }
     }
 }
