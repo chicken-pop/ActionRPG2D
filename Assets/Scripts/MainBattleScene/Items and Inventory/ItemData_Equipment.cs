@@ -141,17 +141,20 @@ public class ItemData_Equipment : ItemData
             sb.Append("");
         }
 
-        //‘•”õ•i‚Ì“ÁŽêŒø‰Ê
-        for (int i = 0; i < itemEffects.Length; i++)
+        if (itemEffects != null)
         {
-            if (itemEffects[i].effectDescription.Length > 0)
+            //‘•”õ•i‚Ì“ÁŽêŒø‰Ê
+            for (int i = 0; i < itemEffects.Length; i++)
             {
-                if (descriptionLength > 0)
+                if (itemEffects[i].effectDescription.Length > 0)
                 {
-                    sb.AppendLine();
+                    if (descriptionLength > 0)
+                    {
+                        sb.AppendLine();
+                    }
+                    sb.AppendLine(itemEffects[i].effectDescription);
+                    descriptionLength++;
                 }
-                sb.AppendLine(itemEffects[i].effectDescription);
-                descriptionLength++;
             }
         }
 
