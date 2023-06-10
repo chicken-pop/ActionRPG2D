@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Plate_armor
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u306F\u304C\u306D\u306E\u93A7"
+  itemName: "\u306F\u304C\u306D\u306E\u3088\u308D\u3044"
   icon: {fileID: -1581127718, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemID: 492c5bbd0a81a9545a5926b36cfddb26
   DropChance: 20
   equipmentType: 1
+  itemCoolDown: 0
+  itemEffects: []
   strength: 0
   agility: 0
   intelegence: 0
@@ -24,7 +27,7 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  maxHealth: 15
+  heath: 0
   armor: 10
   evasion: 0
   magicResistance: 0

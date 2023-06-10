@@ -28,7 +28,7 @@ public class PlayerStats : CharacterStats
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
         PlayerManager.instance.SkillPoint -= Mathf.RoundToInt(PlayerManager.instance.SkillPoint / 2);
 
-        SaveManager.instance.SaveGame();
+        SaveManager.Instance.SaveGame();
     }
 
     protected override void DecreaseHealthBy(int _damage, bool isIgnite)

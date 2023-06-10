@@ -37,7 +37,7 @@ public class FileDataHandler
 
             if (encryptData)
             {
-                dataToStore = EncryDecypt(dataToStore);
+                //dataToStore = EncryDecypt(dataToStore);
             }
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -81,7 +81,7 @@ public class FileDataHandler
 
                 if (encryptData)
                 {
-                    dataToLoad = EncryDecypt(dataToLoad);
+                    //dataToLoad = EncryDecypt(dataToLoad);
                 }
 
                 // GameDataŒ^‚ÉJsonƒtƒ@ƒCƒ‹‚ð•ÏŠ·‚·‚é

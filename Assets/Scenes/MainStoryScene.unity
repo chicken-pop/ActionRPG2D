@@ -1627,6 +1627,7 @@ GameObject:
   - component: {fileID: 349112579}
   - component: {fileID: 349112578}
   - component: {fileID: 349112577}
+  - component: {fileID: 349112580}
   m_Layer: 5
   m_Name: OP
   m_TagString: Untagged
@@ -1703,7 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1724,6 +1725,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349112575}
   m_CullTransparentMesh: 1
+--- !u!114 &349112580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349112575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110786eae427fdc45ab844d135550035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyManager: {fileID: 826984933}
 --- !u!1 &358328286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,18 +3272,20 @@ MonoBehaviour:
   storyText: {fileID: 81536362}
   nameText: {fileID: 522975526}
   date: {fileID: 222360103}
+  OP: {fileID: 349112575}
   storydatas:
-  - {fileID: 11400000, guid: 42d1a1b2dc7c8d54d9d0ee1326d965a9, type: 2}
-  - {fileID: 11400000, guid: 0ebe3db02fe970043bb0365e64dbb7a7, type: 2}
+  - {fileID: 11400000, guid: 813ba0eefceddf743a9f5370154ac1c7, type: 2}
   - {fileID: 11400000, guid: 70e1a07741f50564fa1b8b59e2121eee, type: 2}
+  - {fileID: 11400000, guid: 30115ccbdaf114b4b896f572b726138f, type: 2}
   - {fileID: 11400000, guid: b095955066bfb8d40849a98e4477c91c, type: 2}
+  - {fileID: 11400000, guid: 89dfba9ec0fcae44aaaf27e3a27871e4, type: 2}
   optionData: {fileID: 11400000, guid: af0f208f5934956418cd682ae41e098d, type: 2}
   optionButton:
   - {fileID: 1075857593}
   - {fileID: 1636543266}
   - {fileID: 1812281877}
   fadeOut: {fileID: 8940016462782089665}
-  storyIndex: 0
+  storyIndex: -1
   textIndex: 0
 --- !u!4 &826984934
 Transform:
@@ -9862,7 +9878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158725261852833072, guid: 8837936d5f2c3884ab78ef73bbe2496d, type: 3}
       propertyPath: bgmClips.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2158725261852833072, guid: 8837936d5f2c3884ab78ef73bbe2496d, type: 3}
       propertyPath: bgmClips.Array.data[3]

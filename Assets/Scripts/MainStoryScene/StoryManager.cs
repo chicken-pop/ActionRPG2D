@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour
+public class StoryManager : MonoBehaviour , ISaveManager
 {
     [SerializeField] private Image image;
     [SerializeField] private Button nextText;
@@ -13,6 +13,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI date;
 
+    [SerializeField] private GameObject OP;
+
     public StoryData[] storydatas;
     public OptionData optionData;
 
@@ -20,20 +22,27 @@ public class StoryManager : MonoBehaviour
 
     [SerializeField] private UI_FadeScreen fadeOut;
 
-    public int storyIndex;
+    public int storyIndex = -1;
     public int textIndex;
 
     private bool isTextEnd;
 
     private void Start()
     {
+        nextText.GetComponent<Button>().onClick.AddListener(() => NextButton());
+
+        if (storyIndex == -1)
+        {
+            OP.SetActive(true);
+            return;
+        }
+
         storyText.text = "";
         nameText.text = "";
         date.text = "";
 
         SetStoryElement(storyIndex, textIndex);
 
-        nextText.GetComponent<Button>().onClick.AddListener(() => NextButton());
     }
 
 
@@ -58,7 +67,7 @@ public class StoryManager : MonoBehaviour
 
     }
 
-    private void StoryProgression(int _storyIndex)
+    public void StoryProgression(int _storyIndex)
     {
         if(textIndex < storydatas[_storyIndex].stories.Count)
         {
@@ -73,25 +82,25 @@ public class StoryManager : MonoBehaviour
             if (storydatas[_storyIndex].fadeOut == true)
             {
                 fadeOut.FadeOut();
-                StartCoroutine(BattleSceneChange()); //フラグ管理して、メソッド化
+                StartCoroutine(BattleSceneChangeForest());
+                return;
             }
 
             //選択肢
-            if(storydatas[_storyIndex].questionIndex >= 0)
+            if (storydatas[_storyIndex].questionIndex >= 0)
             {
                 SetOption(storydatas[_storyIndex].questionIndex);
             }
 
-            /*演出確認のため、一旦消す
-            textIndex = 0;
+            ChangeStoryElement(_storyIndex);
 
-            if (_storyIndex == 0)
-            {
-                storyIndex = 1;
-                SetStoryElement(storyIndex, textIndex);
-            }
-            */
         }
+    }
+
+    private void ChangeStoryElement(int _storyIndex)
+    {
+        storyIndex++;
+        SetStoryElement(storyIndex, textIndex);
     }
 
     private void NextButton()
@@ -116,8 +125,10 @@ public class StoryManager : MonoBehaviour
         isTextEnd = true;
     }
 
-    private IEnumerator BattleSceneChange()
+    private IEnumerator BattleSceneChangeForest()
     {
+        GameProgressManager.Instance.flagList.Flags[0].ChangeFlagStatus();
+        SaveManager.Instance.SaveGame();
         yield return new WaitForSeconds(1);
         SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
     }
@@ -129,5 +140,17 @@ public class StoryManager : MonoBehaviour
             optionButton[i].SetActive(true);
             optionButton[i].GetComponentInChildren<TextMeshProUGUI>().text = optionData.options[_optionNumber].OptionText[i];
         }
+    }
+
+
+
+    public void LoadData(GameData _data)
+    {
+        storyIndex = _data.Story;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.Story = storyIndex;
     }
 }

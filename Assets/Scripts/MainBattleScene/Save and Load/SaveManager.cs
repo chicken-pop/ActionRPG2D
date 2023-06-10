@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager : SingletonMonoBehaviour<SaveManager>
 {
-    public static SaveManager instance;
-
     [SerializeField] private string fileName;
     [SerializeField] private bool encryptData;
 
@@ -19,19 +17,6 @@ public class SaveManager : MonoBehaviour
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         dataHandler.Delete();
-    }
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(instance.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
     }
 
     private void Start()
