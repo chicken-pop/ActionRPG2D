@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameData 
 {
     public int Story;
+    public int ImpressionPoint;
 
     public int SkillPoint;
     public SerializableDictionary<string, bool> skillTree;
@@ -19,6 +20,7 @@ public class GameData
     public GameData()
     {
         this.Story = -1;
+        this.ImpressionPoint = 0;
 
         this.SkillPoint = 0;
         skillTree = new SerializableDictionary<string, bool>();

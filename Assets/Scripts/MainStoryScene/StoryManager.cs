@@ -90,6 +90,7 @@ public class StoryManager : MonoBehaviour , ISaveManager
             if (storydatas[_storyIndex].questionIndex >= 0)
             {
                 SetOption(storydatas[_storyIndex].questionIndex);
+                return;
             }
 
             ChangeStoryElement(_storyIndex);

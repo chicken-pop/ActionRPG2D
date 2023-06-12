@@ -74,11 +74,16 @@ public class StorySceneUI_OptionButton : MonoBehaviour
 
         if(_impression == 0)
         {
+            //好感度Up
             goodImpression.SetActive(true);
+            StorySceneManager.instance.AddImpressionPoint();
+
         }
         else if(_impression == 1)
         {
+            //好感度Down
             badImpression.SetActive(false);
+            StorySceneManager.instance.DecreaseImpressionPoint();
         }
         else
         {
