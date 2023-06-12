@@ -12,7 +12,7 @@ public class ChangeBattleScene : MonoBehaviour
         //‰¼
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
+            SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
             saveManager.SaveGame();
         }
     }

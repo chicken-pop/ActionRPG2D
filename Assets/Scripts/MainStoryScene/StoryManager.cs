@@ -131,7 +131,7 @@ public class StoryManager : MonoBehaviour , ISaveManager
         GameProgressManager.Instance.flagList.Flags[0].ChangeFlagStatus();
         SaveManager.Instance.SaveGame();
         yield return new WaitForSeconds(1);
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
     }
 
     private void SetOption(int _optionNumber)

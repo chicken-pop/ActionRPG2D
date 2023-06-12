@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameProgressManager : SingletonMonoBehaviour<GameProgressManager>, ISaveManager
 {
-    public FlagList flagList;
+    public GameProgressionFlagList flagList;
 
     private void Start()
     {

@@ -26,7 +26,7 @@ public class JudgeGameState : MonoBehaviour
                 SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
                 break;
             case 1:
-                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
+                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
                 break;
 
         }

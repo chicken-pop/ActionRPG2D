@@ -40,7 +40,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         Invoke("AllowSE", 0.5f);
 
         //‰¼
-        if (SceneManager.GetActiveScene().name == "MainBattleScene")
+        if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
         {
             PlayBGM(BGM.Battle);
 
@@ -51,7 +51,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainBattleScene")
+        if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
         {
             PlayBGM(BGM.Battle);
 

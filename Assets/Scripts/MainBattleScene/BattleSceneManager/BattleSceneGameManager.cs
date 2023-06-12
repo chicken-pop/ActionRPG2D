@@ -20,7 +20,7 @@ public class BattleSceneGameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleScene);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
     }
 
     public void PauseGame(bool _pause)

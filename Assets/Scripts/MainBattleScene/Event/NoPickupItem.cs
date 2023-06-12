@@ -21,9 +21,20 @@ public class NoPickupItem : MonoBehaviour
             {
                 pickupAmount++;
 
-                if (pickupAmount >= 2)
+                if (pickupAmount >= 1)
                 {
                     eventTrigger.canEvent = true;
+                }
+
+                if (BugEventManager.instance.BugList.BugFlags[0].IsOn)
+                {
+                    return;
+                }
+
+                if (pickupAmount == 2)
+                {
+                    BugEventManager.instance.FindBug(); //バグのカウントを増やす
+                    BugEventManager.instance.BugList.BugFlags[0].ChangeFlagStatus();
                 }
             }
 

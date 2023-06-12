@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e1826d8fb426a458078fe2e40afad6, type: 3}
+  m_Name: GameProgressionFlagList
+  m_EditorClassIdentifier: 
+  Flags:
+  - {fileID: 11400000, guid: 910f90cd1fc0ea04fa4493459ddd8c18, type: 2}
+  - {fileID: 11400000, guid: 2a78dbf3ed8dbff48bfaf3d6d746b2c9, type: 2}

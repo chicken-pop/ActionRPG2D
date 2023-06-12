@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeManager : SingletonMonoBehaviour<SceneChangeManager>
 {
-    public const string MainBattleScene = "MainBattleScene";
+    public const string MainBattleSceneForest = "MainBattleSceneForest";
     public const string MainStoryScene = "MainStoryScene";
 
     public void ChangeScene(string _sceneName)
