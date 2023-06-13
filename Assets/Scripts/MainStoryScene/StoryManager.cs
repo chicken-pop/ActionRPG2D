@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour , ISaveManager
+public class StoryManager : MonoBehaviour, ISaveManager
 {
     [SerializeField] private Image image;
     [SerializeField] private Button nextText;
@@ -59,17 +59,15 @@ public class StoryManager : MonoBehaviour , ISaveManager
 
         StartCoroutine(TypeSentence(_storyIndex, _textIndex));
 
-        if (_textIndex == 0)
-        {
-            AudioManager.Instance.PlayBGM(storydatas[_storyIndex].bgm);
-        }
+        AudioManager.Instance.PlayBGM(storydatas[_storyIndex].bgm);
+
 
 
     }
 
     public void StoryProgression(int _storyIndex)
     {
-        if(textIndex < storydatas[_storyIndex].stories.Count)
+        if (textIndex < storydatas[_storyIndex].stories.Count)
         {
             SetStoryElement(storyIndex, textIndex);
         }
@@ -78,9 +76,11 @@ public class StoryManager : MonoBehaviour , ISaveManager
             storyText.text = storydatas[_storyIndex].stories[textIndex - 1].StoryText;
             textIndex = 0;
 
-            //シーンチェンジ
-            if (storydatas[_storyIndex].fadeOut == true)
+            //BattleSceneForestシーンチェンジ
+            if (storydatas[_storyIndex].fadeOut == true && GameProgressManager.Instance.flagList.Flags[1].IsOn == false)
             {
+                storyIndex++;
+
                 fadeOut.FadeOut();
                 StartCoroutine(BattleSceneChangeForest());
                 return;
@@ -128,8 +128,7 @@ public class StoryManager : MonoBehaviour , ISaveManager
 
     private IEnumerator BattleSceneChangeForest()
     {
-        GameProgressManager.Instance.flagList.Flags[0].ChangeFlagStatus();
-        SaveManager.Instance.SaveGame();
+        GameProgressManager.Instance.SetFlag(1); //BeforeBattleForestのフラグを立てる
         yield return new WaitForSeconds(1);
         SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
     }
@@ -143,15 +142,17 @@ public class StoryManager : MonoBehaviour , ISaveManager
         }
     }
 
-
-
     public void LoadData(GameData _data)
     {
         storyIndex = _data.Story;
+        textIndex = _data.StoryTextIndex;
     }
 
     public void SaveData(ref GameData _data)
     {
+        Debug.Log(storyIndex);
+        Debug.Log(textIndex);
         _data.Story = storyIndex;
+        _data.StoryTextIndex = textIndex;
     }
 }

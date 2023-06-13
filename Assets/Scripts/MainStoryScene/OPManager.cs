@@ -9,7 +9,12 @@ public class OPManager : MonoBehaviour
 
     private void Start()
     {
-        if (this.gameObject.activeSelf == true)
+        if(GameProgressManager.Instance.flagList.Flags[0].IsOn == true)
+        {
+            this.gameObject.SetActive(false);
+        }
+
+        if (GameProgressManager.Instance.flagList.Flags[0].IsOn == false)
         {
             StartCoroutine(FinishOp());
         }
@@ -17,13 +22,15 @@ public class OPManager : MonoBehaviour
 
     private IEnumerator FinishOp()
     {
-        //yield return new WaitForSeconds((float)this.gameObject.GetComponent<VideoPlayer>().clip.length); Œã‚Å’¼‚·
-        yield return null;
+        //yield return new WaitForSeconds((float)this.gameObject.GetComponent<VideoPlayer>().clip.length); //Œã‚Å’¼‚·
+        yield return new WaitForSeconds(3f);
        
         this.gameObject.SetActive(false);
 
         storyManager.storyIndex++;
         storyManager.StoryProgression(storyManager.storyIndex);
+
+        GameProgressManager.Instance.SetFlag(0); //OPƒtƒ‰ƒO‚ð—§‚Ä‚é
     }
 
 

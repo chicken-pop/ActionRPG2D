@@ -5,8 +5,6 @@ public sealed class FlagData : ScriptableObject
 {
     public bool IsOn = false;
 
-    public void ChangeFlagStatus()
-    {
-        IsOn = true;
-    }
+    public void ChangeFlagStatus() => IsOn = true;
+
 }

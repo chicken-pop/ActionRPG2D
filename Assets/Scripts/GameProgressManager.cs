@@ -15,6 +15,13 @@ public class GameProgressManager : SingletonMonoBehaviour<GameProgressManager>, 
         }
     }
 
+    //フラグをたててセーブ
+    public void SetFlag(int _flagIndex)
+    {
+        GameProgressManager.Instance.flagList.Flags[_flagIndex].ChangeFlagStatus(); 
+        SaveManager.instance.SaveGame();
+    }
+
     public void LoadData(GameData _data)
     {
         for (int i = 0; i < flagList.Flags.Count; i++)

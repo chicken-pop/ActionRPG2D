@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Flags:
   - {fileID: 11400000, guid: 910f90cd1fc0ea04fa4493459ddd8c18, type: 2}
+  - {fileID: 11400000, guid: c583b71bb750e5c4198fd2f7430b6cdf, type: 2}
   - {fileID: 11400000, guid: 2a78dbf3ed8dbff48bfaf3d6d746b2c9, type: 2}
