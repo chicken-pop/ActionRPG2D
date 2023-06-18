@@ -32,12 +32,16 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private GameObject hitFx;
     [SerializeField] private GameObject criticalHitFx;
 
+    private GameObject myHealthBar;
+
     protected virtual void Start()
     {
         player = PlayerManager.instance.player;
         sr = GetComponentInChildren<SpriteRenderer>();
 
         originalMat = sr.material;
+
+        myHealthBar = GetComponentInChildren<UI_HealthBar>().gameObject;
     }
 
     public void CreatePopUpText(string _text)
@@ -56,10 +60,12 @@ public class EntityFX : MonoBehaviour
     {
         if (_transparent)
         {
+            myHealthBar.SetActive(false);
             sr.color = Color.clear;
         }
         else
         {
+            myHealthBar.SetActive(true);
             sr.color = Color.white;
         }
     }
