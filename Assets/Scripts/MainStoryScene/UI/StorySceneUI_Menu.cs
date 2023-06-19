@@ -14,6 +14,7 @@ public class StorySceneUI_Menu : MonoBehaviour, ISaveManager
     {
         button.onClick.AddListener(SetMenu);
         menu.SetActive(false);
+        Debug.Log("c");
     }
 
     private void SetMenu()

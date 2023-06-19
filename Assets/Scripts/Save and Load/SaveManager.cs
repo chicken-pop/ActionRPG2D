@@ -31,16 +31,17 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
         }
-
+        /*
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         saveManagers = FindAllSaveManagers();
 
         for (int i = 0; i < saveManagers.Count; i++)
         {
-            Debug.Log(saveManagers[i]);
+            Debug.Log(saveManagers[i]);　
         }
         //Invoke("LoadGame", 0.01f);
         LoadGame();
+        */
     }
 
     private void Start()
@@ -51,10 +52,11 @@ public class SaveManager : MonoBehaviour
 
         for (int i = 0; i < saveManagers.Count; i++)
         {
-            Debug.Log(saveManagers[i]);
+            //Debug.Log(saveManagers[i]); スキルの確認
         }
         //Invoke("LoadGame", 0.01f);
-        LoadGame();
+        LoadGame(); //ここで必ずLoad。ここ変えると音量など他の設定がバグる。
+        
     }
 
     public void NewGame()

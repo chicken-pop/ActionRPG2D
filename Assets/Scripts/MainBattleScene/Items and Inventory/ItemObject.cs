@@ -38,6 +38,7 @@ public class ItemObject : MonoBehaviour
         }
 
         Inventory.instance.AddItem(itemData);
+        PlayerManager.instance.player.fx.CreatePopUpText(itemData.itemName + "‚ðŽè‚É“ü‚ê‚½!");
         Destroy(gameObject);
     }
 }

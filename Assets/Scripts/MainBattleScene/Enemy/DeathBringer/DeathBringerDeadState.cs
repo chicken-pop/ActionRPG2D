@@ -24,4 +24,5 @@ public class DeathBringerDeadState : EnemyState
         enemy.SetZeroVelocity();
 
     }
+
 }

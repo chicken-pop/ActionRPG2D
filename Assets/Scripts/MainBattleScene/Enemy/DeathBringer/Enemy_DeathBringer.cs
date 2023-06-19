@@ -57,6 +57,8 @@ public class Enemy_DeathBringer : Enemy
         stateMachine.ChangeState(deadState);
         Destroy(counterImage, 0.5f);
 
+        StartCoroutine(ForestClear());
+
     }
 
     public void CastSpell()
@@ -118,6 +120,14 @@ public class Enemy_DeathBringer : Enemy
             return true;
         }
         return false;
+    }
+
+    private IEnumerator ForestClear()
+    {
+        Debug.Log("a");
+        yield return new WaitForSeconds(3f);
+        GameProgressManager.Instance.SetFlag(2);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
     }
 
 }

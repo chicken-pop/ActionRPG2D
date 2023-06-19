@@ -9,11 +9,12 @@ public class OPManager : MonoBehaviour
 
     private void Start()
     {
+        //OP‚ð•\Ž¦‚³‚¹‚È‚¢
         if(GameProgressManager.Instance.flagList.Flags[0].IsOn == true)
         {
             this.gameObject.SetActive(false);
         }
-
+        //OP‚ð•\Ž¦‚³‚¹‚é
         if (GameProgressManager.Instance.flagList.Flags[0].IsOn == false)
         {
             StartCoroutine(FinishOp());

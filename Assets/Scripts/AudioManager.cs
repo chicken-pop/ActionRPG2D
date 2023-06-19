@@ -18,6 +18,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     public enum BGM
     {
         Battle,
+        Boss,
         Culuture,
         Assistant,
         Memories
@@ -32,6 +33,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     private bool canPlaySE;
 
+
     private void Start()
     {
         audioSourceBGM.outputAudioMixerGroup = bgmMixer;
@@ -42,7 +44,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         //‰¼
         if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
         {
-            PlayBGM(BGM.Battle);
+            //PlayBGM(BGM.Battle);
 
         }
     }
@@ -53,7 +55,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
         {
-            PlayBGM(BGM.Battle);
+            //PlayBGM(BGM.Battle);
 
         }
     }

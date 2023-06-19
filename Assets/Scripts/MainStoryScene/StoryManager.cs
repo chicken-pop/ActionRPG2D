@@ -93,6 +93,8 @@ public class StoryManager : MonoBehaviour, ISaveManager
                 return;
             }
 
+            //“ú‚âê–Ê‚ª•Ï‚í‚é‚Æ‚«‚Ì‰‰o
+
             ChangeStoryElement(_storyIndex);
 
         }
@@ -150,8 +152,6 @@ public class StoryManager : MonoBehaviour, ISaveManager
 
     public void SaveData(ref GameData _data)
     {
-        Debug.Log(storyIndex);
-        Debug.Log(textIndex);
         _data.Story = storyIndex;
         _data.StoryTextIndex = textIndex;
     }
