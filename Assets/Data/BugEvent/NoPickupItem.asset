@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb279d907183493468cbfd38e953df75, type: 3}
   m_Name: NoPickupItem
   m_EditorClassIdentifier: 
-  BugEvents:
+  Events:
   - WindowText: "\u30A2\u30A4\u30C6\u30E0\u62FE\u3048\u306A\u3044\u3058\u3083\u3093!!"
-  - WindowText: "\u307E\u305F\u30D0\u30B0\u3058\u3083\u3093!!"
+    CharacterImage: {fileID: -3318188226485093758, guid: b84b23dc171b5d24193970658ce8429e, type: 3}
+  - WindowText: "\u307E\u305F\u30D0\u30B0\u30FC!!"
+    CharacterImage: {fileID: -3318188226485093758, guid: b84b23dc171b5d24193970658ce8429e, type: 3}

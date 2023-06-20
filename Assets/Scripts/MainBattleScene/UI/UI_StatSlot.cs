@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_StatSlot : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler
+public class UI_StatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private UI ui;
 
@@ -66,7 +66,7 @@ public class UI_StatSlot : MonoBehaviour , IPointerEnterHandler, IPointerExitHan
                 break;
 
         }
-     
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -76,14 +76,22 @@ public class UI_StatSlot : MonoBehaviour , IPointerEnterHandler, IPointerExitHan
 
         Vector2 pos = gameObject.transform.position;
 
-        //ポジションによって表示場所を変える
-        ui.statToolTip.transform.position = new Vector2(pos.x + xOffset, pos.y + yOffset);
 
-        ui.statToolTip.ShowStatToolTip(statDescription);
+        for (int i = 0; i < ui.statToolTip.Length; i++)
+        {
+            //ポジションによって表示場所を変える
+            ui.statToolTip[i].transform.position = new Vector2(pos.x + xOffset, pos.y + yOffset);
+
+            ui.statToolTip[i].ShowStatToolTip(statDescription);
+        }
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ui.statToolTip.HideStatToolTip();
+        for (int i = 0; i < ui.statToolTip.Length; i++)
+        {
+            ui.statToolTip[i].HideStatToolTip();
+        }
     }
 }

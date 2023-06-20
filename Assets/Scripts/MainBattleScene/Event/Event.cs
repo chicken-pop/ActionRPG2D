@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class Event : MonoBehaviour
 {
-    [SerializeField] private BugEventData bugEventData;
+    [SerializeField] private EventData eventData;
 
     [SerializeField] private GameObject eventUI;
+    [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI windowText;
 
     [SerializeField] Button nextTextButton;
 
     private int textIndex;
     private bool isTextEnd;
+
+    public bool wizardEvent;
 
     private void Start()
     {
@@ -25,18 +28,26 @@ public class Event : MonoBehaviour
     public void SetupEvent(int _textIndex)
     {
         eventUI.SetActive(true);
+        characterImage.sprite = eventData.Events[_textIndex].CharacterImage;
         StartCoroutine(TypeSentence(_textIndex));
     }
 
     private void BugStoryProgression()
     {
-        if (textIndex < bugEventData.BugEvents.Count)
+        if (textIndex < eventData.Events.Count)
         {
             SetupEvent(textIndex);
         }
         else
         {
             eventUI.SetActive(false);
+
+            if (wizardEvent == true)
+            {
+                wizardEvent = false;
+                return;
+            }
+
             BattleSceneGameManager.instance.PauseGame(false);
         }
 
@@ -55,7 +66,7 @@ public class Event : MonoBehaviour
 
     public IEnumerator TypeSentence(int _textIndex)
     {
-        foreach (char letter in bugEventData.BugEvents[_textIndex].WindowText.ToCharArray())
+        foreach (char letter in eventData.Events[_textIndex].WindowText.ToCharArray())
         {
             windowText.text += letter;
             yield return null;

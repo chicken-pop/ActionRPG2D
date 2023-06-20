@@ -16,9 +16,10 @@ public class UI : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
     [SerializeField] private GameObject eventUI;
+    [SerializeField] private GameObject wizardEventUI;
 
     public UI_Item_Tooltip itemTooltip;
-    public UI_StatToolTip statToolTip;
+    public UI_StatToolTip[] statToolTip;
     public UI_CraftWindow craftWindow;
     public UI_SkillToolTip skillToolTip;
 
@@ -30,6 +31,7 @@ public class UI : MonoBehaviour, ISaveManager
         SwitchTo(optionsUI);
         //スキルツリーにイベントを先に渡すため
         SwitchTo(skillTreeUI);
+        SwitchTo(wizardEventUI);
 
     }
 
@@ -39,7 +41,8 @@ public class UI : MonoBehaviour, ISaveManager
         SwitchTo(inGameUI);
 
         itemTooltip.gameObject.SetActive(false);
-        statToolTip.gameObject.SetActive(false);
+        statToolTip[0].gameObject.SetActive(false);
+        statToolTip[1].gameObject.SetActive(false);
     }
 
     private void Update()

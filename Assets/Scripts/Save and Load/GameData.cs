@@ -11,6 +11,11 @@ public class GameData
 
     public int SkillPoint;
 
+    public int StrengthLevel;
+    public int AgilityLevel;
+    public int IntelegenceLevel;
+    public int VitalityLevel;
+
     public SerializableDictionary<string, bool> BugEvent;
     public int BugCount;
 
@@ -30,6 +35,11 @@ public class GameData
         this.ImpressionPoint = 0;
 
         this.SkillPoint = 0;
+
+        this.StrengthLevel = 0;
+        this.AgilityLevel = 0;
+        this.IntelegenceLevel = 0;
+        this.VitalityLevel = 0;
 
         BugEvent = new SerializableDictionary<string, bool>();
         this.BugCount = 0;

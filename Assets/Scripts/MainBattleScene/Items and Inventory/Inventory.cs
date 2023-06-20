@@ -22,12 +22,13 @@ public class Inventory : MonoBehaviour , ISaveManager
     [SerializeField] private Transform inventorySlotParent;
     [SerializeField] private Transform stashSlotParent;
     [SerializeField] private Transform equipmnetSlotParent;
-    [SerializeField] private Transform statSlotParent;
+    [SerializeField] private Transform[] statSlotParent; //Character_UIとWizardEvent_UIのパラメータ表示のため
 
     private UI_ItemSlot[] inventoryItemSlot;
     private UI_ItemSlot[] stashItemSlot;
     private UI_EquipmentSlot[] equipmentSlot;
     private UI_StatSlot[] statSlot;
+    private UI_StatSlot[] statSlotWizardEvent;
 
     [Header("Item cooldown")]
     private float lastTimeUseFlask;
@@ -66,7 +67,9 @@ public class Inventory : MonoBehaviour , ISaveManager
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equipmnetSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
-        statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
+
+        statSlot = statSlotParent[0].GetComponentsInChildren<UI_StatSlot>();
+        statSlotWizardEvent = statSlotParent[1].GetComponentsInChildren<UI_StatSlot>();
 
         Invoke("AddStartingItem", 0.1f);
         //AddStartingItem();
@@ -145,6 +148,11 @@ public class Inventory : MonoBehaviour , ISaveManager
         for (int i = 0; i < statSlot.Length; i++)
         {
             statSlot[i].UpdateStatValueUI();
+        }
+
+        for (int i = 0; i < statSlotWizardEvent.Length; i++)
+        {
+            statSlotWizardEvent[i].UpdateStatValueUI();
         }
     }
 
