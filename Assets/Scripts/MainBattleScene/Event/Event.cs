@@ -40,6 +40,7 @@ public class Event : MonoBehaviour
         }
         else
         {
+            textIndex = 0;
             eventUI.SetActive(false);
 
             if (wizardEvent == true)

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb279d907183493468cbfd38e953df75, type: 3}
   m_Name: NoFloating
   m_EditorClassIdentifier: 
-  BugEvents:
-  - WindowText: "\u3048\u30FC\u30FC\u3001\u843D\u3061\u308B\u306E\u30FC!!"
+  Events:
+  - WindowText: "\u6D6E\u3044\u3066\u304F\u308C\u306A\u3044\u306E\u30FC!!"
+    CharacterImage: {fileID: -3318188226485093758, guid: b84b23dc171b5d24193970658ce8429e, type: 3}

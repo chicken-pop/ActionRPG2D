@@ -15,3 +15,6 @@ MonoBehaviour:
   BugFlags:
   - {fileID: 11400000, guid: 06af12e33c40b6644bee4cf45e093c7a, type: 2}
   - {fileID: 11400000, guid: b670d8a9608a12e48bff3b8193cd9127, type: 2}
+  - {fileID: 11400000, guid: e7a0943cb7ca3584ab395890bef34c18, type: 2}
+  - {fileID: 11400000, guid: 095a7664897d01f40833bc1f52021422, type: 2}
+  - {fileID: 11400000, guid: 3faed3b33c67a164e88ec3c6e240c652, type: 2}
