@@ -30,7 +30,7 @@ public class BugEventManager : MonoBehaviour, ISaveManager
 
         if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
         {
-            AllBugCount = 8;
+            AllBugCount = 5;
         }
     }
 

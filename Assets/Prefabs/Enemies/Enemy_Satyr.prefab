@@ -117,7 +117,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 987
+    baseValue: 300
     modifiers: 
   armor:
     baseValue: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   attackCheck: {fileID: 2646677501687120447}
   attackCheckRadius: 1
   groundCheck: {fileID: 2646677501643516066}
-  groundCheckDistance: 1
+  groundCheckDistance: 1.39
   wallCheck: {fileID: 2646677501232040039}
   wallCheckDistance: 1.35
   whatIsGround:
@@ -594,7 +594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2646677501643516069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.46, y: -1.124, z: 0}
+  m_LocalPosition: {x: -1.46, y: -1.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
