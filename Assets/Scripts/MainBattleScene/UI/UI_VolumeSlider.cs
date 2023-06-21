@@ -29,7 +29,6 @@ public class UI_VolumeSlider : MonoBehaviour
         if(_value > 0.001f)
         {
             slider.value = _value;
-            Debug.Log("a");
         }
     }
 }

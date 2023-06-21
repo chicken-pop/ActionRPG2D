@@ -34,7 +34,8 @@ public class PlayerGroundedState : PlayerState
                 player.fx.CreatePopUpText("スキル使用不可");
                 return;
             }
-
+            AudioManager.Instance.PlaySE(AudioManager.SE.SpecialAttack1, null); //仮
+            AudioManager.Instance.PlaySE(AudioManager.SE.SpecialAttack2, null);　//仮
             stateMachine.ChangeState(player.blackHole);
         }
 

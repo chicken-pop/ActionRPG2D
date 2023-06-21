@@ -7,7 +7,7 @@ public class UI_ParametterUpSlot : MonoBehaviour
 {
     [SerializeField] private int needSkillPoint;
 
-    private UI_ParametterUp uI_ParametterUp => GetComponentInParent<UI_ParametterUp>();
+    private UI_WizardEvent uI_ParametterUp => GetComponentInParent<UI_WizardEvent>();
 
     [SerializeField] private TextMeshProUGUI descriptionText;
 

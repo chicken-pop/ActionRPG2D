@@ -25,19 +25,25 @@ public class UI : MonoBehaviour, ISaveManager
 
     [SerializeField] private UI_VolumeSlider[] volumeSettings;
 
+    [Header("Wizard event info")]
+    [SerializeField] private Event eventData;
+    [SerializeField] private EventTrigger eventTrigger;
+    private bool isWizardEventUI = false;
+
     private void Awake()
     {
+
         //UI_VolueSliderのAwakeを呼ぶため
         SwitchTo(optionsUI);
         //スキルツリーにイベントを先に渡すため
-        SwitchTo(skillTreeUI);
-        SwitchTo(wizardEventUI);
+        skillTreeUI.SetActive(true);
+        //AddParametter()を呼ぶため
+        wizardEventUI.SetActive(true);
 
     }
 
     private void Start()
     {
-
         SwitchTo(inGameUI);
 
         itemTooltip.gameObject.SetActive(false);
@@ -47,24 +53,36 @@ public class UI : MonoBehaviour, ISaveManager
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && isWizardEventUI == false)
         {
             SwitchWithKeyTo(characterUI);
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && isWizardEventUI == false)
         {
             SwitchWithKeyTo(craftUI);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && isWizardEventUI == false)
         {
             SwitchWithKeyTo(skillTreeUI);
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && isWizardEventUI == false)
         {
             SwitchWithKeyTo(optionsUI);
+        }
+
+        if(eventData.wizardEvent == false)
+        {
+            eventData.wizardEvent = true;
+
+            isWizardEventUI = true;
+            SwitchWithKeyTo(wizardEventUI);
+        }
+        else
+        {
+            eventTrigger.canEvent = true;
         }
     }
 

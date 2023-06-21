@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UI_ParametterUp : MonoBehaviour, ISaveManager
+public class UI_WizardEvent : MonoBehaviour, ISaveManager
 {
     public Player player { get; private set; }
     [SerializeField] private GameObject inGameUI;
@@ -34,6 +34,7 @@ public class UI_ParametterUp : MonoBehaviour, ISaveManager
         UpdateSkillPoint();
     }
 
+    //セーブデータで保存している強化を与える
     public void AddParametter()
     {
         player.stats.strength.AddModifier(StrengthLevel);

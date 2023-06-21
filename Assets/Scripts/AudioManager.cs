@@ -28,7 +28,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         sword,
         dash,
-        button
+        button,
+        SpecialAttack1,
+        SpecialAttack2
     }
 
     private bool canPlaySE;
