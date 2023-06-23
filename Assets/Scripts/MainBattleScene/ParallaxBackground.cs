@@ -12,8 +12,7 @@ public class ParallaxBackground : MonoBehaviour
     private void Start()
     {
 
-        //length = GetComponent<SpriteRenderer>().bounds.size.x;
-        length = 40;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
         xPosition = transform.position.x;
     }
 
