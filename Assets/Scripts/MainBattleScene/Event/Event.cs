@@ -32,7 +32,7 @@ public class Event : MonoBehaviour
         StartCoroutine(TypeSentence(_textIndex));
     }
 
-    private void BugStoryProgression()
+    private void EventProgression()
     {
         if (textIndex < eventData.Events.Count)
         {
@@ -60,7 +60,7 @@ public class Event : MonoBehaviour
         {
             textIndex++;
             windowText.text = "";
-            BugStoryProgression();
+            EventProgression();
             isTextEnd = false;
         }
     }

@@ -82,7 +82,7 @@ public class StoryManager : MonoBehaviour, ISaveManager
                 storyIndex++;
 
                 fadeOut.FadeOut();
-                StartCoroutine(BattleSceneChangeForest());
+                StartCoroutine(ForestStorySceneChange());
                 return;
             }
 
@@ -128,11 +128,11 @@ public class StoryManager : MonoBehaviour, ISaveManager
         isTextEnd = true;
     }
 
-    private IEnumerator BattleSceneChangeForest()
+    private IEnumerator ForestStorySceneChange()
     {
         GameProgressManager.Instance.SetFlag(1); //BeforeBattleForest‚Ìƒtƒ‰ƒO‚ð—§‚Ä‚é
         yield return new WaitForSeconds(1);
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.BattleSceneStory);
     }
 
     private void SetOption(int _optionNumber)

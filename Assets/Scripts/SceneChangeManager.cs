@@ -7,6 +7,7 @@ public class SceneChangeManager : SingletonMonoBehaviour<SceneChangeManager>
 {
     public const string MainBattleSceneForest = "MainBattleSceneForest";
     public const string MainStoryScene = "MainStoryScene";
+    public const string BattleSceneStory = "BattleSceneStory";
 
     public void ChangeScene(string _sceneName)
     {
