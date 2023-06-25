@@ -51,7 +51,7 @@ public class UI_WizardEvent : MonoBehaviour, ISaveManager
 
     public void CloseWizardEventUI()
     {
-        eventData.wizardEvent = true;
+        eventData.WizardEvent = true;
 
         gameObject.SetActive(false);
         inGameUI.SetActive(true);

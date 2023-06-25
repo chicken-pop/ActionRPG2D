@@ -73,9 +73,9 @@ public class UI : MonoBehaviour, ISaveManager
             SwitchWithKeyTo(optionsUI);
         }
 
-        if(eventData.wizardEvent == false)
+        if(eventData.WizardEvent == false)
         {
-            eventData.wizardEvent = true;
+            eventData.WizardEvent = true;
 
             isWizardEventUI = true;
             SwitchWithKeyTo(wizardEventUI);

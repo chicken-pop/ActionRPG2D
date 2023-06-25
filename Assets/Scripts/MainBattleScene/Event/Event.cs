@@ -17,12 +17,23 @@ public class Event : MonoBehaviour
     private int textIndex;
     private bool isTextEnd;
 
-    public bool wizardEvent;
+    public bool WizardEvent = false;
+    public bool ForestBossEvent = false;
 
     private void Start()
     {
         windowText.text = "";
         nextTextButton.GetComponent<Button>().onClick.AddListener(() => NextButton());
+
+        if (GetComponentInChildren<WizardParametterUpEvent>())
+        {
+            WizardEvent = true;
+        }
+
+        if (GetComponentInChildren<ForestBossEvent>())
+        {
+            ForestBossEvent = true;
+        }
     }
 
     public void SetupEvent(int _textIndex)
@@ -43,9 +54,15 @@ public class Event : MonoBehaviour
             textIndex = 0;
             eventUI.SetActive(false);
 
-            if (wizardEvent == true)
+            if (WizardEvent == true)
             {
-                wizardEvent = false;
+                WizardEvent = false;
+                return;
+            }
+
+            if(ForestBossEvent == true)
+            {
+                ForestBossEvent = false;
                 return;
             }
 
