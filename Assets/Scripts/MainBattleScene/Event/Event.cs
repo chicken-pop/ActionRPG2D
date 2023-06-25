@@ -19,6 +19,7 @@ public class Event : MonoBehaviour
 
     public bool WizardEvent = false;
     public bool ForestBossEvent = false;
+    public bool ForestClear = false; //ForestStageÇ≈ç≈å„Ç…ElcÇ∆âÔòbÇ∑ÇÈèÍñ 
 
     private void Start()
     {
@@ -66,6 +67,13 @@ public class Event : MonoBehaviour
                 return;
             }
 
+            if (ForestClear == true)
+            {
+                BattleSceneGameManager.instance.PauseGame(false);
+                StartCoroutine(ForestClearCoroutine());
+                return;
+            }
+
             BattleSceneGameManager.instance.PauseGame(false);
         }
 
@@ -91,6 +99,14 @@ public class Event : MonoBehaviour
         }
 
         isTextEnd = true;
+    }
+
+    private IEnumerator ForestClearCoroutine()
+    {
+
+        yield return new WaitForSeconds(1f);
+        GameProgressManager.Instance.SetFlag(3);
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
     }
 
 

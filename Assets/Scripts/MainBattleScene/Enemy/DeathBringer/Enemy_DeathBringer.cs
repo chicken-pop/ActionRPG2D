@@ -54,10 +54,11 @@ public class Enemy_DeathBringer : Enemy
     {
         base.Die();
 
+        AudioManager.Instance.StopBGM();
+        GameObject.Find("BossEvent").GetComponent<Event>().ForestBossEvent = true;
+
         stateMachine.ChangeState(deadState);
         Destroy(counterImage, 0.5f);
-
-        StartCoroutine(ForestClear());
 
     }
 
@@ -122,12 +123,6 @@ public class Enemy_DeathBringer : Enemy
         return false;
     }
 
-    private IEnumerator ForestClear()
-    {
-        Debug.Log("a");
-        yield return new WaitForSeconds(3f);
-        GameProgressManager.Instance.SetFlag(2);
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
-    }
+
 
 }
