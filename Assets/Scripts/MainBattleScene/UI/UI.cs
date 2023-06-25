@@ -27,7 +27,7 @@ public class UI : MonoBehaviour, ISaveManager
 
     [Header("Wizard event info")]
     [SerializeField] private Event eventData;
-    [SerializeField] private EventTrigger eventTrigger;
+    [SerializeField] private NPCEventTrigger eventTrigger;
     private bool isWizardEventUI = false;
 
     private void Awake()
@@ -79,10 +79,6 @@ public class UI : MonoBehaviour, ISaveManager
 
             isWizardEventUI = true;
             SwitchWithKeyTo(wizardEventUI);
-        }
-        else
-        {
-            eventTrigger.canEvent = true;
         }
     }
 

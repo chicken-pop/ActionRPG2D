@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Events:
   - WindowText: "\u6D6E\u3044\u3066\u304F\u308C\u306A\u3044\u306E\u30FC!!"
-    CharacterImage: {fileID: -3318188226485093758, guid: b84b23dc171b5d24193970658ce8429e, type: 3}
+    CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}

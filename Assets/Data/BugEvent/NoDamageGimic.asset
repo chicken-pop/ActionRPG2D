@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Events:
   - WindowText: "\u3048\u3001\u30C0\u30E1\u30FC\u30B8\u3068\u304B\u3001\u306A\u306B\u3082\u98DF\u3089\u308F\u306A\u3044\u3093\u3060\u3051\u3069\u2026"
-    CharacterImage: {fileID: 21300000, guid: cefbaf0532fbe9845a2e544b36fc58b4, type: 2}
+    CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
   - WindowText: "\u3053\u308C\u306F\u30E9\u30C3\u30AD\u30FC\u30D0\u30B0\u3060\u304B\u3089\u5831\u544A\u3057\u306A\u304F\u3066\u3044\u3044\u304B\u306A??"
-    CharacterImage: {fileID: 21300000, guid: cefbaf0532fbe9845a2e544b36fc58b4, type: 2}
+    CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
   - WindowText: "\u3046\u3093\u3093\u3001\u3044\u3044\u30B2\u30FC\u30E0\u4F5C\u308B\u305F\u3081\u306B\u3057\u3063\u304B\u308A\u5831\u544A\u3057\u306A\u3044\u3068!!"
-    CharacterImage: {fileID: 21300000, guid: cefbaf0532fbe9845a2e544b36fc58b4, type: 2}
+    CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
