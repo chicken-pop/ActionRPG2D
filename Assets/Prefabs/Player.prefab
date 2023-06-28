@@ -497,6 +497,9 @@ MonoBehaviour:
   shakeMultiplier: 0.2
   shakeSwordImpact: {x: 0.5, y: 0, z: 0}
   shackHighDamageImpact: {x: 1, y: 1, z: 0}
+  fadeSpeed: 1.8
+  fadeOut: 0
+  fadeIn: 0
 --- !u!1 &4041019311358854178
 GameObject:
   m_ObjectHideFlags: 0

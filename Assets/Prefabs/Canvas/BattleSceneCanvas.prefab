@@ -10890,6 +10890,7 @@ MonoBehaviour:
   - {fileID: 3837815954089135407}
   eventData: {fileID: 0}
   eventTrigger: {fileID: 0}
+  isWizardEventUI: 0
 --- !u!1 &3837815953430953731
 GameObject:
   m_ObjectHideFlags: 0

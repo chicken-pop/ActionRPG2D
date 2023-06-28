@@ -28,7 +28,7 @@ public class UI : MonoBehaviour, ISaveManager
     [Header("Wizard event info")]
     [SerializeField] private Event eventData;
     [SerializeField] private NPCEventTrigger eventTrigger;
-    private bool isWizardEventUI = false;
+    public bool isWizardEventUI = false;
 
     private void Awake()
     {

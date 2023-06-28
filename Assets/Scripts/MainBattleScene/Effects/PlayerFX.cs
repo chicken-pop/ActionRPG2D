@@ -17,15 +17,41 @@ public class PlayerFX : EntityFX
     public Vector3 shakeSwordImpact;
     public Vector3 shackHighDamageImpact;
 
+    [Header("Fade")]
+    private SpriteRenderer playerImage;
+    private float alfa;
+    [SerializeField] private float fadeSpeed;
+    public bool fadeOut = false;
+    public bool fadeIn = false;
+
+
     protected override void Start()
     {
         base.Start();
         screenShake = GetComponent<CinemachineImpulseSource>();
+
+        playerImage = GetComponentInChildren<SpriteRenderer>();
+        alfa = playerImage.color.a;
     }
 
     private void Update()
     {
         afetrImageCooldownTimer -= Time.deltaTime;
+
+        if (fadeOut)
+        {
+            PlayerFadeOut();
+        }
+
+        if (fadeIn)
+        {
+            PlayerFadeIn();
+        }
+    }
+
+    private void SetColor()
+    {
+        playerImage.color = new Color(1, 1, 1, alfa);
     }
 
     //ダッシュ時の残像
@@ -45,5 +71,33 @@ public class PlayerFX : EntityFX
     {
         screenShake.m_DefaultVelocity = new Vector3(_shakePower.x * player.facingDir, _shakePower.y) * shakeMultiplier;
         screenShake.GenerateImpulse();
+    }
+
+    public void PlayerFadeOut()
+    {
+        if (alfa >= 0)
+        {
+            alfa -= Time.deltaTime * fadeSpeed;
+            SetColor();
+        }
+        else
+        {
+            playerImage.color = new Color(0, 0, 0, 0);
+            fadeOut = false;
+        }
+    }
+
+    public void PlayerFadeIn()
+    {
+        if (alfa <= 1)
+        {
+            alfa += Time.deltaTime * fadeSpeed;
+            SetColor();
+        }
+        else
+        {
+            playerImage.color = new Color(1, 1, 1, 1);
+            fadeIn = false;
+        }
     }
 }
