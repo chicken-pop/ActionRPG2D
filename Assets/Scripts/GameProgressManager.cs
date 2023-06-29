@@ -7,6 +7,16 @@ public class GameProgressManager : SingletonMonoBehaviour<GameProgressManager>, 
 {
     public GameProgressionFlagList flagList;
 
+    public enum FlagName
+    {
+        Op,
+        BeforeForestStory,
+        StartForestStory,
+        ForestClear,
+        BeforeSnowyMountainStroy,
+        StartSnowyMountainStory
+    }
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "MainMenu")

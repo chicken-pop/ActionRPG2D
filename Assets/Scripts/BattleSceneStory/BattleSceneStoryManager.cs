@@ -27,7 +27,23 @@ public class BattleSceneStoryManager : MonoBehaviour
 
         storyText.text = "";
 
-        SetStoryElement(storyIndex, textIndex);
+        if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartForestStory].IsOn == false)
+        {
+            //Forest0
+            storyIndex = 0;
+            SetStoryElement(storyIndex, textIndex);
+            return;
+
+        }
+
+        if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartSnowyMountainStory].IsOn == false)
+        {
+            //SnowyMountain0
+            storyIndex = 2;
+            SetStoryElement(storyIndex, textIndex);
+            return;
+
+        }
     }
 
     private void SetStoryElement(int _storyIndex, int _textIndex)
@@ -54,14 +70,23 @@ public class BattleSceneStoryManager : MonoBehaviour
             storyText.text = storyDatas[_storyIndex].stories[textIndex - 1].StoryText;
             textIndex = 0;
 
-            //BattleSceneForestシーンチェンジ
-            if (storyDatas[_storyIndex].fadeOut == true && GameProgressManager.Instance.flagList.Flags[2].IsOn == false)
+            //BattleSceneにチェンジ
+            if (storyDatas[_storyIndex].fadeOut == true)
             {
-                storyIndex++;
-
                 fadeOut.FadeOut();
-                StartCoroutine(ForestBattleSceneChange());
-                return;
+
+                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartForestStory].IsOn == false)
+                {
+                    StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.StartForestStory, _sceneName: SceneChangeManager.MainBattleSceneForest));
+                    return;
+                }
+
+                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartSnowyMountainStory].IsOn == false)
+                {
+                    StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.StartSnowyMountainStory, _sceneName: SceneChangeManager.MainBattleSceneSnowyMountain));
+                    return;
+                }
+            
             }
 
             ChangeStoryElement(_storyIndex);
@@ -100,10 +125,10 @@ public class BattleSceneStoryManager : MonoBehaviour
         nextButton.SetActive(true);
     }
 
-    private IEnumerator ForestBattleSceneChange()
+    private IEnumerator BattleSceneChange(int _flagIndex, string _sceneName)
     {
-        GameProgressManager.Instance.SetFlag(2); //StartForestStoryのフラグを立てる
+        GameProgressManager.Instance.SetFlag(_flagIndex); //StartForestStoryのフラグを立てる
         yield return new WaitForSeconds(1);
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
+        SceneChangeManager.Instance.ChangeScene(_sceneName);
     }
 }

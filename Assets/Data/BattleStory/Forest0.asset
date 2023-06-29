@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56cc8e38e7ca92f4581ebab035565eba, type: 3}
-  m_Name: Story001
+  m_Name: Forest0
   m_EditorClassIdentifier: 
   stories:
   - Background: {fileID: 21300000, guid: 409c94934bbc6ef47a2f0d1743427bef, type: 3}

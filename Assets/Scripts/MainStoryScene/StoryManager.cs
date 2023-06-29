@@ -97,15 +97,15 @@ public class StoryManager : MonoBehaviour, ISaveManager
                 storyIndex++;
                 fadeOut.FadeOut();
 
-                if(GameProgressManager.Instance.flagList.Flags[1].IsOn == false)
+                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeForestStory].IsOn == false)
                 {
-                    StartCoroutine(BattleStorySceneChange(1));
+                    StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeForestStory));
                     return;
                 }
 
-                if(GameProgressManager.Instance.flagList.Flags[4].IsOn == false)
+                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeSnowyMountainStroy].IsOn == false)
                 {
-                    StartCoroutine(BattleStorySceneChange(4));
+                    StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeSnowyMountainStroy));
                     return;
                 }       
             }

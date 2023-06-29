@@ -1172,6 +1172,7 @@ MonoBehaviour:
   storyDatas:
   - {fileID: 11400000, guid: 313830b6d88578f4cb0ee7e578afef56, type: 2}
   - {fileID: 11400000, guid: 439500ef846f36a40892871ed3b2d063, type: 2}
+  - {fileID: 11400000, guid: 9710f6553e96cc848977425a205a312d, type: 2}
   fadeOut: {fileID: 1202087079}
 --- !u!4 &1382197306
 Transform:
