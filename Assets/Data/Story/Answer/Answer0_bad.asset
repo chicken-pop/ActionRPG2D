@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354223dac00b1de459ba772dfac96410, type: 3}
+  m_Name: Answer0_bad
+  m_EditorClassIdentifier: 
+  stories:
+  - Sprite: {fileID: 21300000, guid: 2585a6038a036e04ea500f86d8b525a1, type: 3}
+    StoryText: "\u3082\u3046\u3001\u3059\u3050\u8ABF\u5B50\u306B\u4E57\u308B\u3093\u3060\u304B\u3089!!\u3059\u3050\u8912\u3081\u308B\u306E\u6B62\u3081\u3061\u3083\u304A\u3063\u304B\u306A??"
+    CharacterName: "\u4F50\u5009"
+  - Sprite: {fileID: 21300000, guid: 2585a6038a036e04ea500f86d8b525a1, type: 3}
+    StoryText: "\u8912\u3081\u308B\u3068\u4F38\u3073\u308B\u30BF\u30A4\u30D7\u3067\u3059\u3002"
+    CharacterName: "\u6C5F\u53E3"
+  - Sprite: {fileID: 21300000, guid: 1d765fc6a651d82499e44444b00a8b5a, type: 3}
+    StoryText: "\u306A\u306B\u305D\u308C(\u7B11)"
+    CharacterName: "\u4F50\u5009"
+  bgm: 3
+  date: "8\u670811\u65E5"
+  questionIndex: -1
+  fadeOut: 0

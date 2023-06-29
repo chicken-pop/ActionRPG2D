@@ -15,7 +15,8 @@ public class StoryManager : MonoBehaviour, ISaveManager
 
     [SerializeField] private GameObject OP;
 
-    public StoryData[] storydatas;
+    public StoryData[] storyDatas;
+    public StoryData[] answerDatas;
     public OptionData optionData;
 
     [SerializeField] private GameObject[] optionButton;
@@ -23,9 +24,11 @@ public class StoryManager : MonoBehaviour, ISaveManager
     [SerializeField] private UI_FadeScreen fadeOut;
 
     public int storyIndex = -1;
+    public int answerStoryIndex = 0;
     public int textIndex;
 
-    private bool isTextEnd;
+    private bool isTextEnd = false;
+    public bool isAnswerTurn = false;
 
     private void Start()
     {
@@ -45,56 +48,92 @@ public class StoryManager : MonoBehaviour, ISaveManager
 
     }
 
-
-
     public void SetStoryElement(int _storyIndex, int _textIndex)
     {
         storyText.text = "";
-        var storyElement = storydatas[_storyIndex].stories[_textIndex];
+        var storyElement = storyDatas[_storyIndex].stories[_textIndex];
 
         image.sprite = storyElement.Sprite;
         nameText.text = storyElement.CharacterName;
-        date.text = storydatas[_storyIndex].date;
+        date.text = storyDatas[_storyIndex].date;
 
 
-        StartCoroutine(TypeSentence(_storyIndex, _textIndex));
+        StartCoroutine(TypeSentence(_storyIndex, _textIndex, storyDatas));
 
-        AudioManager.Instance.PlayBGM(storydatas[_storyIndex].bgm);
+        AudioManager.Instance.PlayBGM(storyDatas[_storyIndex].bgm);
+
+    }
+
+    public void SetAnswerElement(int _storyIndex, int _textIndex)
+    {
+        storyText.text = "";
+        var storyElement = answerDatas[_storyIndex].stories[_textIndex];
+
+        image.sprite = storyElement.Sprite;
+        nameText.text = storyElement.CharacterName;
+        date.text = answerDatas[_storyIndex].date;
 
 
+        StartCoroutine(TypeSentence(_storyIndex, _textIndex, answerDatas));
+
+        AudioManager.Instance.PlayBGM(answerDatas[_storyIndex].bgm);
 
     }
 
     public void StoryProgression(int _storyIndex)
     {
-        if (textIndex < storydatas[_storyIndex].stories.Count)
+        if (textIndex < storyDatas[_storyIndex].stories.Count)
         {
             SetStoryElement(storyIndex, textIndex);
         }
         else
         {
-            storyText.text = storydatas[_storyIndex].stories[textIndex - 1].StoryText;
+            storyText.text = storyDatas[_storyIndex].stories[textIndex - 1].StoryText;
             textIndex = 0;
 
-            //BattleSceneForestシーンチェンジ
-            if (storydatas[_storyIndex].fadeOut == true && GameProgressManager.Instance.flagList.Flags[1].IsOn == false)
+            //BattleSceneに変更
+            if (storyDatas[_storyIndex].fadeOut == true)
             {
                 storyIndex++;
-
                 fadeOut.FadeOut();
-                StartCoroutine(ForestStorySceneChange());
-                return;
+
+                if(GameProgressManager.Instance.flagList.Flags[1].IsOn == false)
+                {
+                    StartCoroutine(BattleStorySceneChange(1));
+                    return;
+                }
+
+                if(GameProgressManager.Instance.flagList.Flags[4].IsOn == false)
+                {
+                    StartCoroutine(BattleStorySceneChange(4));
+                    return;
+                }       
             }
 
             //選択肢
-            if (storydatas[_storyIndex].questionIndex >= 0)
+            if (storyDatas[_storyIndex].questionIndex >= 0)
             {
-                SetOption(storydatas[_storyIndex].questionIndex);
+                SetOption(storyDatas[_storyIndex].questionIndex);
                 return;
             }
 
             //日や場面が変わるときの演出
 
+            ChangeStoryElement(_storyIndex);
+
+        }
+    }
+
+    public void AnswerStoryProgression(int _storyIndex)
+    {
+        if (textIndex < answerDatas[_storyIndex].stories.Count)
+        {
+            SetAnswerElement(_storyIndex, textIndex);
+        }
+        else
+        {
+            textIndex = 0;
+            isAnswerTurn = false;
             ChangeStoryElement(_storyIndex);
 
         }
@@ -112,14 +151,24 @@ public class StoryManager : MonoBehaviour, ISaveManager
         {
             textIndex++;
             storyText.text = "";
-            StoryProgression(storyIndex);
+
+            if (isAnswerTurn)
+            {
+                AnswerStoryProgression(answerStoryIndex);
+            }
+            else if (!isAnswerTurn)
+            {
+                StoryProgression(storyIndex);
+            }
+
             isTextEnd = false;
         }
+
     }
 
-    public IEnumerator TypeSentence(int _storyIndex, int _textIndex)
+    public IEnumerator TypeSentence(int _storyIndex, int _textIndex, StoryData[] data)
     {
-        foreach (char letter in storydatas[_storyIndex].stories[_textIndex].StoryText.ToCharArray())
+        foreach (char letter in data[_storyIndex].stories[_textIndex].StoryText.ToCharArray())
         {
             storyText.text += letter;
             yield return null;
@@ -128,9 +177,9 @@ public class StoryManager : MonoBehaviour, ISaveManager
         isTextEnd = true;
     }
 
-    private IEnumerator ForestStorySceneChange()
+    private IEnumerator BattleStorySceneChange(int _flagIndex)
     {
-        GameProgressManager.Instance.SetFlag(1); //BeforeBattleForestのフラグを立てる
+        GameProgressManager.Instance.SetFlag(_flagIndex);
         yield return new WaitForSeconds(1);
         SceneChangeManager.Instance.ChangeScene(SceneChangeManager.BattleSceneStory);
     }

@@ -5,7 +5,21 @@ using UnityEngine;
 public class StorySceneManager : MonoBehaviour , ISaveManager
 {
     public static StorySceneManager instance;
-    public int ImpressionPoint = 0;
+    private int impressionPoint = 0;
+
+    public int ImpressionPoint
+    {
+        get => impressionPoint;
+        set
+        {
+            impressionPoint = value;
+
+            if (impressionPoint <= 0)
+            {
+                impressionPoint = 0;
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -16,21 +30,6 @@ public class StorySceneManager : MonoBehaviour , ISaveManager
         else
         {
             instance = this;
-        }
-    }
-
-    public void AddImpressionPoint()
-    {
-        ImpressionPoint += 5;
-    }
-
-    public void DecreaseImpressionPoint()
-    {
-        ImpressionPoint += -3;
-
-        if (ImpressionPoint <= 0)
-        {
-            ImpressionPoint = 0;
         }
     }
 

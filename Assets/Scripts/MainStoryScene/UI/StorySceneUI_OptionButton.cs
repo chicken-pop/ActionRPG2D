@@ -9,6 +9,7 @@ public class StorySceneUI_OptionButton : MonoBehaviour
     [SerializeField] private int buttonIndex;
 
     [SerializeField] private GameObject goodImpression;
+    [SerializeField] private GameObject normalImpression;
     [SerializeField] private GameObject badImpression;
 
     private int storyIndex;
@@ -34,7 +35,7 @@ public class StorySceneUI_OptionButton : MonoBehaviour
     private void ProgressioinStory()
     {
         storyIndex = storyManager.storyIndex;
-        var qustionIndex = storyManager.optionData.options[storyManager.storydatas[storyIndex].questionIndex];
+        var qustionIndex = storyManager.optionData.options[storyManager.storyDatas[storyIndex].questionIndex];
 
         goodOptionIndex = qustionIndex.goodOptionIndex;
         normalOptionIndex = qustionIndex.normalOptionIndex;
@@ -52,42 +53,47 @@ public class StorySceneUI_OptionButton : MonoBehaviour
 
     private void JudgeQuestionIndex()
     {
-        switch (storyManager.storydatas[storyIndex].questionIndex)
+        switch (storyManager.storyDatas[storyIndex].questionIndex)
         {
             //質問のIndexとその回答に対するStoryDataをいれる
             case 0:
                 if (buttonIndex == goodOptionIndex)
-                    SetStory(_nextStoryIndex: 1, _impression: 0);
+                    SetStory(_answerStoryIndex: 0, _impression: 0);
                 else if (buttonIndex == normalOptionIndex)
-                    SetStory(_nextStoryIndex: 2, _impression: 2);
-                else if (buttonIndex == normalOptionIndex)
-                    SetStory(_nextStoryIndex: 3, _impression: 1);
+                    SetStory(_answerStoryIndex: 1, _impression: 1);
+                else if (buttonIndex == badOptionIndex)
+                    SetStory(_answerStoryIndex: 2, _impression: 2);
                 break;
 
         }
     }
 
-    private void SetStory(int _nextStoryIndex,int _impression)
+    private void SetStory(int _answerStoryIndex,int _impression)
     {
-        storyManager.storyIndex = _nextStoryIndex;
-        storyManager.SetStoryElement(storyManager.storyIndex, storyManager.textIndex);
+        storyManager.isAnswerTurn = true;
+        storyManager.answerStoryIndex = _answerStoryIndex;
+        storyManager.SetAnswerElement(storyManager.answerStoryIndex, storyManager.textIndex);
 
         if(_impression == 0)
         {
             //好感度Up
             goodImpression.SetActive(true);
-            StorySceneManager.instance.AddImpressionPoint();
+            ChangeImpressionPoint(5);
 
         }
         else if(_impression == 1)
         {
             //好感度Down
-            badImpression.SetActive(false);
-            StorySceneManager.instance.DecreaseImpressionPoint();
+            normalImpression.SetActive(true);
+            ChangeImpressionPoint(3);
         }
-        else
+        else if(_impression == 2)
         {
-            return;
+            //好感度Down
+            badImpression.SetActive(true);
+            ChangeImpressionPoint(-4);
         }
     }
+
+    public void ChangeImpressionPoint(int _impressionPoint) => StorySceneManager.instance.ImpressionPoint += _impressionPoint;
 }
