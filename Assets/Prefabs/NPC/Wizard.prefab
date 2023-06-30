@@ -52,7 +52,9 @@ MonoBehaviour:
   characterImage: {fileID: 0}
   windowText: {fileID: 0}
   nextTextButton: {fileID: 0}
-  wizardEvent: 1
+  WizardEvent: 0
+  ForestBossEvent: 0
+  ForestClear: 0
 --- !u!1 &8598347973735185576
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,9 +183,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8598347973863689175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.53, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8598347973397202753}
   m_RootOrder: 1

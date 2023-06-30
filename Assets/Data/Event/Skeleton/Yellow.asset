@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb279d907183493468cbfd38e953df75, type: 3}
+  m_Name: Yellow
+  m_EditorClassIdentifier: 
+  Events:
+  - WindowText: "\u7DD1\u306E\u5974\u306F\u78BA\u5B9F\u306B\u30A6\u30BD\u3060\u3002\u3061\u306A\u307F\u306B\u6B63\u89E3\u306E\u30DD\u30FC\u30BF\u30EB\u306F\u7DD1\u8272\u3060\u3002"
+    CharacterImage: {fileID: 787671514, guid: 0383e2d2e2edfbb4bac33d3b78d9ef0b, type: 3}

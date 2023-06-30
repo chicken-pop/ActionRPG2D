@@ -9,18 +9,21 @@ public class PortalGimic : MonoBehaviour
     private Player player;
     private Rigidbody2D rb;
 
+    public bool isPortal = false;
+
     private void Start()
     {
         player = PlayerManager.instance.player;
         rb = player.gameObject.GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
         {
             if(Vector2.Distance(player.transform.position, transform.position) > 0.3f)
             {
+                isPortal = true;
                 StartCoroutine(PlayerFade());
             }
         }
