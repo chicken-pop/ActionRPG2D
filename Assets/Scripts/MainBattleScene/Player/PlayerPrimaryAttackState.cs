@@ -25,6 +25,14 @@ public class PlayerPrimaryAttackState : PlayerState
 
         player.anim.SetInteger("ComboCounter", comboCounter);
 
+        if (comboCounter == 0)
+            AudioManager.Instance.PlaySE(AudioManager.SE.attack0, null);
+        else if (comboCounter == 1)
+            AudioManager.Instance.PlaySE(AudioManager.SE.attack1, null);
+        else if (comboCounter == 2)
+            AudioManager.Instance.PlaySE(AudioManager.SE.attack2, null);
+
+
 
         float attackDir = player.facingDir;
         if (xInput != 0)
@@ -52,7 +60,7 @@ public class PlayerPrimaryAttackState : PlayerState
     {
         base.Update();
 
-        if(stateTimer < 0)
+        if (stateTimer < 0)
         {
             player.SetZeroVelocity();
         }
@@ -63,5 +71,5 @@ public class PlayerPrimaryAttackState : PlayerState
         }
     }
 
-    
+
 }

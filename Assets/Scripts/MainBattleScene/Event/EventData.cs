@@ -14,4 +14,5 @@ public class Events
     [TextArea]
     public string WindowText;
     public Sprite CharacterImage;
+    public AudioManager.SE SE;
 }

@@ -115,12 +115,15 @@ public class Sword_Skill : Skill
         {
             case Swordtype.Bounce:
                 newSwordScript.SetupBounce(true, bounceAmount, bounceSpeed);
+                AudioManager.Instance.PlaySE(AudioManager.SE.swordAttack0, null);
                 break;
             case Swordtype.Pierce:
                 newSwordScript.SetupPiercwe(pierceAmount);
+                AudioManager.Instance.PlaySE(AudioManager.SE.swordAttack1, null);
                 break;
             case Swordtype.Spin:
                 newSwordScript.SetupSpin(true, maxTravelDistance, spinDuration, hitCooldown);
+                AudioManager.Instance.PlaySE(AudioManager.SE.swordAttack0, null);
                 break;
         }
 

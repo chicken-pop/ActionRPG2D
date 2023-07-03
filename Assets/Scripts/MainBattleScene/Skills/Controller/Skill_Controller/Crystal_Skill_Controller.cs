@@ -85,6 +85,7 @@ public class Crystal_Skill_Controller : MonoBehaviour
 
                 //ダメージを与える
                 player.stats.DoMagicDamage(hit.GetComponent<CharacterStats>());
+                AudioManager.Instance.PlaySE(AudioManager.SE.crystalAttack, null);
                 //アイテム効果の実行(装備品がお守りの場合)
                 ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
                 if (equipedAmulet != null)

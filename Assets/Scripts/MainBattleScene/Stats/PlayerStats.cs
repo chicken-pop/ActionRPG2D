@@ -16,6 +16,7 @@ public class PlayerStats : CharacterStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
+        AudioManager.Instance.PlaySE(AudioManager.SE.takeDamage, null);
 
         //player.DamageImpact();
     }

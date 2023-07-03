@@ -31,6 +31,8 @@ public class UI_CraftList : MonoBehaviour , IPointerDownHandler
             GameObject newSlot = Instantiate(craftSlotPrefab, craftSlotParent);
             newSlot.GetComponent<UI_CraftSlot>().SetUpCraftSlot(craftEquipment[i]);
         }
+
+        AudioManager.Instance.PlaySE(AudioManager.SE.changeUI, null);
     }
 
     public void OnPointerDown(PointerEventData eventData)

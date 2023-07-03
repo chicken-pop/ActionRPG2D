@@ -99,7 +99,7 @@ public class UI : MonoBehaviour, ISaveManager
         //•\Ž¦‚·‚é
         if (_menu != null)
         {
-            AudioManager.Instance.PlaySE(AudioManager.SE.button, null);
+            AudioManager.Instance.PlaySE(AudioManager.SE.changeUI, null);
             _menu.SetActive(true);
         }
 
@@ -108,7 +108,7 @@ public class UI : MonoBehaviour, ISaveManager
             if (_menu == inGameUI)
             {
                 BattleSceneGameManager.instance.PauseGame(false);
-                AudioManager.Instance.StopSE(AudioManager.SE.button);
+                AudioManager.Instance.StopSE(AudioManager.SE.changeUI);
             }
             else
             {

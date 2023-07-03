@@ -148,6 +148,13 @@ public class Crystal_Skill : Skill
         Crystal_Skill_Controller currentCrystalScript = currentCrystal.GetComponent<Crystal_Skill_Controller>();
 
         currentCrystalScript.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed, FindClosestEnemy(currentCrystal.transform), player);
+
+        if (canMoveToEnemy)
+        {
+            AudioManager.Instance.PlaySE(AudioManager.SE.crystalShoot, null);
+            return;
+        }
+        AudioManager.Instance.PlaySE(AudioManager.SE.crystalSet, null);
     }
 
     public void MoveCrystalPosition()
@@ -156,6 +163,7 @@ public class Crystal_Skill : Skill
         Vector2 playerPos = player.transform.position;
         player.transform.position = currentCrystal.transform.position;
         currentCrystal.transform.position = playerPos;
+        AudioManager.Instance.PlaySE(AudioManager.SE.warp, null);
 
         if (cloneInsteadOfCrystal)
         {

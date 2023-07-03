@@ -10,11 +10,11 @@ public class NPCEventTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             canEvent = true;
         }
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Tab))
         {
             canEvent = false;
         }
@@ -32,7 +32,7 @@ public class NPCEventTrigger : MonoBehaviour
             if (canEvent)
             {
                 eventData.SetupEvent(_textIndex: 0);
-                AudioManager.Instance.StopSE(AudioManager.SE.dash); //seè¡Ç∑
+                //AudioManager.Instance.StopSE(AudioManager.SE.dash); //seè¡Ç∑
                 BattleSceneGameManager.instance.PauseGame(true);
             }
 

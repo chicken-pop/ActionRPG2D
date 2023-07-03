@@ -12,6 +12,7 @@ public class Thunder_Strike_Counroller : MonoBehaviour
             PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
             EnemyStats enemyTarget = collision.GetComponent<EnemyStats>();
             playerStats.DoMagicDamage(enemyTarget);
+            AudioManager.Instance.PlaySE(AudioManager.SE.thunder, null);
         }
     }
 }

@@ -49,7 +49,8 @@ public class UI_ParametterUpSlot : MonoBehaviour
             return;
         }
 
-        Debug.Log("”é—ÍUp");
+        //Debug.Log("”é—ÍUp");
+        AudioManager.Instance.PlaySE(AudioManager.SE.parameterUp, null);
         uI_ParametterUp.player.stats.strength.AddModifier(1);
         Inventory.instance.UpdateStatsUI();
 
@@ -65,7 +66,8 @@ public class UI_ParametterUpSlot : MonoBehaviour
             return;
         }
 
-        Debug.Log("r•q«Up");
+        //Debug.Log("r•q«Up");
+        AudioManager.Instance.PlaySE(AudioManager.SE.parameterUp, null);
         uI_ParametterUp.player.stats.agility.AddModifier(1);
         Inventory.instance.UpdateStatsUI();
 
@@ -83,7 +85,8 @@ public class UI_ParametterUpSlot : MonoBehaviour
             return;
         }
 
-        Debug.Log("’m«Up");
+        //Debug.Log("’m«Up");
+        AudioManager.Instance.PlaySE(AudioManager.SE.parameterUp, null);
         uI_ParametterUp.player.stats.intelegence.AddModifier(1);
         Inventory.instance.UpdateStatsUI();
 
@@ -99,7 +102,8 @@ public class UI_ParametterUpSlot : MonoBehaviour
             return;
         }
 
-        Debug.Log("Šˆ—ÍUp");
+        //Debug.Log("Šˆ—ÍUp");
+        AudioManager.Instance.PlaySE(AudioManager.SE.parameterUp, null);
         uI_ParametterUp.player.stats.vitality.AddModifier(1);
         Inventory.instance.UpdateStatsUI();
 

@@ -74,6 +74,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         unlocked = true;
         skillImage.color = Color.white;
+        AudioManager.Instance.PlaySE(AudioManager.SE.skill, null);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -111,6 +111,7 @@ public class Player : Entity
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Inventory.instance.UseFlask();
+            AudioManager.Instance.PlaySE(AudioManager.SE.flask, null);
         }
 
     }
@@ -174,7 +175,7 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill())
         {
-
+            AudioManager.Instance.PlaySE(AudioManager.SE.dash, null);
             dashDir = Input.GetAxisRaw("Horizontal");
             if (dashDir == 0)
             {

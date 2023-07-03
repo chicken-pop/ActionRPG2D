@@ -34,27 +34,29 @@ public class PlayerGroundedState : PlayerState
                 player.fx.CreatePopUpText("スキル使用不可");
                 return;
             }
-            AudioManager.Instance.PlaySE(AudioManager.SE.SpecialAttack1, null); //仮
-            AudioManager.Instance.PlaySE(AudioManager.SE.SpecialAttack2, null);　//仮
             stateMachine.ChangeState(player.blackHole);
+            AudioManager.Instance.PlaySE(AudioManager.SE.blackhole, null);
         }
 
         //ソードスキル
         if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skill.sword.swordUnlocked)
         {
             stateMachine.ChangeState(player.aimSword);
+            //CreateSwordでサウンドならしている
         }
 
         //パリィスキル
         if (Input.GetKeyDown(KeyCode.Q) && player.skill.parry.parryUnlocked)
         {
             stateMachine.ChangeState(player.counterAttack);
+            AudioManager.Instance.PlaySE(AudioManager.SE.parry, null);
         }
 
         //通常攻撃
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             stateMachine.ChangeState(player.primaryAttack);
+            //PlayerAttackStateでサウンドならしている
         }
 
         if (!player.IsGroundDetected())

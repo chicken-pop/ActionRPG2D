@@ -15,5 +15,7 @@ MonoBehaviour:
   Events:
   - WindowText: "\u30A2\u30A4\u30C6\u30E0\u62FE\u3048\u306A\u3044\u3058\u3083\u3093!!"
     CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
+    SE: 13
   - WindowText: "\u307E\u305F\u30D0\u30B0\u30FC!!"
     CharacterImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
+    SE: 13

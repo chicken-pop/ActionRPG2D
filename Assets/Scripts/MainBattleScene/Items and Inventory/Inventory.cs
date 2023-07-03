@@ -176,6 +176,7 @@ public class Inventory : MonoBehaviour , ISaveManager
         if (oldeEquipment != null)
         {
             UnequipItem(oldeEquipment);
+            AudioManager.Instance.PlaySE(AudioManager.SE.equipmentOff, null);
             AddItem(oldeEquipment);
 
         }
@@ -185,6 +186,7 @@ public class Inventory : MonoBehaviour , ISaveManager
         equipmentDictionary.Add(newEquipment, newItem);
         newEquipment.AddModifiers();
         RemoveItem(_item);
+        AudioManager.Instance.PlaySE(AudioManager.SE.equipmentOn, null);
 
         UpdateSlotUI();
     }
@@ -319,6 +321,7 @@ public class Inventory : MonoBehaviour , ISaveManager
 
         //ÉNÉâÉtÉgê¨å˜
         AddItem(_itemToCraft);
+        AudioManager.Instance.PlaySE(AudioManager.SE.craft, null);
 
         return true;
     }

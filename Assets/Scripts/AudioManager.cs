@@ -26,11 +26,38 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     public enum SE
     {
-        sword,
+        attack0,
+        attack1,
+        attack2,
+        blackhole,
+        changeUI,
+        craft,
+        craftChange,
+        crystalSet,
+        crystalShoot,
+        crystalAttack,
         dash,
-        button,
-        SpecialAttack1,
-        SpecialAttack2
+        daialogueUI_long,
+        daialogueUI_middle,
+        daialogueUI_short,
+        equipmentOff,
+        equipmentOn,
+        flask,
+        iceAndFire,
+        impressionDown,
+        impressionUp,
+        move,
+        parameterUp,
+        parry,
+        questionSelect,
+        skill,
+        swordAttack0,
+        swordAttack1,
+        swordCatch,
+        swordStabbling,
+        takeDamage,
+        thunder,
+        warp
     }
 
     private bool canPlaySE;

@@ -26,6 +26,7 @@ public class Event : MonoBehaviour
         windowText.text = "";
         nextTextButton.GetComponent<Button>().onClick.AddListener(() => NextButton());
 
+
         if (GetComponentInChildren<WizardParametterUpEvent>())
         {
             WizardEvent = true;
@@ -41,6 +42,7 @@ public class Event : MonoBehaviour
     {
         eventUI.SetActive(true);
         characterImage.sprite = eventData.Events[_textIndex].CharacterImage;
+        AudioManager.Instance.PlaySE(eventData.Events[_textIndex].SE, null);
         StartCoroutine(TypeSentence(_textIndex));
     }
 

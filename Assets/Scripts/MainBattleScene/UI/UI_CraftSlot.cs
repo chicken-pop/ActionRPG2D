@@ -25,6 +25,7 @@ public class UI_CraftSlot : UI_ItemSlot
         itemImage.sprite = _data.icon;
         itemText.text = _data.itemName;
 
+
         /*
         //‘¼‚Ì‘•”õ•i‚ðl—¶‚µ‚ÄŒˆ’è
         if(itemText.text.Length > 5)
@@ -41,5 +42,6 @@ public class UI_CraftSlot : UI_ItemSlot
     public override void OnPointerDown(PointerEventData eventData)
     {
         ui.craftWindow.SetupCraftWindow(item.data as ItemData_Equipment);
+        AudioManager.Instance.PlaySE(AudioManager.SE.craftChange, null);
     }
 }
