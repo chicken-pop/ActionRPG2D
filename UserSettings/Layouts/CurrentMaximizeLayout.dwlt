@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 9999
+  controlID: 11084
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10000
+  controlID: 11085
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -455,9 +455,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.8065133, y: -5.9747505, z: -0.23571877}
+    m_Target: {x: -90.576, y: -1.79, z: -10}
     speed: 2
-    m_Value: {x: 3.8065133, y: -5.9747505, z: -0.23571877}
+    m_Value: {x: -90.576, y: -1.79, z: -10}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -508,9 +508,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 23.880926
+    m_Target: 12.124355
     speed: 2
-    m_Value: 23.880926
+    m_Value: 12.124355
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1353,8 +1353,8 @@ MonoBehaviour:
     y: 0
     width: 310
     height: 939
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -1393,18 +1393,18 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1806fdff9012fdff0040fdff6a50fdff2467fdff967afdff348afdffda94fdff26cdfdff90ddfdff1e0bfeff0e1ffeff465bfeffe46ffeff6684feff8697feff60a8feffa85dffff8c93ffffba93ffff0ed8ffff78e8ffff0cfbffff94110100aa130100d6130200923602006041020064790200c6840200
+      m_ExpandedIDs: f2c5fcff5cd6fcff90d7fcff1806fdff9012fdff0040fdff6a50fdff2467fdff967afdff348afdffda94fdff26cdfdff90ddfdff1e0bfeff0e1ffeff465bfeffe46ffeff6684feff8697feff60a8feffa85dffff8c93ffffba93ffff0ed8ffff78e8ffff0cfbffff94110100aa130100d6130200923602006041020064790200c6840200c6a002002ea30200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Light 2D
-        m_OriginalName: Light 2D
+        m_Name: Main Camera
+        m_OriginalName: Main Camera
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 166682
+        m_UserData: 172324
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -1524,7 +1524,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: c6a00200
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000ac9e0000ae9e0000fc9e0000149f0000947d0100
     m_RenameOverlay:
@@ -1551,8 +1551,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: c6a00200
+    m_LastClickedInstanceID: 172230
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: fc750000
     m_RenameOverlay:
@@ -1642,7 +1642,7 @@ MonoBehaviour:
     m_CachedPref: 282
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 172230
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
