@@ -15,7 +15,7 @@ TagManager:
   - Enemy
   - Sword
   - Item
-  - 
+  - Moon
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 3647815211
+    locked: 0
+  - name: Wall
+    uniqueID: 326364355
     locked: 0
   - name: Ground
     uniqueID: 1699057577

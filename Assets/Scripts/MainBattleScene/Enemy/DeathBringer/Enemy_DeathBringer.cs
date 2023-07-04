@@ -55,7 +55,7 @@ public class Enemy_DeathBringer : Enemy
         base.Die();
 
         AudioManager.Instance.StopBGM();
-        GameObject.Find("BossEvent").GetComponent<Event>().ForestBossEvent = true;
+        GameObject.Find("BossEvent").GetComponent<Event>().BossEvent = true;
 
         stateMachine.ChangeState(deadState);
         Destroy(counterImage, 0.5f);

@@ -15,3 +15,4 @@ MonoBehaviour:
   Events:
   - WindowText: "\u8D64\u3044\u5974\u3082\u9752\u3044\u5974\u3082\u30A6\u30BD\u3064\u304D\u3060\u305E\u3001\u3060\u307E\u3055\u308C\u308B\u306A!!\u6B63\u89E3\u306E\u30DD\u30FC\u30BF\u30EB\u306F\u9752\u3060\u3002"
     CharacterImage: {fileID: -719819358, guid: 0383e2d2e2edfbb4bac33d3b78d9ef0b, type: 3}
+    SE: 13

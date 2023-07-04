@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy_GhostWarrior : Enemy
 {
+    public bool bossFightBegun;
+
     [Header("Spell cast details")]
     [SerializeField] private GameObject spellPrefab;
     public int amountOfSpells;
@@ -36,6 +38,7 @@ public class Enemy_GhostWarrior : Enemy
     {
         base.Start();
         stateMachine.Initialize(idelState);
+        Invoke("Flip", 0.1f);
     }
 
     protected override void Update()
@@ -68,6 +71,7 @@ public class Enemy_GhostWarrior : Enemy
     public override void Die()
     {
         base.Die();
+        GameObject.Find("BossEvent").GetComponent<Event>().BossEvent = true;
 
         stateMachine.ChangeState(deadState);
         Destroy(counterImage, 0.5f);

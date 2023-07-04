@@ -16,7 +16,6 @@ public class GhostWarriorAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("a");
 
         attackType = Random.Range(0, 4);
 

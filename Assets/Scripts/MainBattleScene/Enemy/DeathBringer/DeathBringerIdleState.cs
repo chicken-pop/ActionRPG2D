@@ -30,7 +30,7 @@ public class DeathBringerIdleState : EnemyState
     {
         base.Update();
 
-        //DeathBringer戦開始
+        //戦開始
         if(Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
         {
             enemy.bossFightBegun = true;

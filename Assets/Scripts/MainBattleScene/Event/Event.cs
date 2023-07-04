@@ -18,7 +18,7 @@ public class Event : MonoBehaviour
     private bool isTextEnd;
 
     public bool WizardEvent = false;
-    public bool ForestBossEvent = false;
+    public bool BossEvent = false;
     public bool ForestClear = false; //ForestStageÇ≈ç≈å„Ç…ElcÇ∆âÔòbÇ∑ÇÈèÍñ 
 
     private void Start()
@@ -32,9 +32,9 @@ public class Event : MonoBehaviour
             WizardEvent = true;
         }
 
-        if (GetComponentInChildren<ForestBossEvent>())
+        if (GetComponentInChildren<BossEvent>())
         {
-            ForestBossEvent = true;
+            BossEvent = true;
         }
     }
 
@@ -63,9 +63,9 @@ public class Event : MonoBehaviour
                 return;
             }
 
-            if(ForestBossEvent == true)
+            if(BossEvent == true)
             {
-                ForestBossEvent = false;
+                BossEvent = false;
                 return;
             }
 

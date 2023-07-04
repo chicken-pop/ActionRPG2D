@@ -24,7 +24,14 @@ public class GhostWarriorIdleState : GhostWarriorGroundState
     {
         base.Update();
 
-        if (stateTimer < 0)
+        //DeathBringeríŠJŽn
+        if (Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
+        {
+            enemy.bossFightBegun = true;
+
+        }
+
+        if (stateTimer < 0 && enemy.bossFightBegun)
         {
             stateMachine.ChangeState(enemy.battleState);
         }
