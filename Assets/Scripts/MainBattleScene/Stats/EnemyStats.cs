@@ -61,6 +61,7 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
+        AudioManager.Instance.PlaySE(AudioManager.SE.enemyDamage, null);
     }
 
     protected override void Die()

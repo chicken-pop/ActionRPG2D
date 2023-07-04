@@ -7,6 +7,7 @@ public class Enemy_AnimationTriggers : MonoBehaviour
     private Enemy enemy => GetComponentInParent<Enemy>();
 
     [SerializeField] private Vector2 knockbackPower;
+    [SerializeField] private bool magicalAttack;
 
     private void AnimationTrigger()
     {
@@ -25,7 +26,11 @@ public class Enemy_AnimationTriggers : MonoBehaviour
             {
                 PlayerStats target = hit.GetComponent<PlayerStats>();
                 enemy.stats.DoDamage(target);
-                //enemy.stats.DoMagicDamage(target);
+
+                if (magicalAttack == true)
+                {
+                    enemy.stats.DoMagicDamage(target);
+                }
             }
         }
 
@@ -51,7 +56,6 @@ public class Enemy_AnimationTriggers : MonoBehaviour
     }
 
 
-
     private void SpecialAttackTrigger()
     {
         enemy.AnimationSpecialAttackTrigger();
@@ -60,4 +64,8 @@ public class Enemy_AnimationTriggers : MonoBehaviour
     private void OpenCounterWindow() => enemy.OpenCounterAttackWindow();
 
     private void CloseCounterWindow() => enemy.CloseCounterAttackWindow();
+
+    private void MagicalAttack() => magicalAttack = true;
+
+    private void CancelMagicalAttack() => magicalAttack = false;
 }

@@ -40,6 +40,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         daialogueUI_long,
         daialogueUI_middle,
         daialogueUI_short,
+        enemyDamage,
         equipmentOff,
         equipmentOn,
         flask,
