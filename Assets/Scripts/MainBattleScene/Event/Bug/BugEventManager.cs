@@ -28,9 +28,16 @@ public class BugEventManager : MonoBehaviour, ISaveManager
     {
         BugList.InitFlags();
 
-        if (SceneManager.GetActiveScene().name == "MainBattleSceneForest")
+        if (SceneManager.GetActiveScene().name == SceneChangeManager.MainBattleSceneForest)
         {
             AllBugCount = 5;
+            return;
+        }
+
+        if(SceneManager.GetActiveScene().name == SceneChangeManager.MainBattleSceneSnowyMountain)
+        {
+            AllBugCount = 3;
+            return;
         }
     }
 

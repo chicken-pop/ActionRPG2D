@@ -56,6 +56,7 @@ public class Enemy_Werewolf : Enemy
     public override void Die()
     {
         base.Die();
+        Dead();
 
         stateMachine.ChangeState(deadState);
         Destroy(counterImage, 0.5f);
