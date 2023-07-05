@@ -8,6 +8,10 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<CharacterStats>().TakeDamage(damageAmount);
+        if (collision.GetComponent<Player>() != null)
+        {
+            collision.GetComponent<CharacterStats>().TakeDamage(damageAmount);
+
+        }
     }
 }

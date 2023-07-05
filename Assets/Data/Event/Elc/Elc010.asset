@@ -30,4 +30,4 @@ MonoBehaviour:
     SE: 13
   - WindowText: "\u2026\u6025\u3054\u3046\u3002"
     CharacterImage: {fileID: -1362274535, guid: c4737540a5bc75b4bb4b5232ce80b5a1, type: 3}
-    SE: 0
+    SE: 13
