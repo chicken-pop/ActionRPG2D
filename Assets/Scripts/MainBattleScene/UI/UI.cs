@@ -179,7 +179,27 @@ public class UI : MonoBehaviour, ISaveManager
     {
         yield return new WaitForSeconds(1);
         eventUI.SetActive(true);
-        eventUI.GetComponentInChildren<TextMeshProUGUI>().text = "バグ多すぎ…";
+
+        var randomIndex = Random.Range(0, 3);
+        var textMessage = "";
+
+        switch (randomIndex)
+        {
+            case 0:
+                textMessage = "もっとデバッグ頑張らないと!!";
+                break;
+            case 1:
+                textMessage = "難しい…";
+                break;
+            case 2:
+                textMessage = "私諦めないから!!";
+                break;
+
+
+        }
+
+        eventUI.GetComponentInChildren<TextMeshProUGUI>().text = textMessage;
+        eventUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = PlayerManager.instance.player.playerImage;
 
         yield return new WaitForSeconds(1);
         restartButton.SetActive(true);

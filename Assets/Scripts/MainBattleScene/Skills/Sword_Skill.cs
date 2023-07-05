@@ -113,6 +113,9 @@ public class Sword_Skill : Skill
 
         switch (swordtype)
         {
+            case Swordtype.Regular:
+                    AudioManager.Instance.PlaySE(AudioManager.SE.swordAttack0, null);
+                break;
             case Swordtype.Bounce:
                 newSwordScript.SetupBounce(true, bounceAmount, bounceSpeed);
                 AudioManager.Instance.PlaySE(AudioManager.SE.swordAttack0, null);

@@ -13,6 +13,7 @@ public class PlayerCatchSwordState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.Instance.PlaySE(AudioManager.SE.swordCatch, null);
 
         sword = player.sword.transform;
 

@@ -44,6 +44,8 @@ public class Player : Entity
     public PlayerDeadState deadState { get; private set; }
     #endregion
 
+    public Sprite playerImage;
+
     protected override void Awake()
     {
         base.Awake();

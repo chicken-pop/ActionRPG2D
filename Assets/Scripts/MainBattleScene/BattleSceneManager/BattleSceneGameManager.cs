@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleSceneGameManager : MonoBehaviour
 {
@@ -20,7 +21,16 @@ public class BattleSceneGameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case SceneChangeManager.MainBattleSceneForest:
+                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
+                break;
+            case SceneChangeManager.MainBattleSceneSnowyMountain:
+                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneSnowyMountain);
+                break;
+
+        }
     }
 
     public void PauseGame(bool _pause)
