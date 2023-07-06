@@ -82,11 +82,11 @@ public class Event : MonoBehaviour
                 case EventFlags.Invalid:
                     break;
                 case EventFlags.ForestClear:
-                    //BattleSceneGameManager.instance.PauseGame(false);
+                    BattleSceneGameManager.instance.PauseGame(true);
                     StartCoroutine(StageClear(3, SceneChangeManager.MainStoryScene));
                     break;
                 case EventFlags.SnowyMountainClear:
-                    //BattleSceneGameManager.instance.PauseGame(false);
+                    BattleSceneGameManager.instance.PauseGame(true);
                     StartCoroutine(StageClear(6, SceneChangeManager.BattleSceneStory));
                     break;
 
@@ -121,7 +121,8 @@ public class Event : MonoBehaviour
 
     private IEnumerator StageClear(int flagIndex, string sceneName)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
+        AudioManager.Instance.StopBGM();
         GameProgressManager.Instance.SetFlag(flagIndex);
         SceneChangeManager.Instance.ChangeScene(sceneName);
     }

@@ -100,8 +100,9 @@ public class SaveManager : MonoBehaviour
         return new List<ISaveManager>(saveManagers);
     }
 
+    //アプリを落としたときにセーブ
     private void OnApplicationQuit()
     {
-        SaveGame();
+        //SaveGame();
     }
 }
