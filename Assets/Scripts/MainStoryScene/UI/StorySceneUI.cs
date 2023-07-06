@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class StorySceneUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     private Image img;
-    private Sprite usualImage;
+    public Sprite usualImage { get; private set; }
 
     [SerializeField] private Sprite hoverImage;
-    [SerializeField] private Sprite clickImage;
+    public Sprite clickImage;
 
     private void Start()
     {

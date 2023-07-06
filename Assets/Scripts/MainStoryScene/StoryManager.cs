@@ -30,6 +30,9 @@ public class StoryManager : MonoBehaviour, ISaveManager
     private bool isTextEnd = false;
     public bool isAnswerTurn = false;
 
+    public bool isAuto = false;
+    public bool isSkip = false;
+
     private void Start()
     {
         nextText.GetComponent<Button>().onClick.AddListener(() => NextButton());
@@ -97,17 +100,17 @@ public class StoryManager : MonoBehaviour, ISaveManager
                 storyIndex++;
                 fadeOut.FadeOut();
 
-                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeForestStory].IsOn == false)
+                if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeForestStory].IsOn == false)
                 {
                     StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeForestStory));
                     return;
                 }
 
-                if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeSnowyMountainStroy].IsOn == false)
+                if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeSnowyMountainStroy].IsOn == false)
                 {
                     StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeSnowyMountainStroy));
                     return;
-                }       
+                }
             }
 
             //‘I‘ðŽˆ
@@ -175,6 +178,18 @@ public class StoryManager : MonoBehaviour, ISaveManager
         }
 
         isTextEnd = true;
+
+        if (isAuto)
+        {
+            yield return new WaitForSeconds(2f);
+            NextButton();
+            yield break;
+        }
+
+        if (isSkip)
+        {
+            NextButton();
+        }
     }
 
     private IEnumerator BattleStorySceneChange(int _flagIndex)
