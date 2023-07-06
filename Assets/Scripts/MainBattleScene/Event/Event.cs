@@ -19,7 +19,15 @@ public class Event : MonoBehaviour
 
     public bool WizardEvent = false;
     public bool BossEvent = false;
-    public bool ForestClear = false; //ForestStageÇ≈ç≈å„Ç…ElcÇ∆âÔòbÇ∑ÇÈèÍñ 
+
+    private enum EventFlags
+    {
+        Invalid = -1,
+        ForestClear,
+        SnowyMountainClear
+    }
+
+    [SerializeField] private EventFlags eventFlag = EventFlags.Invalid;
 
     private void Start()
     {
@@ -63,17 +71,25 @@ public class Event : MonoBehaviour
                 return;
             }
 
-            if(BossEvent == true)
+            if (BossEvent == true)
             {
                 BossEvent = false;
                 return;
             }
 
-            if (ForestClear == true)
+            switch (eventFlag)
             {
-                BattleSceneGameManager.instance.PauseGame(false);
-                StartCoroutine(ForestClearCoroutine());
-                return;
+                case EventFlags.Invalid:
+                    break;
+                case EventFlags.ForestClear:
+                    //BattleSceneGameManager.instance.PauseGame(false);
+                    StartCoroutine(StageClear(3, SceneChangeManager.MainStoryScene));
+                    break;
+                case EventFlags.SnowyMountainClear:
+                    //BattleSceneGameManager.instance.PauseGame(false);
+                    StartCoroutine(StageClear(6, SceneChangeManager.BattleSceneStory));
+                    break;
+
             }
 
             BattleSceneGameManager.instance.PauseGame(false);
@@ -103,12 +119,11 @@ public class Event : MonoBehaviour
         isTextEnd = true;
     }
 
-    private IEnumerator ForestClearCoroutine()
+    private IEnumerator StageClear(int flagIndex, string sceneName)
     {
-
         yield return new WaitForSeconds(1f);
-        GameProgressManager.Instance.SetFlag(3);
-        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
+        GameProgressManager.Instance.SetFlag(flagIndex);
+        SceneChangeManager.Instance.ChangeScene(sceneName);
     }
 
 

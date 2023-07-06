@@ -27,6 +27,8 @@ public class BattleSceneStoryManager : MonoBehaviour
 
         storyText.text = "";
 
+
+        //フラグ判断でスタートするStoryDataを決める
         if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartForestStory].IsOn == false)
         {
             //Forest0
@@ -42,8 +44,16 @@ public class BattleSceneStoryManager : MonoBehaviour
             storyIndex = 2;
             SetStoryElement(storyIndex, textIndex);
             return;
-
         }
+
+        if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.SnoryMountainClear].IsOn == true)
+        {
+            //SnowyMountain1
+            storyIndex = 3;
+            SetStoryElement(storyIndex, textIndex);
+            return;
+        }
+
     }
 
     private void SetStoryElement(int _storyIndex, int _textIndex)

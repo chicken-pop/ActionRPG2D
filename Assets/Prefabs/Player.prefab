@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000081696df88fd664987178a1f2
+  m_ApplyToSortingLayers: 0000000081696df88fd664987178a1f20957577d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   swordReturnImpact: 3
   dashSpeed: 25
   dashDuration: 0.2
+  playerImage: {fileID: -3318188226485093758, guid: 1d7fb2f064107b74c82258bfbe821476, type: 3}
 --- !u!70 &4041019311325801423
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -478,7 +479,7 @@ MonoBehaviour:
     baseValue: 15
     modifiers: 
   maxHealth:
-    baseValue: 1585
+    baseValue: 100
     modifiers: 
   armor:
     baseValue: 15
@@ -496,7 +497,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   lightingDamage:
-    baseValue: 69
+    baseValue: 0
     modifiers: 
   isIgnited: 0
   isChilled: 0
@@ -874,7 +875,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -127047295
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

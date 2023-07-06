@@ -22,7 +22,6 @@ public class EventTrigger : MonoBehaviour
             if (canEvent)
             {
                 eventData.SetupEvent(_textIndex: 0);
-                //AudioManager.Instance.StopSE(AudioManager.SE.dash); //seè¡Ç∑
                 BattleSceneGameManager.instance.PauseGame(true);
             }
 

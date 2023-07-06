@@ -14,7 +14,8 @@ public class GameProgressManager : SingletonMonoBehaviour<GameProgressManager>, 
         StartForestStory,
         ForestClear,
         BeforeSnowyMountainStroy,
-        StartSnowyMountainStory
+        StartSnowyMountainStory,
+        SnoryMountainClear,
     }
 
     private void Start()
