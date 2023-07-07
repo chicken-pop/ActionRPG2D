@@ -11,7 +11,8 @@ public class StoryData : ScriptableObject
     public string date;
     public int questionIndex = -1;
 
-    public bool fadeOut;
+    public bool FadeOut;
+    public bool SceneChange;
 }
 
 [System.Serializable]

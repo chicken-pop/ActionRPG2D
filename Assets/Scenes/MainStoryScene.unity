@@ -3977,10 +3977,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a443f751eeaeba49a2c39ebe5ef2367, type: 2}
   - {fileID: 11400000, guid: 273952d4c3dc7a045a5e865defe9c4ff, type: 2}
   - {fileID: 11400000, guid: 2c1cc3660442c80499005061aacfe2f1, type: 2}
+  - {fileID: 11400000, guid: 7aa569fc317d31146a215e39d6d0905f, type: 2}
+  - {fileID: 11400000, guid: acdd9ccfc11afe34daacea61f865b46c, type: 2}
   answerDatas:
   - {fileID: 11400000, guid: fd6b88cfb2e4a1c4eb122b58fb8b1764, type: 2}
   - {fileID: 11400000, guid: 3ecbfc4eb0e94184aac09ba26e673da3, type: 2}
   - {fileID: 11400000, guid: 3cae7ffd1a6161d49845e5b6338e804c, type: 2}
+  - {fileID: 11400000, guid: 07465bfc063dad2418bbed08f525d702, type: 2}
+  - {fileID: 11400000, guid: e05807114b747b740ad094ddc29bf835, type: 2}
+  - {fileID: 11400000, guid: ac1ed804a351df14d9b4f521251706cd, type: 2}
   optionData: {fileID: 11400000, guid: af0f208f5934956418cd682ae41e098d, type: 2}
   optionButton:
   - {fileID: 1075857593}

@@ -64,6 +64,14 @@ public class StorySceneUI_OptionButton : MonoBehaviour
                 else if (buttonIndex == badOptionIndex)
                     SetStory(_answerStoryIndex: 2, _impression: 2);
                 break;
+            case 1:
+                if (buttonIndex == goodOptionIndex)
+                    SetStory(_answerStoryIndex: 3, _impression: 0);
+                else if (buttonIndex == normalOptionIndex)
+                    SetStory(_answerStoryIndex: 4, _impression: 1);
+                else if (buttonIndex == badOptionIndex)
+                    SetStory(_answerStoryIndex: 5, _impression: 2);
+                break;
 
         }
     }

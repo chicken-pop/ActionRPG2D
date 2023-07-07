@@ -46,4 +46,5 @@ MonoBehaviour:
   bgm: 3
   date: "8\u670811\u65E5"
   questionIndex: -1
-  fadeOut: 0
+  FadeOut: 1
+  SceneChange: 0

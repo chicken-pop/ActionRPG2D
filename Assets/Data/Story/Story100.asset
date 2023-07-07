@@ -51,4 +51,6 @@ MonoBehaviour:
     CharacterName: 
   bgm: 2
   date: "8\u670810\u65E5"
-  fadeOut: 1
+  questionIndex: -1
+  FadeOut: 0
+  SceneChange: 1

@@ -95,7 +95,7 @@ public class StoryManager : MonoBehaviour, ISaveManager
             textIndex = 0;
 
             //BattleScene‚É•ÏX
-            if (storyDatas[_storyIndex].fadeOut == true)
+            if (storyDatas[_storyIndex].SceneChange == true)
             {
                 storyIndex++;
                 fadeOut.FadeOut();
@@ -121,6 +121,10 @@ public class StoryManager : MonoBehaviour, ISaveManager
             }
 
             //“ú‚âê–Ê‚ª•Ï‚í‚é‚Æ‚«‚Ì‰‰o
+            if(storyDatas[_storyIndex].FadeOut == true)
+            {
+                fadeOut.FadeOut();
+            }
 
             ChangeStoryElement(_storyIndex);
 
