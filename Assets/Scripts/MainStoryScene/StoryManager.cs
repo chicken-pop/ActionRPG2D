@@ -21,7 +21,8 @@ public class StoryManager : MonoBehaviour, ISaveManager
 
     [SerializeField] private GameObject[] optionButton;
 
-    [SerializeField] private UI_FadeScreen fadeOut;
+    [SerializeField] private UI_FadeScreen fade;
+    [SerializeField] private StorySceneUI_SystemButton systemuButton;
 
     public int storyIndex = -1;
     public int answerStoryIndex = 0;
@@ -98,7 +99,7 @@ public class StoryManager : MonoBehaviour, ISaveManager
             if (storyDatas[_storyIndex].SceneChange == true)
             {
                 storyIndex++;
-                fadeOut.FadeOut();
+                fade.FadeOut();
 
                 if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeForestStory].IsOn == false)
                 {
@@ -123,7 +124,8 @@ public class StoryManager : MonoBehaviour, ISaveManager
             //ì˙Ç‚èÍñ Ç™ïœÇÌÇÈÇ∆Ç´ÇÃââèo
             if(storyDatas[_storyIndex].FadeOut == true)
             {
-                fadeOut.FadeOut();
+                StartCoroutine(Fade(_storyIndex));
+                return;
             }
 
             ChangeStoryElement(_storyIndex);
@@ -201,6 +203,20 @@ public class StoryManager : MonoBehaviour, ISaveManager
         GameProgressManager.Instance.SetFlag(_flagIndex);
         yield return new WaitForSeconds(1);
         SceneChangeManager.Instance.ChangeScene(SceneChangeManager.BattleSceneStory);
+    }
+
+    private IEnumerator Fade(int _storyIndex)
+    {
+        isAuto = false;
+        isSkip = false;
+
+        systemuButton.autoCoverImage.SetActive(false);
+        systemuButton.skipCoverImage.SetActive(false);
+
+        fade.FadeOut();
+        yield return new WaitForSeconds(1f);
+        ChangeStoryElement(_storyIndex);
+        fade.FadeIn();
     }
 
     private void SetOption(int _optionNumber)

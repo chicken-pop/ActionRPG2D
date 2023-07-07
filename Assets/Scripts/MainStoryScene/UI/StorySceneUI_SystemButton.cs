@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class StorySceneUI_SystemButton : MonoBehaviour
 {
     [SerializeField] private StoryManager storyManager;
-    [SerializeField] private GameObject autoCoverImage;
-    [SerializeField] private GameObject skipCoverImage;
+    public GameObject autoCoverImage;
+    public GameObject skipCoverImage;
 
     private void Start()
     {

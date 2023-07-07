@@ -9,6 +9,7 @@ public class OPManager : MonoBehaviour
 
     private void Start()
     {
+        /*
         //OP‚ð•\Ž¦‚³‚¹‚È‚¢
         if(GameProgressManager.Instance.flagList.Flags[0].IsOn == true)
         {
@@ -19,6 +20,9 @@ public class OPManager : MonoBehaviour
         {
             StartCoroutine(FinishOp());
         }
+        */
+
+        StartCoroutine(FinishOp());
     }
 
     private IEnumerator FinishOp()

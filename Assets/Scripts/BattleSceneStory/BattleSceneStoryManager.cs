@@ -96,7 +96,13 @@ public class BattleSceneStoryManager : MonoBehaviour
                     StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.StartSnowyMountainStory, _sceneName: SceneChangeManager.MainBattleSceneSnowyMountain));
                     return;
                 }
-            
+
+                if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.AfterSnowyMountainStroy].IsOn == false)
+                {
+                    StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.AfterSnowyMountainStroy, _sceneName: SceneChangeManager.MainStoryScene));
+                    return;
+                }
+
             }
 
             ChangeStoryElement(_storyIndex);

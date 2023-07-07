@@ -28,24 +28,33 @@ public class JudgeGameState : MonoBehaviour
         }
     }
 
-    public void GameStart()
+    public void ContinueGameStart()
     {
         switch (flagCount)
         {
             case 0:
             case 1:
+            case 4:
+            case 7:
                 SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
                 break;
             case 2:
+            case 5:
                 SceneChangeManager.Instance.ChangeScene(SceneChangeManager.BattleSceneStory);
                 break;
             case 3:
                 SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneForest);
                 break;
-            case 4:
-                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
+            case 6:
+                SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainBattleSceneSnowyMountain);
                 break;
 
         }
+    }
+
+    public void NewGameStart()
+    {
+        SaveManager.instance.DeleteSaveData();
+        SceneChangeManager.Instance.ChangeScene(SceneChangeManager.MainStoryScene);
     }
 }
