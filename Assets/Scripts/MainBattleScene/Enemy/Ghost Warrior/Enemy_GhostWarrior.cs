@@ -14,6 +14,8 @@ public class Enemy_GhostWarrior : Enemy
     [SerializeField] private BoxCollider2D spellArea;
     [SerializeField] private float yOffset;
 
+    [SerializeField] private Event eventData;
+
     #region States
     public GhostWarriorIdleState idelState { get; private set; }
     public GhostWarriorBattleState battleState { get; private set; }
@@ -27,7 +29,7 @@ public class Enemy_GhostWarrior : Enemy
     {
         base.Awake();
 
-        idelState = new GhostWarriorIdleState(this, stateMachine, "Idle", this);
+        idelState = new GhostWarriorIdleState(this, stateMachine, "Idle", this, eventData);
         battleState = new GhostWarriorBattleState(this, stateMachine, "Move", this);
         attackState = new GhostWarriorAttackState(this, stateMachine, "Attack", this);
         spellCastState = new GhostWarriorSpellCastState(this, stateMachine, "SpellCast", this);

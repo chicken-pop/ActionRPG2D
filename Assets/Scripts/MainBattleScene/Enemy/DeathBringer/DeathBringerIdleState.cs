@@ -6,10 +6,12 @@ public class DeathBringerIdleState : EnemyState
 {
     private Enemy_DeathBringer enemy;
     private Transform player;
+    private Event eventData;
 
-    public DeathBringerIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_DeathBringer _enemy) : base(_enemyBase, _stateMachine, _animBoolName)
+    public DeathBringerIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_DeathBringer _enemy, Event _evenyData) : base(_enemyBase, _stateMachine, _animBoolName)
     {
         enemy = _enemy;
+        eventData = _evenyData;
     }
 
     public override void Enter()
@@ -31,13 +33,13 @@ public class DeathBringerIdleState : EnemyState
         base.Update();
 
         //êÌäJén
-        if(Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
+        if (eventData.BossEvent == false)
         {
             enemy.bossFightBegun = true;
 
         }
 
-        if(stateTimer < 0 && enemy.bossFightBegun)
+        if (stateTimer < 0 && enemy.bossFightBegun)
         {
             stateMachine.ChangeState(enemy.battleState);
         }

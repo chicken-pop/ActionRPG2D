@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GhostWarriorIdleState : GhostWarriorGroundState
 {
-    public GhostWarriorIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_GhostWarrior _enemy) : base(_enemyBase, _stateMachine, _animBoolName, _enemy)
+    private Event eventData;
+
+    public GhostWarriorIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_GhostWarrior _enemy, Event _eventData) : base(_enemyBase, _stateMachine, _animBoolName, _enemy)
     {
+        eventData = _eventData;
     }
 
     public override void Enter()
@@ -25,7 +28,7 @@ public class GhostWarriorIdleState : GhostWarriorGroundState
         base.Update();
 
         //DeathBringerêÌäJén
-        if (Vector2.Distance(player.transform.position, enemy.transform.position) < 7)
+        if (eventData.BossEvent == false)
         {
             enemy.bossFightBegun = true;
 

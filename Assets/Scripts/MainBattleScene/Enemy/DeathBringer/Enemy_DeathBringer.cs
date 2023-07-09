@@ -29,6 +29,8 @@ public class Enemy_DeathBringer : Enemy
     public float chanceToTeleport;
     public float defaultChanceToTeleport = 25;
 
+    [SerializeField] private Event eventData;
+
 
     protected override void Awake()
     {
@@ -36,7 +38,7 @@ public class Enemy_DeathBringer : Enemy
 
         SetupDefalutFacingDir(-1);
 
-        idelState = new DeathBringerIdleState(this, stateMachine, "Idle", this);
+        idelState = new DeathBringerIdleState(this, stateMachine, "Idle", this, eventData);
         battleState = new DeathBringerBattleState(this, stateMachine, "Move", this);
         attackState = new DeathBringerAttackState(this, stateMachine, "Attack", this);
         deadState = new DeathBringerDeadState(this, stateMachine, "Dead", this);

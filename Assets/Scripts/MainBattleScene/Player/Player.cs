@@ -113,7 +113,7 @@ public class Player : Entity
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Inventory.instance.UseFlask();
-            AudioManager.Instance.PlaySE(AudioManager.SE.flask, null);
+
         }
 
     }

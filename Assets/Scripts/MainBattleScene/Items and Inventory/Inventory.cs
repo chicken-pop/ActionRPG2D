@@ -364,6 +364,7 @@ public class Inventory : MonoBehaviour , ISaveManager
             flaskCooldown = currentFlask.itemCoolDown;
             //アイテムの効果の実行
             currentFlask.Effect(null);
+            AudioManager.Instance.PlaySE(AudioManager.SE.flask, null);
             lastTimeUseFlask = Time.time;
         }
         else
