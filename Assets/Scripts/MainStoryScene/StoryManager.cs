@@ -112,6 +112,12 @@ public class StoryManager : MonoBehaviour, ISaveManager
                     StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeSnowyMountainStroy));
                     return;
                 }
+
+                if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.BeforeBackcountryStory].IsOn == false)
+                {
+                    StartCoroutine(BattleStorySceneChange((int)GameProgressManager.FlagName.BeforeBackcountryStory));
+                    return;
+                }
             }
 
             //‘I‘ðŽˆ

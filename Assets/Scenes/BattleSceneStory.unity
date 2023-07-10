@@ -768,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8940016462076402502, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8940016462076402503, guid: 3489168d32b405045849d2e1897d6e64, type: 3}
       propertyPath: m_Pivot.x
@@ -1329,6 +1329,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 439500ef846f36a40892871ed3b2d063, type: 2}
   - {fileID: 11400000, guid: 9710f6553e96cc848977425a205a312d, type: 2}
   - {fileID: 11400000, guid: 5672963a3af16ad4a8c277d5b99e67ad, type: 2}
+  - {fileID: 11400000, guid: 32b524ffcfdda1b4795205325c2dc47d, type: 2}
   fadeOut: {fileID: 1202087079}
 --- !u!4 &1382197306
 Transform:

@@ -30,7 +30,7 @@ public class GameData
 
     public GameData()
     {
-        this.Story = -1;  //Default‚Í-1
+        this.Story = 11;  //Default‚Í-1
         this.StoryTextIndex = 0;
         this.ImpressionPoint = 0;
 

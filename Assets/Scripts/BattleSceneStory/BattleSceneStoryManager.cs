@@ -46,10 +46,18 @@ public class BattleSceneStoryManager : MonoBehaviour
             return;
         }
 
-        if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.SnoryMountainClear].IsOn == true)
+        if(GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.AfterSnowyMountainStroy].IsOn == false)
         {
             //SnowyMountain1
             storyIndex = 3;
+            SetStoryElement(storyIndex, textIndex);
+            return;
+        }
+
+        if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartBackcountryStory].IsOn == false)
+        {
+            //BeforeBackcountry0
+            storyIndex = 4;
             SetStoryElement(storyIndex, textIndex);
             return;
         }
@@ -100,6 +108,12 @@ public class BattleSceneStoryManager : MonoBehaviour
                 if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.AfterSnowyMountainStroy].IsOn == false)
                 {
                     StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.AfterSnowyMountainStroy, _sceneName: SceneChangeManager.MainStoryScene));
+                    return;
+                }
+
+                if (GameProgressManager.Instance.flagList.Flags[(int)GameProgressManager.FlagName.StartBackcountryStory].IsOn == false)
+                {
+                    StartCoroutine(BattleSceneChange(_flagIndex: (int)GameProgressManager.FlagName.StartBackcountryStory, _sceneName: SceneChangeManager.MainStoryScene));
                     return;
                 }
 

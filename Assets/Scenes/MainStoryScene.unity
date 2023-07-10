@@ -195,8 +195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.25, y: -49.686234}
-  m_SizeDelta: {x: 1209.8369, y: 220.4296}
+  m_AnchoredPosition: {x: 4, y: -36.04}
+  m_SizeDelta: {x: 1167.59, y: 194.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81536362
 MonoBehaviour:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 5
+  m_characterSpacing: 6
   m_wordSpacing: 0
   m_lineSpacing: 5
   m_lineSpacingMax: 0
@@ -3980,6 +3980,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c1cc3660442c80499005061aacfe2f1, type: 2}
   - {fileID: 11400000, guid: 7aa569fc317d31146a215e39d6d0905f, type: 2}
   - {fileID: 11400000, guid: acdd9ccfc11afe34daacea61f865b46c, type: 2}
+  - {fileID: 11400000, guid: 5e455e345bc6e134b99b383e27aad224, type: 2}
   answerDatas:
   - {fileID: 11400000, guid: fd6b88cfb2e4a1c4eb122b58fb8b1764, type: 2}
   - {fileID: 11400000, guid: 3ecbfc4eb0e94184aac09ba26e673da3, type: 2}
