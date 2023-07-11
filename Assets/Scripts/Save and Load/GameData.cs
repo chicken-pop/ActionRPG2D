@@ -53,4 +53,5 @@ public class GameData
         GameFlags = new SerializableDictionary<string, bool>();
     }
 
+
 }
