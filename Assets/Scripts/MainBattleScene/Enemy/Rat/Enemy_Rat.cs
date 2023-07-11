@@ -38,7 +38,6 @@ public class Enemy_Rat : Enemy
     {
         base.Update();
 
-
     }
 
     public override bool CanBeStunned()

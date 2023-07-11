@@ -24,7 +24,7 @@ public class Enemy : Entity
 
     [Header("Attack info")]
     public float agroDistance = 2; //BattleStateに入る距離
-    public float attackDistance = 2; //AttackStateに入る距離（攻撃するかどうか）
+    public float attackDistance = 2; // AttackStateに入る距離（攻撃するかどうか）
     public float attackCooldown;
     public float minAttackCooldown = 1;
     public float maxAttackCooldown = 2;
