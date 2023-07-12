@@ -12,7 +12,7 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.Enter();
 
-        AudioManager.Instance.PlaySE(AudioManager.SE.move, null);
+        //AudioManager.Instance.PlaySE(AudioManager.SE.move, null);
     }
 
     public override void Exit()

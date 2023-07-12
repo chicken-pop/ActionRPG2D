@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimationTriggers : MonoBehaviour
 {
     private Player player => GetComponentInParent<Player>();
+    AudioManager.SE moveSound;
 
     private void AnimationTrigger()
     {
@@ -45,5 +46,28 @@ public class PlayerAnimationTriggers : MonoBehaviour
     private void ThrowSword()
     {
         SkillManager.instance.sword.CreateSword();
+    }
+
+    private void MoveSound()
+    {
+        var index = Random.Range(0, 4);
+
+        switch (index)
+        {
+            case 0:
+                moveSound = AudioManager.SE.move0;
+                break;
+            case 1:
+                moveSound = AudioManager.SE.move1;
+                break;
+            case 2:
+                moveSound = AudioManager.SE.move2;
+                break;
+            case 3:
+                moveSound = AudioManager.SE.move3;
+                break;
+        }
+
+        AudioManager.Instance.PlaySE(moveSound, null);
     }
 }
