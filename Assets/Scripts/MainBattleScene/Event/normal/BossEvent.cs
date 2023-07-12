@@ -20,16 +20,15 @@ public class BossEvent : MonoBehaviour
         {
             BattleSceneGameManager.instance.PauseGame(false);
             IsMoveRestriction(true);
-            AudioManager.Instance.PlayBGM(AudioManager.BGM.Boss);
+
+            BattleSceneCameraMamager.Instance.ResetCameraSetting();
+            PlayerManager.instance.player.isAction = true;
             return;
         }
 
         if (eventData.BossEvent == true && eventTrigger.canEvent == false)
         {
             IsMoveRestriction(false);
-
-            AudioManager.Instance.StopBGM();
-
         }
     }
 

@@ -19,6 +19,15 @@ public class EventTrigger : MonoBehaviour
                 return;
             }
 
+            StartCoroutine(StartEvent());
+
+            /*
+            if (eventData.BossEvent)
+            {
+                Debug.Log("a");
+                BattleSceneCameraMamager.Instance.BossEventCameraSetting();
+            }
+
             if (canEvent)
             {
                 eventData.SetupEvent(_textIndex: 0);
@@ -27,6 +36,27 @@ public class EventTrigger : MonoBehaviour
 
             canEvent = false;
 
+            */
+
+
         }
+    }
+
+    private IEnumerator StartEvent()
+    {
+        if (eventData.BossEvent)
+        {
+            PlayerManager.instance.player.isAction = false;
+            BattleSceneCameraMamager.Instance.BossEventCameraSetting();
+            yield return new WaitForSeconds(2f);
+        }
+
+        if (canEvent)
+        {
+            eventData.SetupEvent(_textIndex: 0);
+            BattleSceneGameManager.instance.PauseGame(true);
+        }
+
+        canEvent = false;
     }
 }

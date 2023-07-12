@@ -7,7 +7,7 @@ public class Player : Entity
     [Header("Attack details")]
     public Vector2[] attackMovement;
     public float counterAttackduration = 2f;
-    
+
     public bool isBusy { get; private set; }
     [Header("Move info")]
     public float moveSpeed = 12;
@@ -45,6 +45,11 @@ public class Player : Entity
     #endregion
 
     public Sprite playerImage;
+
+    /// <summary>
+    /// //Playerを動かすことができるかどうか
+    /// </summary>
+    public bool isAction = true;
 
     protected override void Awake()
     {
@@ -87,7 +92,7 @@ public class Player : Entity
     protected override void Update()
     {
         //UI画面が開いてるとき（時間がとまっている時）、入力を受け付けない
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             return;
         }
@@ -98,19 +103,19 @@ public class Player : Entity
         CheckForDashInput();
 
         //クリスタルマジックの効果
-        if (Input.GetKeyDown(KeyCode.F) && skill.crystal.currentCrystal != null && skill.crystal.canExplode == false)
+        if (Input.GetKeyDown(KeyCode.F) && skill.crystal.currentCrystal != null && skill.crystal.canExplode == false && isAction == true)
         {
             skill.crystal.MoveCrystalPosition();
         }
 
         //魔法(クリスタル)スキルの呼び込み
-        if (Input.GetKeyDown(KeyCode.F)　&& skill.crystal.crystalUnlocked)
+        if (Input.GetKeyDown(KeyCode.F) && skill.crystal.crystalUnlocked && isAction == true)
         {
             skill.crystal.CanUseSkill();
         }
 
         //アイテムの使用
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isAction == true)
         {
             Inventory.instance.UseFlask();
 
@@ -169,13 +174,13 @@ public class Player : Entity
             return;
         }
 
-        if(skill.dash.dashUnlocked == false)
+        if (skill.dash.dashUnlocked == false)
         {
             return;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill() && isAction == true)
         {
             AudioManager.Instance.PlaySE(AudioManager.SE.dash, null);
             dashDir = Input.GetAxisRaw("Horizontal");

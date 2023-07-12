@@ -27,7 +27,7 @@ public class PlayerGroundedState : PlayerState
         base.Update();
 
         //ブラックホールスキル
-        if (Input.GetKeyDown(KeyCode.R) && player.skill.blackhole.blackholeUnlocked)
+        if (Input.GetKeyDown(KeyCode.R) && player.skill.blackhole.blackholeUnlocked && player.isAction == true)
         {
             if (player.skill.blackhole.cooldownTimer > 0)
             {
@@ -39,21 +39,21 @@ public class PlayerGroundedState : PlayerState
         }
 
         //ソードスキル
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skill.sword.swordUnlocked)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skill.sword.swordUnlocked && player.isAction == true)
         {
             stateMachine.ChangeState(player.aimSword);
             //CreateSwordでサウンドならしている
         }
 
         //パリィスキル
-        if (Input.GetKeyDown(KeyCode.Q) && player.skill.parry.parryUnlocked)
+        if (Input.GetKeyDown(KeyCode.Q) && player.skill.parry.parryUnlocked && player.isAction == true)
         {
             stateMachine.ChangeState(player.counterAttack);
             AudioManager.Instance.PlaySE(AudioManager.SE.parry, null);
         }
 
         //通常攻撃
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && player.isAction == true)
         {
             stateMachine.ChangeState(player.primaryAttack);
             //PlayerAttackStateでサウンドならしている
@@ -65,7 +65,7 @@ public class PlayerGroundedState : PlayerState
         }
 
         //ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
+        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected() && player.isAction == true)
         {
             stateMachine.ChangeState(player.jumpState);
         }

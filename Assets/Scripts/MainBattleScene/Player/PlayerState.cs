@@ -21,7 +21,7 @@ public class PlayerState
         this.player = _player;
         this.stateMachine = _stateMachine;
         this.animBoolName = _animBoolName;
-    
+
     }
 
     public virtual void Enter()
@@ -35,8 +35,12 @@ public class PlayerState
     {
         stateTimer -= Time.deltaTime;
 
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        if (player.isAction)
+        {
+            xInput = Input.GetAxisRaw("Horizontal");
+            yInput = Input.GetAxisRaw("Vertical");
+
+        }
 
         player.anim.SetFloat("yVelocity", rb.velocity.y);
     }

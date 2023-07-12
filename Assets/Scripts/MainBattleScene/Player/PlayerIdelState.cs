@@ -24,7 +24,7 @@ public class PlayerIdelState : PlayerGroundedState
     {
         base.Update();
 
-        if (xInput == player.facingDir && player.IsWallDetected())
+        if (xInput == player.facingDir && player.IsWallDetected() || player.isAction == false)
         {
             return;
         }
